@@ -1,38 +1,150 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap'); */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@300&display=swap'); */
+
+/* @font-face {
+  font-family: 'Open Sans';
+  src: url("../public/fonts/OpenSans-Light.ttf");
+} */
+
+.home-main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column ;
+  /* background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;  */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  width: 100%;
+  height: 15vh;
+  /* background: rgba(255, 255, 255, 0.329); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.homeAndCities-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 450px;
+  font-size: 25px;
+  color: white;
+  /* background: green; */
+}
+
+.homeAndCities-container > * {
+  padding-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+} 
+
+.logo-container{
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: auto;
+  /* background: red; */
+}
+
+.logo-text {
+  font-family: 'Blinker', sans-serif;
+  color: white;
+  /* height: 20px; */
+  /* margin-bottom: 20px; */
+  /* background: green; */
+}
+
+.login-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+  font-size: 25px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login-section > * {
+  color: white;
+  text-decoration: none;
+  padding-left: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-container {
+  width: 100%;
+  height: 7vh;
+  background: #eddcdc7e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.hero-text{
+  font-size: 28px;
+  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+.callToAction-mainContainer{
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  /* background:red; */
+}
+
+.callToAction-container{
+  width: 100%;
+  height: 17vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* flex-grow: 1; */
+  /* margin-top: 40vh; */
+}
+
+.ClickHere-button {
+  /* width: 150px; */
+  /* height: 50px; */
+  padding: 15px 20px;
+  border: 4px solid black;
+  border-radius: 10px;
+  font-size: 25px;
+    /* font-family: 'Open Sans', sans-serif; */
+  font-family: Arial, Helvetica, sans-serif;
+  transition: all .2s ease;
+}
+
+.ClickHere-button:hover {
+  cursor: pointer;
+  /* border: 4px solid #e9b1b1; */
+  background: #eddcdc7e;
+  /* background: rgba(255, 255, 255, 0.472); */
+  /* color: #e9b1b1; */
+  padding: 15px 25px;
+
+  /* color: black; */
+
+}
+
+.callToAction-text {
+  font-size: 35px;
+  margin-top: 10px;
+  font-family: 'Open Sans', sans-serif;
 }
