@@ -5,9 +5,9 @@ import CallToAction from './CallToAction'
 
 function HomeMain(){
    return(
-      <>
          <div className="home-main" style={{
             background: `url('/img/static-background.png')`,
+            // background: `url('/img/background-video.mp4')`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'bottom',
             backgroundSize: 'cover',
@@ -16,7 +16,6 @@ function HomeMain(){
             <Hero/>
             <CallToAction/>
          </div>
-      </>
    )
 }
 

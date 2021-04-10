@@ -1,12 +1,13 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 function Header (){
    return(
       <header className="header">
          <div className="homeAndCities-container">
-            <a href="#" className="link">Home</a>
+            <NavLink to="/" className="link">Home</NavLink>
             <p>|</p>
-            <a href="#" className="link">Cities</a>
+            <NavLink to="/cities" className="link">Cities</NavLink>
          </div>
 
          <div className="logo-container">
