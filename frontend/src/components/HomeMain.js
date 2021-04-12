@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import CallToAction from './CallToAction'
+import ResponsiveCarrousel from './ResponsiveCarrousel'
 
 function HomeMain(){
    return(

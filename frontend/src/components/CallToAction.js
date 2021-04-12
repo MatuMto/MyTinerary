@@ -5,7 +5,7 @@ function CallToAction (){
          <div className="callToAction-mainContainer">
             <div className="callToAction-container">
                <div className="ClickHere-button">
-                  <NavLink to="/cities" className="ClickHere-button-text">Click Here! <img src="/icons/paper-plane.png" style={{width:'30px', }} /> </NavLink>
+                  <NavLink to="/cities" className="ClickHere-button-text">Click Here! <img src="/icons/paper-plane.png" className="plane-icon" style={{width:'30px', }} /> </NavLink>
                </div>
                <p className="callToAction-text">...and follow the adventure path</p>
             </div>
