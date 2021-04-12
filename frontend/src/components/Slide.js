@@ -1,7 +1,6 @@
 const Slide = ({singleSlide})=>{
    return(
       <>
-      {console.log(singleSlide[1])}
          <div className="slide-container">
             <div className="card1" style={{
                background: `url(/img/${singleSlide[0].img})`,

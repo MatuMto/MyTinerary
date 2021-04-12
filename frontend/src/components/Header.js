@@ -14,23 +14,23 @@ function Header (){
       <>
          <header className="header">
             <div className="homeAndCities-container">
-               <NavLink to="/" className="link">Home</NavLink>
+               <NavLink to="/" >Home</NavLink>
                <p>|</p>
-               <NavLink to="/cities" className="link">Cities</NavLink>
+               <NavLink to="/cities" >Cities</NavLink>
             </div>
 
             <div className="logo-container">
-               <img src="/img/logo-finish.png" style={{width: '150px'}}></img>
+               <img src="/img/logo-finish.png" alt="mi loguito :)" style={{width: '150px'}}></img>
                <h1 className="logo-text">MyTinerary</h1>
             </div>
 
             <div className="login-section">
-               <a href="#" className="link">Sign Up</a>
+               <p  className="link">Sign Up</p>
                <p>|</p>
-               <a href="#" className="link">Log In</a>
+               <p  className="link">Log In</p>
                <div style={{ marginLeft: '20px'}}>
                   {/* <i></i> */}
-                  <img src="/img/user-icon.png"></img>
+                  <img src="/img/user-icon.png" alt="user unloged logo"></img>
                </div>
             </div>
          </header>
@@ -50,13 +50,13 @@ function Header (){
             </Dropdown>
 
             <div className="logo-container">
-               <img src="/img/logo-finish.png" style={{width: '80px'}}></img>
+               <img src="/img/logo-finish.png" alt="My logo :)" style={{width: '80px'}}></img>
                <h1 className="logo-text">MyTinerary</h1>
             </div>
 
             {/* <div className="login-section"> */}
                <div style={{ marginLeft: '20px'}}>
-                  <img src="/img/user-icon.png" style={{width: '50px'}}></img>
+                  <img src="/img/user-icon.png" alt="user unloged icon" style={{width: '50px'}}></img>
                </div>
             {/* </div> */}
          </header>

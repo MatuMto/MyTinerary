@@ -14,7 +14,7 @@ const Footer = ()=>{
                <div className="new-callToAction">
                   <h2>What are you waiting for?</h2>
                   <div className="ClickHere-button">
-                  <NavLink to="/cities" className="ClickHere-button-text">Click Here! <img src="/icons/paper-plane.png" className="plane-icon" style={{width:'30px', }} /> </NavLink>
+                  <NavLink to="/cities" className="ClickHere-button-text">Click Here! <img src="/icons/paper-plane.png" alt="plane icon" className="plane-icon" style={{width:'30px', }} /> </NavLink>
                   </div>
                <p>And check all your adventure posibilities!</p>
                </div>
@@ -23,10 +23,10 @@ const Footer = ()=>{
          <div className="bottom-section">
             <p className="credits">Designed and Developed by @_mateo.lorenzo_dev</p>
             <div className="icon-container">
-                  <img className="icon" src="/icons/facebook.png" />
-                  <img className="icon" src="/icons/pinterest.png" />               
-                  <img className="icon" src="/icons/youtube.png" />
-                  <img className="icon" src="/icons/marca.png" />            
+                  <img className="icon" alt="Facebook icon should be here" src="/icons/facebook.png" />
+                  <img className="icon" alt="Pinterest icon should be here" src="/icons/pinterest.png" />               
+                  <img className="icon" alt="Youtube icon should be here" src="/icons/youtube.png" />
+                  <img className="icon" alt="Tik Tok icon should be here" src="/icons/marca.png" />            
             </div>
          </div>
       </section>

@@ -73,6 +73,11 @@ body{
   color: white;
 }
 
+.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .login-section {
   display: flex;
   justify-content: flex-start;

@@ -12,16 +12,17 @@ const Carrousel = ({carrouselData})=>{
    const previousSlide = ()=>{
       setCurrent(currentSlide === 0 ? length-1 : currentSlide -1 )
    }
-   // const automaticReproduction = ()=>{
-   //    setTimeout(function(){
-   //       setCurrent(currentSlide === length - 1 ? 0 : currentSlide +1,)
-   //    }, 3000)}
-   // function limpiar (){
-   //    window.clearTimeout(automaticReproduction)
-   // }
+   const automaticReproduction = ()=>{
+      setTimeout(function(){
+         // alert('hola')
+         setCurrent(currentSlide === length - 1 ? 0 : currentSlide +1)
+      }, 3500)}
+   function limpiar (){
+      clearTimeout(automaticReproduction)
+   }
    return (
       <>
-         {/* {automaticReproduction()} */}
+         {automaticReproduction()}
          <div className="complete-carrousel">
             <div className="slide-tittle-container">
                <h3 className="slide-tittle">Popular MyTinerarys</h3>

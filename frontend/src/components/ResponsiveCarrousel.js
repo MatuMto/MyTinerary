@@ -3,7 +3,8 @@ import {useState} from 'react'
 import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 
 const ResponsiveCarrousel = ({carrouselData})=>{
-   console.log(carrouselData)
+   // console.log(carrouselData)
+
    var [currentSlide, setCurrent] = useState(0);
    const length = carrouselData.length
 
