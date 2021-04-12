@@ -2,6 +2,9 @@ import './App.css'
 import Home from './pages/Home'
 import Cities from './pages/Cities'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Carrousel from './components/Carrousel'
+import CarrouselData from './components/CarrouselData'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -11,6 +14,8 @@ function App() {
           
           <Route exact path="/">
             <Home/>
+            <Carrousel carrouselData={CarrouselData}/>
+            <Footer/>
           </Route>
 
           <Route path="/cities">

@@ -16,7 +16,7 @@ function Header (){
          </div>
 
          <div className="login-section">
-            <a href="#" className="link">Log In</a>
+            <a href="#" className="link">Sign Up</a>
             <p>|</p>
             <a href="#" className="link">Log In</a>
             <div style={{ marginLeft: '20px'}}>
