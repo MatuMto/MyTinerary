@@ -43,7 +43,9 @@ function Header (){
 
                <DropdownMenu>
                   <DropdownItem>Home</DropdownItem>
-                  <DropdownItem>Cities</DropdownItem>
+                  <DropdownItem>
+                     <NavLink to="/cities" >Cities</NavLink>
+                  </DropdownItem>
                   <DropdownItem>Sign Up</DropdownItem>
                   <DropdownItem disabled>Log In</DropdownItem>
                </DropdownMenu>

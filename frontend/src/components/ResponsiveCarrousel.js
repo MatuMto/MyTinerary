@@ -40,9 +40,8 @@ const ResponsiveCarrousel = ({carrouselData})=>{
    return(
       <div className="responsive-footer-container">
       
-         {/* <div className="individual-carrousel"> */}
             <div className="slide-tittle-container">
-               <h3 className="slide-tittle">Popular MyTinerarys</h3>
+               <h3 className="slide-tittle">Popular MyTineraries</h3>
             </div>
 
             <section className="slider">
@@ -89,9 +88,7 @@ const ResponsiveCarrousel = ({carrouselData})=>{
                      )
                   })}
             </section>
-         {/* </div> */}
       </div>
    )
 }
-
 export default ResponsiveCarrousel 
