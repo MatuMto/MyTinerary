@@ -1,7 +1,7 @@
 const ResponsiveSlide = ({singleSlide})=>{
    return(
       <>
-         <div className="slide-container">
+         <div className="responsive-slide-container">
             <div className="card" style={{
                background: `url(/img/${singleSlide.img})`,
                backgroundRepeat: 'no-repeat',

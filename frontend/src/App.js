@@ -2,10 +2,8 @@ import './App.css'
 import Home from './pages/Home'
 import Cities from './pages/Cities'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import Carrousel from './components/Carrousel'
-import CarrouselData from './components/CarrouselData'
-import Footer from './components/Footer'
-import ResponsiveCarrousel from './components/ResponsiveCarrousel'
+// import Itinerary from './pages/Itineraries'
+import Itineraries from './pages/Itineraries'
 
 function App() {
   return (
@@ -13,16 +11,9 @@ function App() {
       <BrowserRouter>
         <Switch>
           
-          <Route exact path="/">
-            <Home/>
-            <Carrousel carrouselData={CarrouselData}/>
-            <ResponsiveCarrousel carrouselData={CarrouselData} />
-            <Footer/>
-          </Route>
-
-          <Route path="/cities">
-            <Cities/>
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route path="/cities" component={Cities}/> 
+          <Route exact path="/itineraries/:id" component={Itineraries}/>
 
         </Switch>
       </BrowserRouter>

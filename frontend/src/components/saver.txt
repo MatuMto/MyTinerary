@@ -1,0 +1,50 @@
+----------- ResponsiveCarrousel.js -------------------
+
+import ResponsiveSlide from './ResponsiveSlide'
+import {useState} from 'react'
+import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
+
+const ResponsiveCarrousel = ({carrouselData})=>{
+   console.log(carrouselData)
+
+   var [currentSlide, setCurrent] = useState(0);
+   const length = carrouselData.length
+
+   const nextSlide = ()=>{
+      setCurrent(currentSlide === length ? 0 : currentSlide +1)
+   }
+   const previousSlide = ()=>{
+      setCurrent(currentSlide === 0 ? length : currentSlide -1 )
+   }
+
+
+   return(
+      <div className="responsive-footer-container">
+            <div className="slide-tittle-container">
+               <h3 className="slide-tittle">Popular MyTineraries</h3>
+            </div>
+
+            <section className="slider">
+               <FaArrowAltCircleLeft className="left-arrow" onClick={previousSlide} />
+               <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
+
+               
+               {carrouselData.map((element)=>{
+                  return(
+                     element.map((singleSlide, index)=>{
+                        return(
+                           <div className={index === currentSlide ? 'slide active': 'slide'} key={index}>
+                              {index === currentSlide  && (
+                                 <ResponsiveSlide singleSlide={singleSlide}  /> 
+                              )}
+                           </div>
+                        )
+                     })
+                  )}
+               )}
+
+            </section>
+      </div>
+   )
+}
+export default ResponsiveCarrousel 

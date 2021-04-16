@@ -12,7 +12,7 @@ function HomeMain(){
             backgroundPosition: 'bottom',
             backgroundSize: 'cover',
          }}>
-               <Header/>
+            <Header/>
             <Hero/>
             <CallToAction/>
          </div>

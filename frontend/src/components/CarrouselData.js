@@ -6,7 +6,7 @@ const CarrouselData = [
       {location: 'Amsterdam', id: 4,  img:'amsterdam.jpg'},
    ],[
       {location: 'Paris', id: 5, img:  'paris.jpg'},
-      {location: 'Roma', id: 6, img:  'roma.jpg'},
+      {location: 'Rome', id: 6, img:  'rome.jpg'},
       {location: 'Helsinki', id: 7, img:  'helsinki.jpg'},
       {location: 'Berna',id: 8, img:  'berna.jpg'},
    ],[
