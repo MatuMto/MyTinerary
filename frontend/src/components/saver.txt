@@ -1,3 +1,49 @@
+const citiesData = [
+   [
+      {cityName: 'Buenos Aires', country:'Argentina', id: 1, img:'buenos-aires.jpg'},
+      {cityName: 'Rio de Janeiro', country:'Brazil', id: 2, img:'rio-de-janeiro.jpg'},
+      {cityName: 'Stockholm', country:'Sweden', id: 3,  img:'estocolmo.jpeg'},
+      {cityName: 'Amsterdam', country:'Netherlands', id: 4,  img:'amsterdam.jpg'},
+   ],[
+      {cityName: 'Paris', country:'France', id: 5, img:  'paris.jpg'},
+      {cityName: 'Rome', country:'Italy', id: 6, img:  'rome.jpg'},
+      {cityName: 'Helsinki', country:'Finland', id: 7, img:  'helsinki.jpg'},
+      {cityName: 'Berna', country:'Switzerland', id: 8, img:  'berna.jpg'},
+   ],[
+      {cityName: 'Madrid', country:'Spain', id: 9, img:  'madrid.jpg'},
+      {cityName: 'Oslo', country:'Norway', id: 10, img:  'oslo.jpg'},
+      {cityName: 'Copenhagen', country:'Denmark', id: 11, img:  'copenhague.jpg'},
+      {cityName: 'Wellington', country:'New Zealand', id: 12, img:  'wellington.jpg'},
+   ],[
+      {cityName: 'New York', country:'United States', id: 13, img:'new-york.jpg'},
+      {cityName: 'Miami', country:'United States', id: 14, img:'miami.jpg'},
+      {cityName: 'Dubai', country:'United Arab Emirates', id: 15, img:  'monaco.jpg'},
+      {cityName: 'Tokyo', country:'Japan', id:16, img:  'tokyo.jpg'},
+   ]
+]
+
+const citiesData = [
+      {location: 'Buenos Aires', country:'Argentina', id: 1, img:'buenos-aires.jpg'},
+      {location: 'Rio de Janeiro', country:'Brazil', id: 2, img:'rio-de-janeiro.jpg'},
+      {location: 'Stockholm', country:'Sweden', id: 3,  img:'estocolmo.jpeg'},
+      {location: 'Amsterdam', country:'Netherlands', id: 4,  img:'amsterdam.jpg'},        
+      {location: 'Paris', country:'France', id: 5, img:  'paris.jpg'},
+      {location: 'Rome', country:'Italy', id: 6, img:  'rome.jpg'},
+      {location: 'Helsinki', country:'Finland', id: 7, img:  'helsinki.jpg'},
+      {location: 'Berna', country:'Switzerland', id: 8, img:  'berna.jpg'},
+      {location: 'Madrid', country:'Spain', id: 9, img:  'madrid.jpg'},
+      {location: 'Oslo', country:'Norway', id: 10, img:  'oslo.jpg'},
+      {location: 'Copenhagen', country:'Denmark', id: 11, img:  'copenhague.jpg'},
+      {location: 'Wellington', country:'New Zealand', id: 12, img:  'wellington.jpg'},
+      {location: 'New York', country:'United States', id: 13, img:  'new york.jpg'},
+      {location: 'Miami', country:'United States', id: 14, img:  'miami.jpg'},
+      {location: 'Dubai', country:'United Arab Emirates', id: 15, img:  'monaco.jpg'},
+      {location: 'Tokyo', country:'Japan', id:16, img:  'tokyo.jpg'},
+]
+
+
+
+
 ----------- ResponsiveCarrousel.js -------------------
 
 import ResponsiveSlide from './ResponsiveSlide'

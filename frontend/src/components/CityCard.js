@@ -2,14 +2,14 @@ import {NavLink} from 'react-router-dom'
 
 const CityCard = ({location})=>{
 
-   const identificador = (e)=>{
-      const identificado = e.target.dataset.cityName
-      console.log(identificado)
-   }
+   // const identificador = (e)=>{
+   //    // const identificado = e.target.dataset.cityName
+   //    // console.log(identificado)
+   // }
 
    return(
       <NavLink style={{textDecoration: 'none'}} to={`/itineraries/${location.id}`}>
-         <div style={{display: 'flex', justifyContent: 'space-between', width: '650px', border: '2px solid black', cursor: 'pointer'}} onClick={identificador}>
+         <div style={{display: 'flex', justifyContent: 'space-between', width: '650px', border: '2px solid black', cursor: 'pointer'}}>
             <div >
                <p>Location: {location.cityName}</p>
                <p>Country: {location.country}</p>

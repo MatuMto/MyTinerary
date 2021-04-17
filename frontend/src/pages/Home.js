@@ -4,11 +4,29 @@ import Footer from '../components/Footer'
 import HomeMain from '../components/HomeMain'
 import ResponsiveCarrousel from '../components/ResponsiveCarrousel'
 import CarrouselData from '../components/CarrouselData'
+import axios from 'axios'
+import Hero from '../components/Hero'
 
 class Home extends React.Component {
+
+   state = {
+      infoOfCities: [],
+      loading: true
+   }
+
+   componentDidMount(){
+      axios.get('http://localhost:4000/api/allCities')
+      .then(response => this.setState({infoOfCities: response.data.respuesta, loading: false}))
+   }
+
    render(){
+      // console.log(this.state.infoOfCities)
       return(
          <div>
+            {this.state.infoOfCities.map((city)=> 
+               city.id === 4 
+               ? <h2>hola soy {city.location} </h2> 
+               : null)}
             <HomeMain/>
             <Carrousel carrouselData={CarrouselData}/>
             <ResponsiveCarrousel carrouselData={CarrouselData} />
