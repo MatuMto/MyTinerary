@@ -3,6 +3,7 @@ const cors = require('cors')
 
 const app = express()
 app.use(cors())
+app.use(express.json())
 
 var info = [
       {cityName: 'Buenos Aires', country:'Argentina',  description: 'This is Argentina Description', id: 1, img:'buenos-aires.jpg'},
@@ -31,26 +32,41 @@ app.get('/api/cities', (req, res) =>{
 // Obtener Ciudad especifica por su id
 app.get('/api/itineraries/:receivedId', (req, res) =>{
       const receivedId = parseInt(req.params.receivedId)
-      locationSelected = info.filter((city)=> city.id === receivedId)
-      console.log(locationSelected)
+      // locationSelected = info.filter((city)=> city.id === receivedId)
+      locationSelected = info.find(city => city.id === receivedId)
       res.json({respuesta: locationSelected})
 })
 
 
-// Modificar una Ciudad (que identifico segun su id)
-app.put('/api/itineraries/:receivedId', (req, res) =>{
-      const receivedId = parseInt(req.params.receivedId)
-      locationToModify = info.filter((city)=> city.id === receivedId)
+// Agregar ciudad a la base de datos - VER BIEN ESTA
+app.post('/api/addCity', (req, res) =>{
+      // const body = req.body
+      info.push({
+            // body: 
+            id: info[info.length - 1].id +1
+      })
+      res.json({respuesta: info})
+})
 
-      res.json({respuesta: locationToModify})
+// Modificar una Ciudad (que identifico segun su id)
+app.put('/api/modificar/:idAModificar', (req, res) =>{
+      const idAModificar = parseInt(req.params.idAModificar)
+      info = info.map(city=>{
+            if(city.id === idAModificar){
+                  city = {...city, ...req.body}
+            }
+            return city
+      })
+      res.json({respuesta: info})
 })
 
 // Borrar una ciudad (que identifico segun su id)
-app.delete('/api/itineraries/:receivedId', (req, res) =>{
-      const receivedId = parseInt(req.params.receivedId)
-      locationToDelete = info.filter((city)=> city.id === receivedId)
-
-      res.json({respuesta: locationToDelete})
+app.delete('/api/borrar/:idABorrar', (req, res) =>{
+      const idABorrar = parseInt(req.params.idABorrar)
+      info = info.filter((city)=>{
+            return city.id !== idABorrar
+      })
+      res.json({respuesta: info})
 })
 
 

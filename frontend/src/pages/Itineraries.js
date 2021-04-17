@@ -10,7 +10,7 @@ import React from 'react'
 class Itineraries extends React.Component{
    state = {
       allCities: [],
-      selectedCity: {},
+      selectedCity: [],
       loading: true,
       // receivedId: this.props.match.params.id
    } 
@@ -22,8 +22,11 @@ class Itineraries extends React.Component{
       
       const receivedId = this.props.match.params.id
       axios.get('http://localhost:4000/api/itineraries/'+receivedId)
-      .then(response => this.setState({selectedCity: response.data.respuesta[0]})) 
+      .then(response => this.setState({selectedCity: response.data.respuesta})) 
+   
    }
+   
+
    
    render(){
       console.log(this.state.selectedCity)            
