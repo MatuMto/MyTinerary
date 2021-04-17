@@ -10,35 +10,27 @@ import React from 'react'
 class Itineraries extends React.Component{
    state = {
       allCities: [],
-      selectedCity: [],
-      loading: true
+      selectedCity: {},
+      loading: true,
+      // receivedId: this.props.match.params.id
    } 
 
    componentDidMount(){
       axios.get('http://localhost:4000/api/cities')
-      .then(response => this.setState({allCities: response.data.respuesta})) //destructuring?
-
-      axios.delete('http://localhost:4000/api/allCities')
-      .then(response => this.setState({allCities: response.data.respuesta})) //destructuring?
+      .then(response => this.setState({allCities: response.data.respuesta})) 
+         
       
-   }
-
-   render(){
-      console.log(this.state.allCities)
       const receivedId = this.props.match.params.id
-      console.log(receivedId)
-      
-      // const selectedCity = citiesData.find((city)=>city.id === parseInt(receivedId)) 
-
-            
-            
-            // Aca le voy a decir: Hey back! Pasame el objeto con los datos de aquella ciudad que tiene el id: cualquiera
-            
-            return (
-               <> 
-         <ItineraryTittle receivedId={receivedId}/>
-           {/* selectedCity={selectedCity} */}
-      </>
+      axios.get('http://localhost:4000/api/itineraries/'+receivedId)
+      .then(response => this.setState({selectedCity: response.data.respuesta[0]})) 
+   }
+   
+   render(){
+      console.log(this.state.selectedCity)            
+      return (
+         <> 
+            <ItineraryTittle selectedCity={this.state.selectedCity}/>
+         </>
    )
    }  
 }

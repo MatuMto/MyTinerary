@@ -4,32 +4,54 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 
-const info = [
-      {location: 'Buenos Aires', id: 1, img:'buenos-aires.jpg'},
-      {location: 'Rio de Janeiro', id: 2, img:'rio-de-janeiro.jpg'},
-      {location: 'Estocolmo', id: 3,  img:'estocolmo.jpeg'},
-      {location: 'Amsterdam', id: 4,  img:'amsterdam.jpg'},
-      {location: 'Paris', id: 5, img:  'paris.jpg'},
-      {location: 'Rome', id: 6, img:  'rome.jpg'},
-      {location: 'Helsinki', id: 7, img:  'helsinki.jpg'},
-      {location: 'Berna',id: 8, img:  'berna.jpg'},
-      {location: 'Madrid', id: 9, img:  'madrid.jpg'},
-      {location: 'Oslo', id: 10, img:  'oslo.jpg'},
-      {location: 'Copenhague', id: 11, img:  'copenhague.jpg'},
-      {location: 'Wellington', id: 12, img:  'wellington.jpg'},
-      {location: 'New York', country:'United States', id: 13, img:'new-york.jpg'},
-      {location: 'Miami', country:'United States', id: 14, img:'miami.jpg'},
-      {location: 'Dubai', country:'United Arab Emirates', id: 15, img:  'monaco.jpg'},
-      {location: 'Tokyo', country:'Japan', id:16, img:  'tokyo.jpg'},
+var info = [
+      {cityName: 'Buenos Aires', country:'Argentina',  description: 'This is Argentina Description', id: 1, img:'buenos-aires.jpg'},
+      {cityName: 'Rio de Janeiro', country:'Brazil', description: 'This is Brazil Description', id: 2, img:'rio-de-janeiro.jpg'},
+      {cityName: 'Stockholm', country:'Sweden', description: 'This is Sweden Description', id: 3,  img:'estocolmo.jpeg'},
+      {cityName: 'Amsterdam', country:'Netherlands', description: 'This is Netherlands Description', id: 4,  img:'amsterdam.jpg'},
+      {cityName: 'Paris', country:'France', description: 'This is France Description', id: 5, img:  'paris.jpg'},
+      {cityName: 'Rome', country:'Italy', description: 'This is Italy Description', id: 6, img:  'rome.jpg'},
+      {cityName: 'Helsinki', country:'Finland', description: 'This is Finland Description', id: 7, img:  'helsinki.jpg'},
+      {cityName: 'Berna', country:'Switzerland', description: 'This is Switzerland Description', id: 8, img:  'berna.jpg'},
+      {cityName: 'Madrid', country:'Spain', description: 'This is Spain Description', id: 9, img:  'madrid.jpg'},
+      {cityName: 'Oslo', country:'Norway', description: 'This is Norway Description', id: 10, img:  'oslo.jpg'},
+      {cityName: 'Copenhagen', country:'Denmark', description: 'This is Denmak Description', id: 11, img:  'copenhague.jpg'},
+      {cityName: 'Wellington', country:'New Zealand', description: 'This is New Zealand Description', id: 12, img:  'wellington.jpg'},
+      {cityName: 'New York', country:'United States', description: 'This is United States Description', id: 13, img:'new-york.jpg'},
+      {cityName: 'Miami', country:'United States', description: 'This is United States Description', id: 14, img:'miami.jpg'},
+      {cityName: 'Dubai', country:'United Arab Emirates', description: 'This is United Araba Emirates Description', id: 15, img:  'monaco.jpg'},
+      {cityName: 'Tokyo', country:'Japan', description: 'This is Japan Description', id:16, img:  'tokyo.jpg'},
 ]
 
+// Obtener Todas las ciudades
 app.get('/api/cities', (req, res) =>{
    res.json({respuesta: info, success: true})
 })
 
-app.delete('/api/allCities', (req, res) =>{
-      
-      // res.json({respuesta: 'borre todo'})
+// Obtener Ciudad especifica por su id
+app.get('/api/itineraries/:receivedId', (req, res) =>{
+      const receivedId = parseInt(req.params.receivedId)
+      locationSelected = info.filter((city)=> city.id === receivedId)
+      console.log(locationSelected)
+      res.json({respuesta: locationSelected})
 })
+
+
+// Modificar una Ciudad (que identifico segun su id)
+app.put('/api/itineraries/:receivedId', (req, res) =>{
+      const receivedId = parseInt(req.params.receivedId)
+      locationToModify = info.filter((city)=> city.id === receivedId)
+
+      res.json({respuesta: locationToModify})
+})
+
+// Borrar una ciudad (que identifico segun su id)
+app.delete('/api/itineraries/:receivedId', (req, res) =>{
+      const receivedId = parseInt(req.params.receivedId)
+      locationToDelete = info.filter((city)=> city.id === receivedId)
+
+      res.json({respuesta: locationToDelete})
+})
+
 
 app.listen(4000, () => console.log("estoy escuchando en el puerto 4000"))
