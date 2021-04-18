@@ -22,10 +22,6 @@ class Home extends React.Component {
    render(){
       return(
          <div>
-            {this.state.infoOfCities.map((city)=> 
-               city.id === 4 
-               ? <h2>hola soy {city.location} </h2> 
-               : null)}
             <HomeMain/>
             <Carrousel carrouselData={CarrouselData}/>
             <ResponsiveCarrousel carrouselData={CarrouselData} />

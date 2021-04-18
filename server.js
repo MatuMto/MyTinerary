@@ -4,6 +4,7 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 app.use(express.json())
+const router = require('./routes/index')
 
 var info = [
       {cityName: 'Buenos Aires', country:'Argentina',  description: 'This is Argentina Description', id: 1, img:'buenos-aires.jpg'},
@@ -24,50 +25,10 @@ var info = [
       {cityName: 'Tokyo', country:'Japan', description: 'This is Japan Description', id:16, img:  'tokyo.jpg'},
 ]
 
-// Obtener Todas las ciudades
-app.get('/api/cities', (req, res) =>{
-   res.json({respuesta: info, success: true})
-})
-
-// Obtener Ciudad especifica por su id
-app.get('/api/itineraries/:receivedId', (req, res) =>{
-      const receivedId = parseInt(req.params.receivedId)
-      // locationSelected = info.filter((city)=> city.id === receivedId)
-      locationSelected = info.find(city => city.id === receivedId)
-      res.json({respuesta: locationSelected})
-})
+app.use('/api', router) //cuando hagan un pedido x tipo a /api, ejecuta el router - que es la constante definida en routes/index.js
 
 
-// Agregar ciudad a la base de datos - VER BIEN ESTA
-app.post('/api/addCity', (req, res) =>{
-      // const body = req.body
-      info.push({
-            // body: 
-            id: info[info.length - 1].id +1
-      })
-      res.json({respuesta: info})
-})
 
-// Modificar una Ciudad (que identifico segun su id)
-app.put('/api/modificar/:idAModificar', (req, res) =>{
-      const idAModificar = parseInt(req.params.idAModificar)
-      info = info.map(city=>{
-            if(city.id === idAModificar){
-                  city = {...city, ...req.body}
-            }
-            return city
-      })
-      res.json({respuesta: info})
-})
-
-// Borrar una ciudad (que identifico segun su id)
-app.delete('/api/borrar/:idABorrar', (req, res) =>{
-      const idABorrar = parseInt(req.params.idABorrar)
-      info = info.filter((city)=>{
-            return city.id !== idABorrar
-      })
-      res.json({respuesta: info})
-})
 
 
 app.listen(4000, () => console.log("estoy escuchando en el puerto 4000"))

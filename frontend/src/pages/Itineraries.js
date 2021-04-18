@@ -21,7 +21,7 @@ class Itineraries extends React.Component{
          
       
       const receivedId = this.props.match.params.id
-      axios.get('http://localhost:4000/api/itineraries/'+receivedId)
+      axios.get('http://localhost:4000/api/city/'+receivedId)
       .then(response => this.setState({selectedCity: response.data.respuesta})) 
    
    }
