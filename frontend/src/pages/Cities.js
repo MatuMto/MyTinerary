@@ -20,9 +20,7 @@ class Cities extends React.Component{
    }
    citiesFilter = (e)=>{
       var inputValue = e.target.value
-      // console.log(inputValue)
       this.setState({filterValue: inputValue.trim()})
-      console.log(this.state.filterValue)
    }
    
    render(){

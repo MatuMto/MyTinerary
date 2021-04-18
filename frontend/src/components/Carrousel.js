@@ -24,7 +24,7 @@ const Carrousel = ({carrouselData})=>{
 
 
             <section className="slider">
-               <Carousel enableAutoPlay autoPlaySpeed={4000}>
+               <Carousel enableAutoPlay autoPlaySpeed={5000}>
                   {carrouselData.map(array => <Slide singleSlide={array} />)}
                </Carousel>
             </section>

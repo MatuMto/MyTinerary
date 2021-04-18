@@ -9,17 +9,16 @@ import React from 'react'
 // const Itineraries = (props)=>{
 class Itineraries extends React.Component{
    state = {
-      allCities: [],
+      // allCities: [],
       selectedCity: [],
       loading: true,
       // receivedId: this.props.match.params.id
    } 
 
    componentDidMount(){
-      axios.get('http://localhost:4000/api/cities')
-      .then(response => this.setState({allCities: response.data.respuesta})) 
-         
-      
+      // axios.get('http://localhost:4000/api/cities')
+      // .then(response => this.setState({allCities: response.data.respuesta})) 
+
       const receivedId = this.props.match.params.id
       axios.get('http://localhost:4000/api/city/'+receivedId)
       .then(response => this.setState({selectedCity: response.data.respuesta})) 
@@ -29,7 +28,9 @@ class Itineraries extends React.Component{
 
    
    render(){
-      console.log(this.state.selectedCity)            
+      // console.log(this.state.allCities)
+      // console.log(this.state.selectedCity)
+      console.log(this.props.match.params)            
       return (
          <> 
             <ItineraryTittle selectedCity={this.state.selectedCity}/>
