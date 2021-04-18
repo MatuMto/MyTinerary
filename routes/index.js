@@ -1,18 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
+const validator = require('../config/validator')
 
-info = []
-
-router.Route('/cities')
-.get(citiesControllers.getAllCities)
-.post(citiesControllers.addNewCity)
+router.route('/cities')
+.get(validator, citiesControllers.getAllCities) //hago que primero se ejecute el validador - si pasa la prueba, llamo a mi controller
+.post(validator, citiesControllers.addNewCity)
 
 
-router.Route('/city/:id')
-.get(citiesControllers.getSingleCity)
-.put(citiesControllers.updateCity)
-.delete(citiesControllers.deleteCity)
+router.route('/city/:id')
+.get(validator, citiesControllers.getSingleCity)
+.put(citiesControllers.editCity)
+.delete(validator, citiesControllers.deleteCity)
 
 module.exports = router
 

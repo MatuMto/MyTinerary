@@ -18,15 +18,15 @@ class Cities extends React.Component{
       .then(response => this.setState({allCities: response.data.respuesta, loading: false}))
       .catch(error => console.log(error))
    }
-
    citiesFilter = (e)=>{
       var inputValue = e.target.value
       // console.log(inputValue)
       this.setState({filterValue: inputValue.trim()})
       console.log(this.state.filterValue)
    }
-
+   
    render(){
+      console.log(this.state.allCities[5])
 
       return(
          <>

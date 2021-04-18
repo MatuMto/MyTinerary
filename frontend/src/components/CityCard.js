@@ -13,9 +13,9 @@ const CityCard = ({location})=>{
             <div >
                <p>Location: {location.cityName}</p>
                <p>Country: {location.country}</p>
-               <p >id:{location.id}</p>
+               <p >id:{location._id}</p>
             </div>
-            <div style={{width: '300px', height:'400px', background: `url(/img/${location.img})`, backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+            <div style={{width: '300px', height:'400px', background: `url(/img/${parseInt(location.img)})`, backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
          </div>
       </NavLink>          
    )  

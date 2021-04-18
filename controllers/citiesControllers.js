@@ -1,39 +1,47 @@
-var info = []
+const City = require('../models/City')
 
 const citiesControllers = {
-   getAllCities: (req, res) =>{
-      res.json({respuesta: info, success: true})
+   getAllCities: async (req, res) =>{
+      const allCities = await City.find()
+      // console.log(allCities)
+      res.json({respuesta: allCities, sucess:true})
    },
  
-   addNewCity: (req, res) =>{
-      const body = req.body 
-      info.push(body)
-      res.json({mensaje: "se agregó una ciudad con exito"})
+   addNewCity: async (req, res) =>{
+      // const body = req.body 
+      const {country, cityName, img} = req.body
+      const cityToSave = new City({cityName: cityName, country: country, img: img}) //Creo una nueva instancia de mi modelo City 
+      await cityToSave.save() //como es una instancia de un modelo, me habilita los metodos que puede realizar cada modelo. 
+      const allCities = await City.find()
+      res.json({respuesta: allCities })
+      // info.push(body)
    },
 
-   getSingleCity: (req, res) =>{
-      const id = parseInt(req.params.id)
-      locationSelected = info.find(city => city.id === id)
+   getSingleCity: async (req, res) =>{
+      const id = req.params.id
+      const locationSelected = await City.findOne({_id: id})
       res.json({respuesta: locationSelected})
    },
 
-   updateCity: (req, res) =>{
-      const id = parseInt(req.params.id)
-      info = info.map(city=>{
-            if(city.id === id){
-                  city = {...city, ...req.body}
-            }
-            return city
-      })
-      res.json({respuesta: info})
+   editCity: async (req, res) =>{
+      const id = req.params.id
+      await City.findOneAndUpdate({_id:id},{...req.body})
+      const allCities = await City.find()
+      // info = info.map(city=>{
+      //       if(city.id === id){
+      //             city = {...city, ...req.body}
+      //       }
+      //       return city
+      // })
+
+      res.json({respuesta: allCities})
    },
 
-   deleteCity: (req, res) =>{
-      const id = parseInt(req.params.id)
-      info = info.filter((city)=>{
-            return city.id !== id
-      })
-      res.json({respuesta: info})
+   deleteCity: async (req, res) =>{
+      const id = req.params.id
+      await City.findOneAndDelete({_id: id})
+      const allCities = await City.find()
+      res.json({respuesta: allCities})
    }
 }
 
