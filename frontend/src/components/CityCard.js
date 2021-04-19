@@ -11,14 +11,8 @@ const CityCard = ({location})=>{
       </Link>          
    )  
 }
-// style={{background: '#EAA996', height: '60px', display: 'flex', alignItems: 'center', justifyContent:'center', marginTop: '100px'}}
 export default CityCard
 
 
 
 
-
-
-// array.map(()=>{
-//    return 
-// })

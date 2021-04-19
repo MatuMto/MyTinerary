@@ -3,10 +3,7 @@ import CitiesHeader from "../components/CitiesHeader"
 import CitiesFooter from "./CitiesFooter"
 
 const ItineraryTittle = ({selectedCity})=>{
-   // console.log(selectedCity)
 
-
-   console.log('pepe')
    return(
       <>
          <CitiesHeader/>
@@ -22,11 +19,10 @@ const ItineraryTittle = ({selectedCity})=>{
          </div>
 
          <div className="site-under-construction-container">
-            <img src="/img/site-under-construction.jpg" className="underConstruction-image"  />
+            <img src="/img/site-under-construction.jpg" alt="This page still under construction" className="underConstruction-image"  />
          </div>
 
          <CitiesFooter/>
-
       </>
       ) 
 }

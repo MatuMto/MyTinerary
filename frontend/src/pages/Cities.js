@@ -1,12 +1,10 @@
-import {NavLink} from 'react-router-dom'
 import CityCard from '../components/CityCard'
-import {state, setState, useState} from 'react'
 import React from 'react'
 import axios from 'axios'
 import CitiesHeader from '../components/CitiesHeader'
 import CitiesFooter from '../components/CitiesFooter'
+import LoadingAnimation from '../components/LoadingAnimation'
 
-// const Cities = ()=>{
 class Cities extends React.Component{
 
    state = {
@@ -28,7 +26,7 @@ class Cities extends React.Component{
 
    renderCities = () => {
       if (this.state.loading) {
-         return <div style={{height:'50vh'}}>Loading...</div>
+         return <LoadingAnimation/>
       }
 
       if (this.state.allCities.length === 0) {

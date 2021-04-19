@@ -1,10 +1,9 @@
 // import React from 'react'
 
-function Hero ({pos0}){
-   console.log(pos0)
+function Hero (){
    return(
       <div className="hero-container">
-            <p className="hero-text">Find your Perfect trip, Designed by insiders who knows and love their cities! {pos0}</p>
+            <p className="hero-text">Find your Perfect trip, Designed by insiders who knows and love their cities!</p>
       </div>
    )
 }

@@ -5,7 +5,7 @@ import HomeMain from '../components/HomeMain'
 import ResponsiveCarrousel from '../components/ResponsiveCarrousel'
 import CarrouselData from '../components/CarrouselData'
 import axios from 'axios'
-import Hero from '../components/Hero'
+import LoadingAnimation from '../components/LoadingAnimation'
 
 class Home extends React.Component {
 
@@ -20,6 +20,9 @@ class Home extends React.Component {
    }
 
    render(){
+      if(this.state.loading){
+         <LoadingAnimation/>
+      }
       return(
          <div>
             <HomeMain/>

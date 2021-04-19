@@ -54,11 +54,9 @@ const CitiesHeader = ()=>{
                <h1 className="logo-text" style={{color: 'black'}} >MyTinerary</h1>
             </div>
 
-            {/* <div className="login-section"> */}
             <div style={{ marginLeft: '20px'}}>
                   <img src="/img/black-user-icon.png" style={{width: '60px', color: 'black'}} className="unlogged-icon" alt="user unloged logo"></img>
-               </div>
-            {/* </div> */}
+            </div>
          </header>
       </>
    )
