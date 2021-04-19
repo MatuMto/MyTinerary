@@ -3,7 +3,7 @@ const City = require('../models/City')
 const citiesControllers = {
    getAllCities: async (req, res) =>{
       const allCities = await City.find()
-      res.json({respuesta: allCities, sucess:true})
+      res.json({respuesta: allCities})
    },
  
    addNewCity: async (req, res) =>{
