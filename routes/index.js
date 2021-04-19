@@ -4,14 +4,14 @@ const citiesControllers = require('../controllers/citiesControllers')
 const validator = require('../config/validator')
 
 router.route('/cities')
-.get(validator, citiesControllers.getAllCities) //hago que primero se ejecute el validador - si pasa la prueba, llamo a mi controller
-.post(validator, citiesControllers.addNewCity)
+.get( citiesControllers.getAllCities) //hago que primero se ejecute el validador - si pasa la prueba, llamo a mi controller
+.post( citiesControllers.addNewCity)
 
 
 router.route('/city/:id')
-.get(validator, citiesControllers.getSingleCity)
+.get( citiesControllers.getSingleCity)
 .put(citiesControllers.editCity)
-.delete(validator, citiesControllers.deleteCity)
+.delete( citiesControllers.deleteCity)
 
 module.exports = router
 
