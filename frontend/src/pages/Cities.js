@@ -59,7 +59,7 @@ class Cities extends React.Component{
             
             <div className="cities-page-tittle-container">
                <h1 className="citiesPage-tittle">Check out All these options!</h1>   
-               <input onChange={this.getFilterValue} placeholder="Search Here!" className="main-input"  type="text" />
+               <input onChange={this.getFilterValue} placeholder="Search a City!" className="main-input"  type="text" />
             </div>
 
             <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
