@@ -7,10 +7,9 @@ const citiesControllers = {
    },
  
    addNewCity: async (req, res) =>{
-      // const body = req.body 
       const {country, cityName, img, description} = req.body
       const cityToSave = new City({cityName: cityName, country: country, description: description, img: img}) //Creo una nueva instancia de mi modelo City 
-      await cityToSave.save() //como es una instancia de un modelo, me habilita los metodos que puede realizar cada modelo. 
+      await cityToSave.save() //como es una instancia de un modelo, me habilita los metodos que puede realizar un modelo. 
       const allCities = await City.find()
       res.json({respuesta: allCities })
    },
