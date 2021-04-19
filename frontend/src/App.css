@@ -4,7 +4,7 @@
 }
 
 body{
-  background: #dfb898a8;
+  background: hsla(30, 71%, 84%, 0.842);
   /* background-color: red; */
 }
 
@@ -69,10 +69,12 @@ body{
   /* background: red; */
 }
 
+
 .logo-text {
   font-family: 'Blinker', sans-serif;
   color: white;
 }
+
 
 .link:hover {
   text-decoration: underline;
@@ -99,6 +101,13 @@ body{
 .login-section > *:hover {
   color: white;
 }
+
+.unlogged-icon:hover{
+  cursor: pointer;
+}
+
+
+
 
 .hero-container {
   width: 100%;
@@ -461,20 +470,62 @@ body{
 
 /* Cities */
 
-.cities-container {
+.cities-page-tittle-container {
+  margin-top: 5vh;
+  /* background: green; */
+  height: 10vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* background: red; */
-  /* justify-content: center; */
+  align-items: center;
+  justify-content: space-between;
 }
 
-.cities-banner-container {
-  background: red;
+/* .cityCard-container{
+  width: 40vw;
+  height: 32vh;
+  margin: 15px 15px;
+  border-radius: 15px;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid black;
+} */
+
+.cityCard-container:hover{
+  cursor: pointer;
+  width: 50vw;
+  margin: 10px 10px;
+}
+
+.cityName-container {
+  background: rgba(0, 0, 0, 0.445);
+  height: 60px;
   display: flex;
+  align-items: center;
+  justify-content:center;
+  margin-top: 10%;
+  
 }
 
+/* Cities page */
 
+.citiesPage-footerContainer{
+  width: 100%;
+  height: 10vh;
+  /* flex-grow: 1; */
+}
+
+.citiesPage-footer{
+  width: 100%;
+  height: 10vh;
+  margin-top: 10vh;
+  background: black;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute;  */
+  /* bottom: 0; */
+}
 
 
 
@@ -507,6 +558,8 @@ body{
   .homeAndCities-container {
     display: flex;
     justify-content: center;
+    /* background: green; */
+    /* color: red; */
   }
 
   .login-section {
@@ -539,7 +592,7 @@ body{
     justify-content: space-around;
     align-items: center;
   }
- 
+
   .logo-container{
     display: flex;
     flex-direction: column;

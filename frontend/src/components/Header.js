@@ -29,7 +29,7 @@ function Header (){
                <p>|</p>
                <p  className="link">Log In</p>
                <div style={{ marginLeft: '20px'}}>
-                  <img src="/img/user-icon.png" style={{width: '60px'}} alt="user unloged logo"></img>
+                  <img src="/img/user-icon.png" className="unlogged-icon" style={{width: '60px'}} alt="user unloged logo"></img>
                </div>
             </div>
          </header>

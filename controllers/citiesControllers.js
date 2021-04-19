@@ -3,7 +3,6 @@ const City = require('../models/City')
 const citiesControllers = {
    getAllCities: async (req, res) =>{
       const allCities = await City.find()
-      // console.log(allCities)
       res.json({respuesta: allCities, sucess:true})
    },
  
@@ -14,7 +13,6 @@ const citiesControllers = {
       await cityToSave.save() //como es una instancia de un modelo, me habilita los metodos que puede realizar cada modelo. 
       const allCities = await City.find()
       res.json({respuesta: allCities })
-      // info.push(body)
    },
 
    getSingleCity: async (req, res) =>{
@@ -26,14 +24,6 @@ const citiesControllers = {
    editCity: async (req, res) =>{
       const id = req.params.id
       const modifiedCity = await City.findOneAndUpdate({_id:id},{...req.body}, {new: true}) // el new true va xq sino no me devuelve el objeto modif.
-      // const allCities = await City.find()
-      // info = info.map(city=>{
-      //       if(city.id === id){
-      //             city = {...city, ...req.body}
-      //       }
-      //       return city
-      // })
-
       res.json({respuesta: modifiedCity})
    },
 

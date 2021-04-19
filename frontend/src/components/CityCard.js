@@ -1,27 +1,17 @@
-import {NavLink} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const CityCard = ({location})=>{
-
-   // const identificador = (e)=>{
-   //    // const identificado = e.target.dataset.cityName
-   //    // console.log(identificado)
-   // }
-
-   // console.log(location)
-   return(
-      <NavLink style={{textDecoration: 'none'}} to={`/itineraries/${location._id}`}>
-         <div style={{display: 'flex', justifyContent: 'space-between', width: '650px', border: '2px solid black', cursor: 'pointer'}}>
-            <div >
-               <p>Location: {location.cityName}</p>
-               <p>Country: {location.country}</p>
-               <p >id:{location._id}</p>
+   return (
+      <Link style={{textDecoration: 'none',}} to={`/itineraries/${location._id}`}>
+         <div className="cityCard-container" style={{width: '40vw', height: '32vh', background: `url(/img/${location.img})`, margin: '15px 15px', borderRadius: '15px', backgroundPosition: 'center', backgroundSize: 'cover', border: '1px solid black', cursor: 'pointer'}}>
+            <div className="cityName-container">
+               <p style={{fontSize: '40px', color: 'white'}}>{location.cityName}</p>
             </div>
-            <div style={{width: '300px', height:'400px', background: `url(/img/${location.img})`, backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
          </div>
-      </NavLink>          
+      </Link>          
    )  
-
 }
+// style={{background: '#EAA996', height: '60px', display: 'flex', alignItems: 'center', justifyContent:'center', marginTop: '100px'}}
 export default CityCard
 
 
