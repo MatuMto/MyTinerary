@@ -472,6 +472,7 @@ body{
 
 .cities-page-tittle-container {
   margin-top: 5vh;
+  margin-bottom: 5vh;
   /* background: green; */
   height: 10vh;
   display: flex;
@@ -527,7 +528,116 @@ body{
   /* bottom: 0; */
 }
 
+.no-match-text1{
+  font-size: 50px;
+  text-align: center;
+}
 
+.no-match-text2{
+  font-size: 30px;
+  text-align: center;
+}
+
+
+
+
+
+/* itinerary Tittle page */
+
+.itinerary-tittle-container{
+  width: 80%;
+  height: 40vh;
+  margin: 0 auto;
+  margin-top: 5vh;
+  background-position:center;
+  background-size: cover;
+}
+
+.itinerary-tittle-text-container{
+  width: 100%;
+  height: 10vh;
+  background: rgba(0, 0, 0, 0.383);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-to-itinerary {
+  font-size: 45px;
+  color: white;
+  text-align: center;
+}
+
+.site-under-construction-container{
+  width: 50vw;
+  height: 50vh;
+  margin: 20vh auto;
+  border-radius: 20px;
+}
+
+.underConstruction-image {
+  width: 100%;
+  border-radius: 50px;
+}
+
+.backToCities-button-container{
+  margin: 10vh auto;
+  width: 270px;
+  display: flex;
+  /* justify-content: center; */
+  padding: 5px 10px;
+  border: 4px solid black;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: all .2s ease;
+}
+
+.backToCities-button-container:hover{  
+  cursor: pointer;
+  background: #eddcdc7e;
+  padding: 10px 30px;
+}
+
+.main-input {
+  width: 15vw;
+  height: 4vh; 
+  font-size: 30px; 
+  padding-left: 20px; 
+  border-radius: 5px 
+}
+
+.cities-header{
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  background: rgb(250,232,228);
+}
+
+.cityCard-name {
+  font-size: 40px;
+  color: white;
+}
+
+.footerText-left{
+  border-right: 2px solid white; 
+  font-size: 30px; 
+  padding-right: 10px;
+  color: white
+}
+
+.footerText-right{
+  padding-left: 10px; 
+  font-size: 25px; 
+  color:white;
+}
+
+.cities-header-responsive{
+  display: none;
+}
 
 @media (max-width: 1200px){
 
@@ -538,7 +648,7 @@ body{
 
   .responsive-carrousel {
     display: flex;
-    background:red;
+    /* background:red; */
     margin-top: 20vh;
   }
 
@@ -576,12 +686,25 @@ body{
     font-size: 15px;
     font-family: 'Open Sans', sans-serif;
   }
+
+  .main-input{
+    font-size: 20px;
+  }
+
+  .welcome-to-itinerary {
+    font-size: 35px;
+  }
+
+  .site-under-construction-container{
+    width: 70vw;
+    height: 70vh;
+    margin-bottom: 0vh;
+  }
+
 }
 
 
 @media (max-width: 900px) {
-
-
 
   .header{
     display: none;
@@ -591,6 +714,14 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .cities-header-responsive{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    background: rgb(250,232,228);
   }
 
   .logo-container{
@@ -662,6 +793,29 @@ body{
     font-size: 20px;
   }
   
+  .cities-header {
+    display: none;
+    /* display: flex; */
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .main-input {
+    width: 200px;
+  }
+
+  .welcome-to-itinerary {
+    font-size: 25px;
+  }
+
+  .no-match-text1{
+    font-size: 35px;
+  }
+  
+  .no-match-text2{
+    font-size: 20px;
+  }
+
 }
 
 @media (max-width: 600px) {
@@ -680,6 +834,38 @@ body{
     display: flex;
     align-items: center;
   }
+
+  .citiesPage-tittle{
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .cityCard-name {
+    font-size: 20px;
+    color: white;
+  }
+
+  
+  .main-input {
+    width: 150px;
+  }
+
+  .footerText-left{
+    font-size: 20px; 
+
+  }
+  
+  .footerText-right{
+    font-size: 15px; 
+  }
+
+  .no-match-text1{
+    font-size: 25px;
+  }
+  
+  .no-match-text2{
+    font-size: 15px;
+  }
 }
 
 
@@ -687,11 +873,9 @@ body{
   .callToAction-text {
     font-size: 20px;
     text-align: center;
-    /* background: green; */
-    /* font-size: 35px;
-    margin-top: 10px;
-    font-family: 'Open Sans', sans-serif; */
   }
+
+
 }
 
 

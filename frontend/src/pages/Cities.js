@@ -3,6 +3,8 @@ import CityCard from '../components/CityCard'
 import {state, setState, useState} from 'react'
 import React from 'react'
 import axios from 'axios'
+import CitiesHeader from '../components/CitiesHeader'
+import CitiesFooter from '../components/CitiesFooter'
 
 // const Cities = ()=>{
 class Cities extends React.Component{
@@ -26,11 +28,11 @@ class Cities extends React.Component{
 
    renderCities = () => {
       if (this.state.loading) {
-         return <div style={{height:'50vh'}}>Cargando...</div>
+         return <div style={{height:'50vh'}}>Loading...</div>
       }
 
       if (this.state.allCities.length === 0) {
-         return <p>No hubo resultados de la api</p>
+         return <p>I'm sorry, looks like we're having some database problems.. Come back later!</p>
       }
 
       if (this.state.filterValue === '') {
@@ -42,7 +44,10 @@ class Cities extends React.Component{
       })
 
       if (filteredCities.length === 0) {
-         return <div style={{height: '50vh'}}>No hay resultados que coincidan con tu busqueda</div>
+         return <div style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%', background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
+            <p className="no-match-text1">Wow! How did you know? That city is coming very soon!</p>
+            <p className="no-match-text2">While, you can try searching any other..</p>
+         </div>
       }
 
       return filteredCities.map((city) => <CityCard location={city} key={city.id} />)
@@ -51,48 +56,19 @@ class Cities extends React.Component{
    render(){
       return(
          <div style={{background: 'hsla(30, 71%, 84%, 0.842)', display: 'flex', flexDirection: 'column',}}>
-            <header className="header" style={{background: 'rgb(250,232,228)', borderBottom: '1px solid grey   '}}>
-               <div className="homeAndCities-container" style={{ display: 'flex', alignItems: 'flex-end'}}>
-                  <NavLink to="/" style={{color: 'black'}}>Home</NavLink>
-                  <div style={{color: 'black'}}>|</div>
-                  <NavLink to="/cities" style={{color: 'black'}}>Cities</NavLink>
-               </div>
-
-               <div className="logo-container">
-                  <img src="/img/logo-finish.png" alt="mi loguito :)" style={{width: '150px'}}></img>
-                  <h1 className="logo-text">MyTinerary</h1>
-               </div>
-
-               <div className="login-section">
-                  <p  className="link" style={{color: 'black'}}>Sign Up</p>
-                  <p style={{color: 'black'}}>|</p>
-                  <p  className="link" style={{color: 'black'}}>Log In</p>
-                  <div style={{ marginLeft: '20px'}}>
-                     <img src="/img/black-user-icon.png" style={{width: '60px', color: 'black'}} className="unlogged-icon" alt="user unloged logo"></img>
-                  </div>
-               </div>
-            </header>              
+           
+            <CitiesHeader/>
             
             <div className="cities-page-tittle-container">
-               <h1>Check out All these options!</h1>   
-               <input onChange={this.getFilterValue} placeholder="Search Here!" className="main-input" style={{width: '15vw', height:'4vh', fontSize: '30px', paddingLeft: '20px', borderRadius: '5px' }} type="text" />
+               <h1 className="citiesPage-tittle">Check out All these options!</h1>   
+               <input onChange={this.getFilterValue} placeholder="Search Here!" className="main-input"  type="text" />
             </div>
 
-            <div style={{
-               display: 'flex',
-               flexWrap: 'wrap',
-               justifyContent: 'center'
-            }}>
+            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
                {this.renderCities()}
             </div>
 
-            <div className="citiesPage-footerContainer">
-               <footer className="citiesPage-footer">
-                  <div style={{borderRight: '2px solid white', fontSize: '30px', paddingRight: '10px', color:'white'}}>MyTinerary</div>
-                  <div style={{paddingLeft: '10px', fontSize: '25px', color:'white'}}>@_mateo.lorenzo_dev</div>
-               </footer>
-            </div>
-
+            <CitiesFooter/>
             
          </div>
    )

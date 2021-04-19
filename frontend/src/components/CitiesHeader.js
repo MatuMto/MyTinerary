@@ -3,39 +3,40 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
 import {useState} from 'react'
 
-function Header (){
+const CitiesHeader = ()=>{
    const [dropdown, setDropdown] = useState(false) 
    const abrirCerrarDropdown = ()=>{
       setDropdown(!dropdown)
    }
-   return(
+   return (
       <>
-         <header className="header">
-            <div className="homeAndCities-container">
-               <NavLink to="/" >Home</NavLink>
-               <div>|</div>
-               <NavLink to="/cities" >Cities</NavLink>
+         <header className="cities-header">
+            <div className="homeAndCities-container" style={{ display: 'flex', alignItems: 'flex-end'}}>
+               <NavLink to="/" style={{color: 'black'}}>Home</NavLink>
+               <div style={{color: 'black'}}>|</div>
+               <NavLink to="/cities" style={{color: 'black'}}>Cities</NavLink>
             </div>
 
             <div className="logo-container">
                <img src="/img/logo-finish.png" alt="mi loguito :)" style={{width: '150px'}}></img>
-               <h1 className="logo-text">MyTinerary</h1>
+               <h1 className="logo-text" style={{color: 'black'}} >MyTinerary</h1>
             </div>
 
             <div className="login-section">
-               <p  className="link">Sign Up</p>
-               <p>|</p>
-               <p  className="link">Log In</p>
+               <p  className="link" style={{color: 'black'}}>Sign Up</p>
+               <p style={{color: 'black'}}>|</p>
+               <p  className="link" style={{color: 'black'}}>Log In</p>
                <div style={{ marginLeft: '20px'}}>
-                  <img src="/img/user-icon.png" className="unlogged-icon" style={{width: '60px'}} alt="user unloged logo"></img>
+                  <img src="/img/black-user-icon.png" style={{width: '60px', color: 'black'}} className="unlogged-icon" alt="user unloged logo"></img>
                </div>
             </div>
-         </header>
-      
-         <header className="header-responsive">
+         </header> 
+
+
+         <header className="cities-header-responsive">
             <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown}>
                <DropdownToggle>
-                  Links
+                  options
                </DropdownToggle>
 
                <DropdownMenu>
@@ -49,19 +50,18 @@ function Header (){
             </Dropdown>
 
             <div className="logo-container">
-               <img src="/img/logo-finish.png" alt="My logo :)" style={{width: '80px'}}></img>
-               <h1 className="logo-text">MyTinerary</h1>
+               <img src="/img/logo-finish.png" alt="mi loguito :)" style={{width: '150px'}}></img>
+               <h1 className="logo-text" style={{color: 'black'}} >MyTinerary</h1>
             </div>
 
             {/* <div className="login-section"> */}
-               <div style={{ marginLeft: '20px'}}>
-                  <img src="/img/user-icon.png" alt="user unloged icon" style={{width: '50px'}}></img>
+            <div style={{ marginLeft: '20px'}}>
+                  <img src="/img/black-user-icon.png" style={{width: '60px', color: 'black'}} className="unlogged-icon" alt="user unloged logo"></img>
                </div>
             {/* </div> */}
          </header>
       </>
-
    )
 }
 
-export default Header
+export default CitiesHeader
