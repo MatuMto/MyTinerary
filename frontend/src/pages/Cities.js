@@ -39,8 +39,8 @@ class Cities extends React.Component{
 
       const filteredCities = this.state.allCities.filter((  {cityName} ) => {
          return cityName.toLowerCase().slice(0, this.state.filterValue.length) === this.state.filterValue.toLowerCase()
-      })
-
+      })                                       // var nombre = 'matu'
+                                               // nombre.slice(0,2) //ma
       if (filteredCities.length === 0) {
          return <div style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%', background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
             <p className="no-match-text1">Wow! How did you know? That city is coming very soon!</p>
