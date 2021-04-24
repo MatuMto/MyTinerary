@@ -1,31 +1,44 @@
 import ItineraryTittle from '../components/ItineraryTittle'
 import axios from 'axios'
 import React from 'react'
+import itinerariesActions from '../redux/action/itinerariesActions'
+import {connect} from 'react-redux'
 
-// const Itineraries = (props)=>{
 class Itineraries extends React.Component{
    state = {
-      selectedCity: [],
       loading: true,
    } 
 
    componentDidMount(){
       const receivedId = this.props.match.params.id
-      axios.get('http://localhost:4000/api/city/'+receivedId)
-      .then(response => this.setState({selectedCity: response.data.respuesta, loading: false})) 
-   
+      this.props.callSingleCity(receivedId)
    }
    
    render(){
       return (
          <> 
-            <ItineraryTittle selectedCity={this.state.selectedCity}/>
+            {/* Fijarse esto, es para poner el loading, si hay tiempo verlo ----------------------------------------------------- sino a la chola xd */}
+            
+            {this.props.selectedCity.length === 0 
+            ? console.log('está cargando')
+            : console.log('ya cargó')}
+            <ItineraryTittle selectedCity={this.props.selectedCity}/>
          </>
-   )
+      )
    }  
 }
 
+const mapStateToProps = (state)=>{
+   return {
+      selectedCity: state.itineraries.selectedCity
+   }
+}
 
-export default Itineraries
+const mapDispatchToProps = {
+   callSingleCity: itinerariesActions.callSingleCity
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Itineraries)
 
 

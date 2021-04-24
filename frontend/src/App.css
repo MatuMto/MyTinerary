@@ -602,7 +602,7 @@ body{
 .main-input {
   width: 15vw;
   height: 4vh; 
-  font-size: 30px; 
+  font-size: 20px; 
   padding-left: 20px; 
   border-radius: 5px 
 }
@@ -717,6 +717,7 @@ body{
   }
 
   .cities-header-responsive{
+    height: 15vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -745,7 +746,7 @@ body{
   .hero-text {
     font-size: 25px;
     text-align: center;
-    padding: 0 25px;
+    /* padding: 0 25px; */
   }
 
   .ClickHere-button {
