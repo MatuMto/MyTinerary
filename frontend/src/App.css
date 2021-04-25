@@ -639,6 +639,33 @@ body{
   display: none;
 }
 
+
+
+/* ITINERARIES CARD SECTION */
+
+.itineraryCard-container {
+
+  width: 80vw;
+  min-height: 40vh;
+  margin: 10vh auto;
+  background: pink;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.author-img {
+  width: 5vw;
+  height: 5vw;
+  background: black;
+  border-radius: 100%;
+}
+
+
+
+
+
 @media (max-width: 1200px){
 
   .complete-carrousel{

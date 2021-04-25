@@ -18,11 +18,11 @@ const ItineraryTittle = ({selectedCity})=>{
             <NavLink to="/cities" className="ClickHere-button-text">Back to Cities! <img src="/icons/paper-plane.png" alt="plane icon should be here xD" className="plane-icon" style={{width:'30px' }} /> </NavLink>
          </div>
 
-         <div className="site-under-construction-container">
+         {/* <div className="site-under-construction-container">
             <img src="/img/site-under-construction.jpg" alt="This page still under construction" className="underConstruction-image"  />
-         </div>
+         </div> */}
 
-         <CitiesFooter/>
+         {/* <CitiesFooter/> */}
       </>
       ) 
 }
