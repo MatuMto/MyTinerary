@@ -644,11 +644,10 @@ body{
 /* ITINERARIES CARD SECTION */
 
 .itineraryCard-container {
-
   width: 80vw;
   min-height: 40vh;
   margin: 10vh auto;
-  background: pink;
+  background: rgb(255, 223, 228);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -660,6 +659,23 @@ body{
   height: 5vw;
   background: black;
   border-radius: 100%;
+}
+
+.itinerary-data-container {
+  display: flex;
+  justify-content: space-between;
+  background: red;
+  min-width: 30%;
+  align-items: center;
+}
+
+.price-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: top;
+  min-width: 150px;
+  /* margin-right: 10px !important; */
+  /* background: green; */
 }
 
 
