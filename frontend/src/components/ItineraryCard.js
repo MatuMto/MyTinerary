@@ -3,7 +3,6 @@ import {useState } from 'react'
 
 const ItineraryCard = ({itineraryData})=>{
    const [isOpen, setIsOpen] = useState(false);
-   const [name, setName] = useState('View More')
    const toggle = () => setIsOpen(!isOpen);
 
    return(

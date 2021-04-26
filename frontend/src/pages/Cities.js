@@ -15,7 +15,6 @@ class Cities extends React.Component{
 
 
    render(){
-      console.log(this.props.ciudadesFiltradas)
       return( 
          <div style={{background: 'hsla(30, 71%, 84%, 0.842)', display: 'flex', flexDirection: 'column',}}>               
             <CitiesHeader/>
