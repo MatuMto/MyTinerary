@@ -7,43 +7,50 @@ const ItineraryCard = ({itineraryData})=>{
 
    return(
       <div className="itineraryCard-container">
-         <h1>{itineraryData.tittle}</h1>
-         <div className="author-img" style={{background: `url(${itineraryData.authorImg})`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
-         <p>{itineraryData.authorName}</p>
-         
-         <div className="itinerary-data-container">
-            <div className="price-container">
-               <p style={{margin:"0px 10px 0px 0px", fontSize: "20px"}}>Price:</p>
-               {new Array(itineraryData.price).fill(0).map(element => <div> <img src="/icons/dolar.png" width="35px"/> </div>)}
-            </div>
-            <div className="duration-container">
-               <p>Duration:</p>
-               {new Array(itineraryData.duration).fill(0).map(element => <div> <img src="/icons/clock.png" width="35px" /> </div>)}
-            </div>
-            <div>
-            <img src="/icons/heart.png" width="35px" />
-               <p>0</p>
-            </div>
-         </div>
+         <div className="data-container">
 
-         <div>
-            {itineraryData.hashtags.map(element => <p>#{element}</p> )}
-         </div>
+            <h1 className="itinerary-tittle">{itineraryData.tittle}</h1>
+            <div className="author-img" style={{background: `url(${itineraryData.authorImg})`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
+            <p className="author-name">{itineraryData.authorName}</p>
+            
+            <div className="itinerary-data-container">
+               <div className="price-container">
+                  <p style={{margin:"0px 10px 0px 0px", fontSize: "20px"}}>Price:</p>
+                  {new Array(itineraryData.price).fill(0).map(element => <div> <img src="/icons/dolar.png" width="35px"/> </div>)}
+               </div>
+               
+               <div className="duration-container">
+                  <p style={{margin:"0px 10px 0px 0px"}}>Duration:</p>
+                  {new Array(itineraryData.duration).fill(0).map(element => <div> <img src="/icons/clock.png" width="35px" /> </div>)}
+               </div>
 
-            <Button onClick={toggle} style={{ marginBottom: '100px', background: 'white', color:"black" }}>View More</Button>
-            <Collapse isOpen={isOpen}>
-            <Card>
-               <img src="/img/underConstruction.jpg" />
-               {/* <CardBody>
-               Anim pariatur cliche reprehenderit,
-               enim eiusmod high life accusamus terry richardson ad squid. Nihil
-               anim keffiyeh helvetica, craft beer labore wes anderson cred
-               nesciunt sapiente ea proident.
+               <div className="likes-container">
+                  <div>
+                     <img className="heart-icon" src="/icons/heart.png" width="35px" />
+                  </div>
+                  <p style={{margin:"0px 10px 0px 10px", fontSize: "30px"}}>0</p>
+               </div>
+            </div>
+
+            <div className="hashtags-container">
+               {itineraryData.hashtags.map(element => <p className="hashtag">#{element}</p> )}
+            </div>
+
+               <Button onClick={toggle} style={{ marginBottom: '100px', background: 'white', color:"black" }}>View More</Button>
+               <Collapse isOpen={isOpen}>
+               <Card className="collapse-section">
+                  <img className="underConstruction-img" src="/img/underConstruction.jpg" />
+                  {/* <CardBody>
+                  Anim pariatur cliche reprehenderit,
+                  enim eiusmod high life accusamus terry richardson ad squid. Nihil
+                  anim keffiyeh helvetica, craft beer labore wes anderson cred
+                  nesciunt sapiente ea proident.
                </CardBody> */}
-            </Card>
-            </Collapse>
+               </Card>
+               </Collapse>
 
-         {/* <button>View More</button> */}
+            {/* <button>View More</button> */}
+         </div>
 
       </div>
    )

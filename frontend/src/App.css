@@ -549,6 +549,7 @@ body{
   height: 40vh;
   margin: 0 auto;
   margin-top: 5vh;
+  text-align: center;
   /* background-position:center;
   background-size: cover; */
 }
@@ -654,18 +655,35 @@ body{
   align-items: center;
 }
 
+.data-container{
+  /* background: rgb(144, 211, 144); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  /* width: 50%; */
+}
+
+.itinerary-tittle{
+  margin-bottom: 30px;
+}
+
 .author-img {
-  width: 5vw;
-  height: 5vw;
+  width: 100px;
+  height: 100px;
   background: black;
   border-radius: 100%;
+}
+
+.author-name{
+  font-size: 30px;
 }
 
 .itinerary-data-container {
   display: flex;
   justify-content: space-between;
-  background: red;
-  min-width: 30%;
+  width: px;
   align-items: center;
 }
 
@@ -678,7 +696,46 @@ body{
   /* background: green; */
 }
 
+.duration-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 250px;
+  /* background: rgb(111, 146, 111); */
+  font-size: 20px;
+}
 
+.likes-container {
+  display: flex;
+  align-items: center;
+  /* background: rgb(121, 141, 121); */
+}
+
+.heart-icon:hover{
+  cursor: pointer;
+}
+
+.hashtags-container{
+  margin: 15px 0px 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* background: rgb(255, 158, 158); */
+  width: 400px;
+}
+
+.hashtag {
+  margin-bottom: 0px;
+  color: blue;
+}
+
+.hashtag:hover{
+  cursor: pointer;
+}
+
+.underConstruction-img {
+  /* border-radius: 60px; */
+}
 
 
 
@@ -744,6 +801,46 @@ body{
     margin-bottom: 0vh;
   }
 
+  /* ItineraryCard */
+
+  .itineraryCard-container {
+    /* height: 45vh; */
+  }
+
+  .data-container{
+    padding-top: 20px;
+  }
+
+  .itinerary-tittle{
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .author-img{
+    width: 80px;
+    height: 80px;
+  }
+
+  .author-name {
+    font-size: 20px;
+  }
+
+  .itinerary-data-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background: white; */
+    /* border-radius: 10px; */
+  }
+
+  .collapse-section{
+    height: 20vh;
+  }
+  .underConstruction-img{
+    width: 40vw;
+  }
 }
 
 
@@ -862,6 +959,14 @@ body{
 
 }
 
+
+
+
+
+
+
+
+
 @media (max-width: 600px) {
   .slide-container{
     width: 70vw;
@@ -910,8 +1015,51 @@ body{
   .no-match-text2{
     font-size: 15px;
   }
+
+  .itinerary-tittle {
+    margin: 10px 0px 20px 0px;
+  }
+
+  .itinerary-data-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background: red; */
+    height: 150px;
+    margin-top: 20px;
+    /* align-items: flex-start; */
+    /* width: 100%; */
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    /* background: white; */
+    /* border-radius: 10px; */
+  }
+
+  .hashtags-container{
+    width: 400px;
+    flex-wrap: wrap;
+  }
+  
+  /* .collapse-section{
+    height: 20vh;
+  } */
+  .underConstruction-img{
+    /* height: 30vh; */
+    width: 50vw;
+  }
+  
 }
 
+
+@media (max-width: 500px) {
+  .hashtags-container{
+    /* background: red; */
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
 
 @media (max-width: 350px) {
   .callToAction-text {
@@ -919,7 +1067,14 @@ body{
     text-align: center;
   }
 
-
+  .hashtags-container{
+    justify-content: space-around;
+    width: 100%;
+  }
+  .underConstruction-img{
+    /* height: 10vh; */
+    width: 20vw;
+  }
 }
 
 
