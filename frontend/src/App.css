@@ -25,9 +25,9 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column ;
-  /* background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-position: bottom;
-  background-size: cover;  */
+  background-size: cover; 
 }
 
 .header {
@@ -258,11 +258,9 @@ body{
   width: 50vw;
   height: 50vh;
   position: relative;
-  /* background: red; */
-  /* display: flex; */
-  /* align-items: center; */
-  /* margin: 0 auto; */
-  /* margin-bottom: 10px; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .responsive-slide-container{
@@ -282,6 +280,9 @@ body{
   margin-bottom: 20vh;
   display: flex;
   align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .card1 {
@@ -295,6 +296,9 @@ body{
   align-items: center;
   cursor: pointer;
   border-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .card2 {
@@ -308,6 +312,9 @@ body{
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .card3 {
@@ -321,6 +328,9 @@ body{
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .card4 {
@@ -334,6 +344,9 @@ body{
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .location-name-container{
@@ -347,6 +360,18 @@ body{
   font-size: 30px;
 }
 
+.no-match-poster{
+  height: 40vh;
+  margin: 10vh auto 0vh auto;
+  border-radius: 10px;
+  width: 80%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
 
 
 
@@ -481,7 +506,7 @@ body{
   justify-content: space-between;
 }
 
-/* .cityCard-container{
+.cityCard-container{
   width: 40vw;
   height: 32vh;
   margin: 15px 15px;
@@ -489,12 +514,12 @@ body{
   background-position: center;
   background-size: cover;
   border: 1px solid black;
-} */
+}
 
 .cityCard-container:hover{
   cursor: pointer;
-  width: 50vw;
-  margin: 10px 10px;
+  /* width: 50vw; */
+  /* margin: 10px 10px; */
 }
 
 .cityName-container {
@@ -550,8 +575,8 @@ body{
   margin: 0 auto;
   margin-top: 5vh;
   text-align: center;
-  /* background-position:center;
-  background-size: cover; */
+  background-size: cover;
+  background-position: center;
 }
 
 .itinerary-tittle-text-container{
@@ -674,7 +699,10 @@ body{
   height: 100px;
   background: black;
   border-radius: 100%;
+  background-position: center;
+  background-size: cover;
 }
+
 
 .author-name{
   font-size: 30px;

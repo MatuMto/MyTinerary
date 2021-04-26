@@ -16,7 +16,7 @@ const ItineraryCard = ({itineraryData})=>{
             <div className="itinerary-data-container">
                <div className="price-container">
                   <p style={{margin:"0px 10px 0px 0px", fontSize: "20px"}}>Price:</p>
-                  {new Array(itineraryData.price).fill(0).map(element => <div> <img src="/icons/dolar.png" width="35px"/> </div>)}
+                  {new Array(itineraryData.price).fill(0).map(element => <div> <img src="/icons/dolar.png" key={itineraryData._id} width="35px"/> </div>)}
                </div>
                
                <div className="duration-container">

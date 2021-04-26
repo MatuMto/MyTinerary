@@ -13,12 +13,6 @@ class Cities extends React.Component{
       loading: true
    }
 
-   // componentDidMount(){
-   //    axios.get('http://localhost:4000/api/cities')
-   //    .then(response => this.setState({allCities: response.data.respuesta, loading: false}))
-   //    .catch(error => console.log(error))
-   // }
-   
    componentDidMount(){
       this.props.uploadCities()
       // this.setState({loading: false})
@@ -78,7 +72,6 @@ class Cities extends React.Component{
    }
 
    render(){
-      console.log(this.props.ciudadesFiltradas)
       
       return(
          <div style={{background: 'hsla(30, 71%, 84%, 0.842)', display: 'flex', flexDirection: 'column',}}>     
@@ -93,7 +86,7 @@ class Cities extends React.Component{
             <div style={{display: 'flex', flexWrap: 'wrap', minHeight: '45vh', justifyContent: 'center'}}>
 
                {this.props.ciudadesFiltradas.length === 0
-                  ?   <div style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%', background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
+                  ?   <div className="no-match-poster" style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%', background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
                         <p className="no-match-text1">Wow! How did you know? That city is coming very soon!</p>
                         <p className="no-match-text2">While, you can try searching any other..</p>
                      </div>

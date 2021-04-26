@@ -35,7 +35,7 @@ function Header (){
          <header className="header-responsive">
             <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown}>
                <DropdownToggle>
-                  Links
+                  <img src="/icons/hamburger.png" alt="hamburguer responsive " width="20px" />
                </DropdownToggle>
 
                <DropdownMenu>

@@ -18,7 +18,7 @@ const CitiesHeader = ()=>{
             </div>
 
             <div className="logo-container">
-               <img src="/img/logo-finish.png" alt="mi loguito :)" style={{width: '150px'}}></img>
+               <img src="/img/logo-finish.png" alt="MyTinerary Logo" style={{width: '150px'}}></img>
                <h1 className="logo-text" style={{color: 'black'}} >MyTinerary</h1>
             </div>
 
@@ -35,12 +35,14 @@ const CitiesHeader = ()=>{
 
          <header className="cities-header-responsive">
             <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown}>
-               <DropdownToggle>
-                  options
+            <DropdownToggle>
+                  <img src="/icons/hamburger.png" alt="hamburguer" width="20px" />
                </DropdownToggle>
 
                <DropdownMenu>
-                  <DropdownItem>Home</DropdownItem>
+               <DropdownItem>
+                     <NavLink to="/" >Home</NavLink>
+                  </DropdownItem>
                   <DropdownItem>
                      <NavLink to="/cities" >Cities</NavLink>
                   </DropdownItem>

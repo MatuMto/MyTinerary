@@ -18,8 +18,6 @@ class Itineraries extends React.Component{
    }
    
    render(){
-      console.log(this.props.allCities)
-      console.log(this.state.selectedCity)
       return (
          <> 
             {/* Fijarse esto, es para poner el loading, si hay tiempo verlo ----------------------------------------------------- sino a la chola xd */}
@@ -28,8 +26,8 @@ class Itineraries extends React.Component{
             <ItineraryTittle selectedCity={this.state.selectedCity}/>
             
             {this.props.selectedCityItineraries.length > 0
-               ? this.props.selectedCityItineraries.map(itinerary => <ItineraryCard itineraryData={itinerary}/>)
-               : <h1>No hay itinerarios aun para esta ciudad</h1>}
+               ? this.props.selectedCityItineraries.map(itinerary => <ItineraryCard itineraryData={itinerary} key={itinerary._id} />)
+               : <h1 style={{textAlign: 'center', background: 'white', padding: '100px', borderRadius: '50px'}}>We're still working on this city's Itineraries!</h1>}
 
             <CitiesFooter/>
 
