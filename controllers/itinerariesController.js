@@ -7,8 +7,8 @@ const itinerariesController = {
    },
  
    addNewItinerary: async (req, res) =>{
-      const {tittle, authorName, authorImg, price, duration, likes, idCity} = req.body
-      const itineraryToSave = new Itinerary({tittle:tittle, authorName: authorName, authorImg: authorImg, price: price, duration: duration, likes: likes, idCity: idCity}) //Creo una nueva instancia de mi modelo City 
+      const {tittle, authorName, authorImg, price, duration, likes, idCity, hashtags } = req.body
+      const itineraryToSave = new Itinerary({tittle, authorName, authorImg,price, duration, likes, idCity, hashtags,}) //Creo una nueva instancia de mi modelo City 
       await itineraryToSave.save() //como es una instancia de un modelo, me habilita los metodos que puede realizar un modelo. 
       const allItineraries = await Itinerary.find()
       res.json({respuesta: allItineraries })
