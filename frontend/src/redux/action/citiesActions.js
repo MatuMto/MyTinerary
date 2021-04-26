@@ -5,6 +5,7 @@ const citiesActions = {
          fetch('http://localhost:4000/api/cities')
          .then(response => response.json())
          .then(data => dispatch({type: 'CARGAR_CITIES', payload: data.respuesta}))
+         .catch(error => console.log(error))
       }
    },
 
@@ -12,7 +13,7 @@ const citiesActions = {
       return(dispatch, getState) =>{
          dispatch({
             type: 'FILTER_FUNCTION',
-            payload: elementoACapturar
+            payload: elementoACapturar.trim()
          })  
       }
    }

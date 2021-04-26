@@ -5,9 +5,9 @@ const itinerariesActions = {
          //    type: 'CALL_SELECTED_CITY',
          //    payload: id
          //    })
-         fetch('http://localhost:4000/api/city/' + id)
-         .then(response => response.json())
-         .then(data => dispatch({type: 'CALL_SELECTED_CITY', payload: data.respuesta}))
+         // fetch('http://localhost:4000/api/city/' + id)
+         // .then(response => response.json())
+         // .then(data => dispatch({type: 'CALL_SELECTED_CITY', payload: data.respuesta}))
       }
    },
 

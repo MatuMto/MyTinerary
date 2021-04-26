@@ -8,24 +8,24 @@ import CitiesFooter from '../components/CitiesFooter'
 class Itineraries extends React.Component{
    state = {
       loading: true,
+      selectedCity: {}
    } 
 
    componentDidMount(){
       const receivedId = this.props.match.params.id
-      this.props.callSingleCity(receivedId)
       this.props.callSingleCityItinearies(receivedId)
+      this.setState({selectedCity: this.props.allCities.find(city => city._id === receivedId)})
    }
    
    render(){
-      console.log(this.props)
+      console.log(this.props.allCities)
+      console.log(this.state.selectedCity)
       return (
          <> 
             {/* Fijarse esto, es para poner el loading, si hay tiempo verlo ----------------------------------------------------- sino a la chola xd */}
             
-            {this.props.selectedCity.length === 0 
-               ? console.log('está cargando')
-               : console.log('ya cargó')}
-            <ItineraryTittle selectedCity={this.props.selectedCity}/>
+
+            <ItineraryTittle selectedCity={this.state.selectedCity}/>
             
             {this.props.selectedCityItineraries.length > 0
                ? this.props.selectedCityItineraries.map(itinerary => <ItineraryCard itineraryData={itinerary}/>)
@@ -40,13 +40,12 @@ class Itineraries extends React.Component{
 
 const mapStateToProps = (state)=>{
    return {
-      selectedCity: state.itineraries.selectedCity,
+      allCities: state.cities.allCities,
       selectedCityItineraries: state.itineraries.selectedCityItineraries
    }
 }
 
 const mapDispatchToProps = {
-   callSingleCity: itinerariesActions.callSingleCity,
    callSingleCityItinearies: itinerariesActions.callSingleCityItinearies
 }
 

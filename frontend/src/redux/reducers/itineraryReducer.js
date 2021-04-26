@@ -1,5 +1,5 @@
 const initialState = {
-   selectedCity: [],
+   // selectedCity: [],
    selectedCityItineraries: [],
 }
 

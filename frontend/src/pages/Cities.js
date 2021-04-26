@@ -91,9 +91,12 @@ class Cities extends React.Component{
 
 
             <div style={{display: 'flex', flexWrap: 'wrap', minHeight: '45vh', justifyContent: 'center'}}>
-               {/* {this.renderCities} */}
+
                {this.props.ciudadesFiltradas.length === 0
-                  ? <LoadingAnimation/>
+                  ?   <div style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%', background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
+                        <p className="no-match-text1">Wow! How did you know? That city is coming very soon!</p>
+                        <p className="no-match-text2">While, you can try searching any other..</p>
+                     </div>
                   : this.props.ciudadesFiltradas.map((city) => {
                      return <CityCard location={city} key={city._id} />
                })}
