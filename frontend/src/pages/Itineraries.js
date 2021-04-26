@@ -1,5 +1,4 @@
 import ItineraryTittle from '../components/ItineraryTittle'
-import axios from 'axios'
 import React from 'react'
 import itinerariesActions from '../redux/action/itinerariesActions'
 import {connect} from 'react-redux'

@@ -670,6 +670,7 @@ body{
 /* ITINERARIES CARD SECTION */
 
 .itineraryCard-container {
+  border: 1px solid rgb(194, 194, 194);
   width: 80vw;
   min-height: 40vh;
   margin: 10vh auto;

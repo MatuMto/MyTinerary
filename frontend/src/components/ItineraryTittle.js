@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom"
 import CitiesHeader from "../components/CitiesHeader"
-import CitiesFooter from "./CitiesFooter"
 
 const ItineraryTittle = ({selectedCity})=>{
 

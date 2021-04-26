@@ -1,11 +1,10 @@
 import CityCard from '../components/CityCard'
 import React from 'react'
-import axios from 'axios'
 import CitiesHeader from '../components/CitiesHeader'
 import CitiesFooter from '../components/CitiesFooter'
-import LoadingAnimation from '../components/LoadingAnimation'
 import citiesActions from '../redux/action/citiesActions'
 import {connect} from 'react-redux'
+import LoadingAnimation from '../components/LoadingAnimation'
 
 class Cities extends React.Component{
 
@@ -17,12 +16,6 @@ class Cities extends React.Component{
       this.props.uploadCities()
       // this.setState({loading: false})
    }
-   // console.log(this.props.ciudadesFiltradas)   
-
-   // getFilterValue = (e)=>{
-   //    var inputValue = e.target.value
-   //    this.setState({filterValue: inputValue.trim()})
-   // }
 
 
       //  if (this.state.loading) {
@@ -72,9 +65,12 @@ class Cities extends React.Component{
    }
 
    render(){
-      
+      console.log(this.props.ciudadesFiltradas)
       return(
+
+         
          <div style={{background: 'hsla(30, 71%, 84%, 0.842)', display: 'flex', flexDirection: 'column',}}>     
+            
             <CitiesHeader/>
             
             <div className="cities-page-tittle-container">
@@ -83,8 +79,10 @@ class Cities extends React.Component{
             </div>
 
 
-            <div style={{display: 'flex', flexWrap: 'wrap', minHeight: '45vh', justifyContent: 'center'}}>
+               {this.props.citiesList.length === 0 
+                  && <LoadingAnimation/>}
 
+            <div style={{display: 'flex', flexWrap: 'wrap', minHeight: '45vh', justifyContent: 'center'}}>
                {this.props.ciudadesFiltradas.length === 0
                   ?   <div className="no-match-poster" style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%', background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
                         <p className="no-match-text1">Wow! How did you know? That city is coming very soon!</p>
@@ -92,7 +90,7 @@ class Cities extends React.Component{
                      </div>
                   : this.props.ciudadesFiltradas.map((city) => {
                      return <CityCard location={city} key={city._id} />
-               })}
+                  })}
             </div>
 
 
