@@ -2,7 +2,6 @@ import './App.css'
 import Home from './pages/Home'
 import Cities from './pages/Cities'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-// import Itinerary from './pages/Itineraries'
 import Itineraries from './pages/Itineraries'
 
 function App() {

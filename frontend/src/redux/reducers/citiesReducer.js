@@ -14,13 +14,13 @@ const citiesReducer = (state = initialState, action)=>{
          break
 
       case 'FILTER_FUNCTION':
-      const value = action.payload  
-            return{
-               ...state, 
-               citiesFilter: state.allCities.filter((city) => {
-                  return city.cityName.toLowerCase().slice(0, value.length) === value.toLowerCase()
-               })  
-            }           
+         const inputValue = action.payload  
+         return{
+            ...state, 
+            citiesFilter: state.allCities.filter((city) => {
+               return city.cityName.toLowerCase().slice(0, inputValue.length) === inputValue.toLowerCase()
+            })  
+         }           
          break    
       
          default: 

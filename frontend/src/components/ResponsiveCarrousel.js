@@ -13,7 +13,6 @@ class ResponsiveCarrousel extends Component {
           {carrouselData.map(array => array.map(object => <ResponsiveSlide singleSlide={object} /> ))}
         </Carousel>
       </section>
-
     )
   }
 }

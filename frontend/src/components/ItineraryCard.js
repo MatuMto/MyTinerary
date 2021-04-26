@@ -3,12 +3,12 @@ import {useState } from 'react'
 
 const ItineraryCard = ({itineraryData})=>{
    const [isOpen, setIsOpen] = useState(false);
+   const [name, setName] = useState('View More')
    const toggle = () => setIsOpen(!isOpen);
 
    return(
       <div className="itineraryCard-container">
          <div className="data-container">
-
             <h1 className="itinerary-tittle">{itineraryData.tittle}</h1>
             <div className="author-img" style={{background: `url(${itineraryData.authorImg})`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
             <p className="author-name">{itineraryData.authorName}</p>
@@ -36,20 +36,15 @@ const ItineraryCard = ({itineraryData})=>{
                {itineraryData.hashtags.map(element => <p key={element._id} className="hashtag">#{element}</p> )}
             </div>
 
-               <Button onClick={toggle} style={{ marginBottom: '100px', background: 'white', color:"black" }}>View More</Button>
+               <Button onClick={toggle} style={{ marginBottom: '100px', background: 'rgb(255,223,228)', color:"black", borderRadius: '5px' , border: '4px solid black' }}>View More</Button>
                <Collapse isOpen={isOpen}>
-               <Card className="collapse-section">
-                  <img className="underConstruction-img" alt="under construction" src="/img/underConstruction.jpg" />
-                  {/* <CardBody>
-                  Anim pariatur cliche reprehenderit,
-                  enim eiusmod high life accusamus terry richardson ad squid. Nihil
-                  anim keffiyeh helvetica, craft beer labore wes anderson cred
-                  nesciunt sapiente ea proident.
-               </CardBody> */}
-               </Card>
+                  <Card className="collapse-section">
+                     <img className="underConstruction-img" alt="under construction" src="/img/underConstruction.jpg" />
+                  </Card>
+                  <div style={{ display: 'flex', justifyContent: 'center'}}>
+                     <Button onClick={toggle} style={{ marginBottom: '20px', background: 'rgb(255,223,228)', color:"black", borderRadius: '5px' , border: '4px solid black' }}>View Less</Button>                  
+                  </div>
                </Collapse>
-
-            {/* <button>View More</button> */}
          </div>
 
       </div>
