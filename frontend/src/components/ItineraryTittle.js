@@ -7,7 +7,7 @@ const ItineraryTittle = ({selectedCity})=>{
       <>
          <CitiesHeader/>
 
-         <div className="itinerary-tittle-container" style={{background: `url(/img/${selectedCity.img})`, backgroundPosition: 'center', backgroundSize: 'cover'}}>
+         <div className="itinerary-tittle-container" style={{backgroundImage: `url(/img/${selectedCity.img})`, backgroundPosition: 'center', backgroundSize: 'cover'}}>
             <div className="itinerary-tittle-text-container">
                <p className="welcome-to-itinerary"  >Welcome to {selectedCity.cityName}, {selectedCity.country}! </p>
             </div>

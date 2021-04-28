@@ -23,9 +23,9 @@ function Header (){
             </div>
 
             <div className="login-section">
-               <p  className="link">Sign Up</p>
-               <p>|</p>
-               <p  className="link">Log In</p>
+               <NavLink to="/user/signup"  className="link" style={{color: 'white'}}>Sign Up</NavLink>
+               <p style={{color: 'white', marginBottom: '0px'}}>|</p>
+               <NavLink to="/user/signin" className="link" style={{color: 'white'}}>Sign In</NavLink>
                <div style={{ marginLeft: '20px'}}>
                   <img src="/img/user-icon.png" className="unlogged-icon" style={{width: '60px'}} alt="user unloged logo"></img>
                </div>

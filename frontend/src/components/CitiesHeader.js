@@ -23,9 +23,9 @@ const CitiesHeader = ()=>{
             </div>
 
             <div className="login-section">
-               <p  className="link" style={{color: 'black'}}>Sign Up</p>
+               <NavLink to="/user/signup"  className="link" style={{color: 'black'}}>Sign Up</NavLink>
                <p style={{color: 'black'}}>|</p>
-               <p  className="link" style={{color: 'black'}}>Log In</p>
+               <NavLink to="/user/signin" className="link" style={{color: 'black'}}>Sign In</NavLink>
                <div style={{ marginLeft: '20px'}}>
                   <img src="/img/black-user-icon.png" style={{width: '60px', color: 'black'}} className="unlogged-icon" alt="user unloged logo"></img>
                </div>

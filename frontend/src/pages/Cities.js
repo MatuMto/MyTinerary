@@ -35,7 +35,7 @@ class Cities extends React.Component{
                {this.props.ciudadesFiltradas.length > 0
                   ?  this.props.ciudadesFiltradas.map((city) => {
                         return <CityCard location={city} key={city._id} />})    
-                  : <div className="no-match-poster" style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%',     background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
+                  :  <div className="no-match-poster" style={{height: '40vh', margin: '10vh auto 0vh auto', borderRadius: '10px', width: '80%',     background: `url(/img/fondo-nomatch.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}> 
                      <p className="no-match-text1">Wow! How did you know? That city is coming very soon!</p>
                      <p className="no-match-text2">While, you can try searching any other..</p>
                </div>}
