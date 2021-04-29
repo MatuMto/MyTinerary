@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesController = require('../controllers/itinerariesController')
+const userControllers = require('../controllers/userControllers')
 const validator = require('../config/validator')
 // hago que primero se ejecute el validador - si pasa la prueba, llamo a mi controller
 
@@ -26,6 +27,12 @@ router.route('/itinerary/:id')
 .get(itinerariesController.getSingleItinerary) // obtener un itinerario especifico
 .delete(itinerariesController.deleteItinerary) // borrar un itinerario especifico
 .put(itinerariesController.editItinerary) //modificar un itinerario especifico
+
+router.route('/user/signUp')
+.post(userControllers.registerNewUser)
+
+router.route('/user/signIn')
+.post(userControllers.logUser)
 
 module.exports = router
 
