@@ -37,6 +37,7 @@ class Itineraries extends React.Component{
 
 const mapStateToProps = (state)=>{
    return {
+      // loggedUser: state.auth.loggedUser,
       allCities: state.cities.allCities,
       selectedCityItineraries: state.itineraries.selectedCityItineraries
    }

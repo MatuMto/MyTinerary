@@ -643,6 +643,17 @@ body{
   background: rgb(250,232,228);
 }
 
+.signOut-button {
+  color: black;
+  margin-bottom: 0px;
+}
+
+.signOut-button:hover {
+  cursor:pointer;
+  color: black;
+  text-decoration: underline;
+}
+
 .cityCard-name {
   font-size: 40px;
   color: white;
@@ -847,6 +858,9 @@ body{
 }
 
 
+
+
+/* SIGN IN SECTION */
 
 
 

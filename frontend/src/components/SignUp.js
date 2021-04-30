@@ -3,9 +3,11 @@ import {useEffect, useState} from 'react'
 import CitiesHeader from './CitiesHeader'
 import CitiesFooter from './CitiesFooter'
 import axios from 'axios'
+// import {connect} from 'react-redux'
+import authActions from '../redux/action/authActions'
+import { connect } from 'react-redux'
 
-
-const SignUp = ()=>{   
+const SignUp = (props)=>{   
 
    useEffect(()=>{
       fetch('https://restcountries.eu/rest/v2/all')
@@ -14,7 +16,8 @@ const SignUp = ()=>{
    }, [])
 
    var [info, setInfo] = useState([])
-   var [newUser, setNewUser] = useState({name: '', lastName: '', mail: '', password: '', image: '', })
+   var [newUser, setNewUser] = useState({name: '', lastName: '', mail: '', password: '', image: '', country: '' })
+   var [errors, setErrors] = useState([])
 
    const saveInfo = (e)=>{
       const element = e.target.name
@@ -23,14 +26,21 @@ const SignUp = ()=>{
          ...newUser,
          [element]: value //sin los [] no funciona.. ¿pero porque?
       })
+      console.log(newUser)
    }
 
    const sendData = async (e)=>{
       e.preventDefault()
-      const response = await axios.post('http://localhost:4000/api/user/signUp', newUser)
-      console.log(response.data)
+      const response = await props.registerUser(newUser)
+      if(response){
+         console.log('vino algo en la respuesta con errores')
+         console.log(response)
+      }
    }
-
+   
+   const mostrarValor = (e)=>{
+      console.log(e.target.value)
+   }
    return (
       <>
          <CitiesHeader/>
@@ -39,13 +49,14 @@ const SignUp = ()=>{
             <div className="signUpWithGoogle-button">
                <p>Sign up with Google</p>
             </div>
+            {/* {} */}
             <form className="signUp-form">
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.name} name="name" placeholder="Name"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.lastName} name="lastName" placeholder="Last Name"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.mail} name="mail" placeholder="Mail"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.password} name="password" placeholder="Password"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.image} name="image" placeholder="Image (url)"></input>
-               <select>
+               <select value={newUser.country} name="country" onChange={saveInfo}>
                   <option>Country</option>  
                   {info.map(element => <option>{element.name}</option>)}
                </select>   
@@ -58,4 +69,9 @@ const SignUp = ()=>{
       ) 
 }
 
-export default SignUp
+const mapDispatchToProps = {
+   registerUser: authActions.registerUser
+}
+
+export default connect(null, mapDispatchToProps)(SignUp)
+// export default SignUp

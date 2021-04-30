@@ -29,10 +29,10 @@ router.route('/itinerary/:id')
 .put(itinerariesController.editItinerary) //modificar un itinerario especifico
 
 router.route('/user/signUp')
-.post(userControllers.registerNewUser)
+.post(validator, userControllers.registerNewUser)
 
 router.route('/user/signIn')
-.post(userControllers.logUser)
+.post(validator, userControllers.logUser)
 
 module.exports = router
 
