@@ -1,25 +1,23 @@
 // Esto es un middleware - una funcion que se ejecuta antes de llegar al controlador 
+const joi = require('joi')
 
 const validator = (req, res, next)=>{
-   const {name, lastName, mail, password, image, country} = req.body
-   var errors = []
-   if (name === ''){
-      errors.push('Name cant be empty :v')
-   }
+      // El Schema
+   const schema = joi.object({
+      name: joi.string().trim().min(2).max(20).required(),
+      lastName: joi.string().trim().required(),
+      mail: joi.string().trim().required().email(),
+      password: joi.string().min(5).trim().required().pattern(new RegExp('[a-zA-Z0-9]')),
+      image: joi.string().required().trim(),
+      country: joi.required()
+   })
 
-   if(!mail.includes('@')){
-      errors.push('Poneme un mail en serio pa')
-   }
-   if(password.length < 4){
-      errors.push('Passwords must contain at least 4 characters')
-   }
-   
+   //  La verificación 
+   const validation = schema.validate(req.body, {abortEarly: false}) //o por ahi tiene que ser true   
+   console.log(validation)
+   //  La respuesta o next 
 
-   if (errors.length === 0){
-      next()
-   } else {
-      res.json({success: false, error: errors})
-   }
+
 }
 
 module.exports = validator
