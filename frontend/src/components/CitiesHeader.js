@@ -36,9 +36,10 @@ const CitiesHeader = (props)=>{
                      <NavLink to="/user/signin" className="link" style={{color: 'black'}}>Sign In</NavLink>
                   </>
                }
-               {props.userLogged && <NavLink to="/"><p className="signOut-button" onClick={props.logOutUser} >Sign Out</p></NavLink>}   
+               {props.userLogged && <NavLink to="/"><p className="signOut-button" onClick={props.logOutUser} >Sign Out {props.userLogged.name} </p></NavLink>}   
 
                <div style={{ marginLeft: '20px', width:'100px', height: '100px', borderRadius: '50%', backgroundImage: `url(${userImage})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+
                </div>
             </div>
          </header> 

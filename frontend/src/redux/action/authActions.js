@@ -1,5 +1,6 @@
 import axios from 'axios'
 const authActions = {
+
    registerUser: (userToSave)=>{
       return async(dispatch, getState) => {
          const response = await axios.post('http://localhost:4000/api/user/signUp', userToSave)
@@ -9,7 +10,7 @@ const authActions = {
          } else{
             // alert('Looks like that mail is actually taken :v')
             // response.data.error.map(error =>console.log(error))
-            return response.data.error //asi retorno directamente al componente que está llamando a esta action 
+            return response.data.errors //asi retorno directamente al componente que está llamando a esta action 
             // return false // esto haria que se corte acá y la accion no continue hacia el reducer
          }
          dispatch({type: 'LOG_USER', payload: response.data.success ? response.data.response : null})
@@ -36,7 +37,7 @@ const authActions = {
          dispatch({type: 'LOGOUT_USER'})
       }
    },
-
+   
    forcedLoginByLS: (usuarioLS)=>{
       return(dispatch, getState)=>{
          dispatch({type: 'LOG_USER', payload: usuarioLS})

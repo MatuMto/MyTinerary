@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// mongoose.connect('process.env.MONGO_DB', {
 mongoose.connect('mongodb+srv://matumoto14:matucrack@cluster0.ezroj.mongodb.net/mytinerary?retryWrites=true&w=majority', {
    useNewUrlParser: true,
    useCreateIndex: true,

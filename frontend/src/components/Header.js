@@ -2,8 +2,12 @@ import {NavLink} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap'
 import {useState} from 'react'
+import { connect } from 'react-redux'
+import authActions from '../redux/action/authActions'
 
-function Header (){
+function Header (props){
+   const userImage = props.userLogged ? props.userLogged.image : '/img/black-user-icon.png'
+
    const [dropdown, setDropdown] = useState(false) 
    const abrirCerrarDropdown = ()=>{
       setDropdown(!dropdown)
@@ -23,13 +27,28 @@ function Header (){
             </div>
 
             <div className="login-section">
+               {!props.userLogged &&
+                  <>
+                     <NavLink to="/user/signup"  className="link" style={{color: 'black'}}>Sign Up</NavLink>
+                     <p style={{color: 'black'}}>|</p>
+                     <NavLink to="/user/signin" className="link" style={{color: 'black'}}>Sign In</NavLink>
+                  </>
+               }
+               {props.userLogged && <NavLink to="/"><p className="signOut-button" onClick={props.logOutUser} >Sign Out {props.userLogged.name} </p></NavLink>}   
+
+               <div style={{ marginLeft: '20px', width:'100px', height: '100px', borderRadius: '50%', backgroundImage: `url(${userImage})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+
+               </div>
+            </div>
+
+            {/* <div className="login-section">
                <NavLink to="/user/signup"  className="link" style={{color: 'white'}}>Sign Up</NavLink>
                <p style={{color: 'white', marginBottom: '0px'}}>|</p>
                <NavLink to="/user/signin" className="link" style={{color: 'white'}}>Sign In</NavLink>
                <div style={{ marginLeft: '20px'}}>
                   <img src="/img/user-icon.png" className="unlogged-icon" style={{width: '60px'}} alt="user unloged logo"></img>
                </div>
-            </div>
+            </div> */}
          </header>
       
          <header className="header-responsive">
@@ -64,4 +83,16 @@ function Header (){
    )
 }
 
-export default Header
+
+const mapStateToProps = (state)=>{
+   return {
+      userLogged: state.auth.userLogged
+   }
+}
+
+const mapDispatchToProps = {
+   logOutUser: authActions.logOutUser
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
+// export default Header

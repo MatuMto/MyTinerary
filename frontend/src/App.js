@@ -10,8 +10,13 @@ import authActions from './redux/action/authActions'
 
 function App(props) {
   
-  if(!props.userLogged && localStorage.getItem('userLogged')){
-    props.forcedLoginByLS(JSON.parse(localStorage.getItem('userLogged')))
+  if(!props.userLogged && localStorage.getItem('token')){
+    const datosUsuario = JSON.parse(localStorage.getItem('userLogged'))
+    const usuarioLS = {
+      token: localStorage.getItem('token'),
+      ...datosUsuario
+    }
+    props.forcedLoginByLS(usuarioLS)
   }
 
   return (

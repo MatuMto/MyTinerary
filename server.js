@@ -1,8 +1,9 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const router = require('./routes/index')
 require('./config/database') // no es necesario guardarlo en una variable porq solo quiero que se ejecute, no exportarlo 
+require('dotenv').config()
+const router = require('./routes/index')
 
 // Middlewers - funciones que se ejecutan antes de llegar a la ruta
 app.use(cors())

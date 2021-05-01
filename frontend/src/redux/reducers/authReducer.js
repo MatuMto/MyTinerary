@@ -5,7 +5,10 @@ const initialState = {
 const authReducer = (state = initialState, action)=>{
    switch (action.type){
       case 'LOG_USER':
-         localStorage.setItem('userLogged', JSON.stringify(action.payload))
+         console.log(action.payload)
+         localStorage.setItem('userLogged', JSON.stringify({name: action.payload.name, image: action.payload.image}))
+         // console.log('aca grabaria')
+         localStorage.setItem('token', action.payload.token)
          return {
             ...state, 
             userLogged: action.payload
@@ -13,7 +16,8 @@ const authReducer = (state = initialState, action)=>{
          break
 
       case 'LOGOUT_USER':
-         localStorage.removeItem('userLogged')
+         // localStorage.removeItem('userLogged')
+         localStorage.clear()
          return {
             ...state, 
             userLogged: null

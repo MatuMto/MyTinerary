@@ -26,21 +26,27 @@ const SignUp = (props)=>{
          ...newUser,
          [element]: value //sin los [] no funciona.. ¿pero porque?
       })
-      console.log(newUser)
+      // console.log(newUser)
    }
 
    const sendData = async (e)=>{
       e.preventDefault()
       const response = await props.registerUser(newUser)
+      
       if(response){
-         console.log('vino algo en la respuesta con errores')
          console.log(response)
+         setErrors(errors = response.details)
       }
+      console.log(response)
+      // console.log(response.details)
+      // aca podria hacer un setErrors y meterle a esa variable todos los errores que vengan en response para mostrarlos (asi lo hizo fer xd)
+         // if(response){
+         //    console.log('vino algo en la respuesta con errores')
+         //    console.log(response)
+         // }
+      console.log(newUser)
    }
-   
-   const mostrarValor = (e)=>{
-      console.log(e.target.value)
-   }
+
    return (
       <>
          <CitiesHeader/>
@@ -57,12 +63,17 @@ const SignUp = (props)=>{
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.password} name="password" placeholder="Password"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.image} name="image" placeholder="Image (url)"></input>
                <select value={newUser.country} name="country" onChange={saveInfo}>
-                  <option>Country</option>  
+                  <option >Country</option>  
                   {info.map(element => <option>{element.name}</option>)}
                </select>   
             </form>
             <button className="register-button" onClick={sendData}>Register</button>
             <NavLink to="/user/signin">Have an account? Sign In Here!</NavLink>
+         </div>
+         <div>
+            {errors.map(error => {
+               return <h1> {error.message} </h1>
+            } )} 
          </div>
          <CitiesFooter/>  
       </>
