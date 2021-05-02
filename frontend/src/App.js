@@ -18,7 +18,7 @@ function App(props) {
       ...datosUsuario
     }
     props.forcedLoginByLS(usuarioLS)
-    return null // si no le pongo el return null, sigue leyendo para abajo, pero con esto le digo que no retorne nada
+    return null // si no le pongo el return null, sigue leyendo para abajo, pero con esto le digo que mientras está procesando no me muestre nada.
   }
 
   return (
