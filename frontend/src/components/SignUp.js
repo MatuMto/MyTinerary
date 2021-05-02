@@ -6,8 +6,13 @@ import axios from 'axios'
 // import {connect} from 'react-redux'
 import authActions from '../redux/action/authActions'
 import { connect } from 'react-redux'
+import { GoogleLogin } from 'react-google-login';
+
 
 const SignUp = (props)=>{   
+   var [info, setInfo] = useState([])
+   var [newUser, setNewUser] = useState({name: '', lastName: '', mail: '', password: '', image: '', country: '' })
+   var [errors, setErrors] = useState([])
 
    useEffect(()=>{
       fetch('https://restcountries.eu/rest/v2/all')
@@ -15,36 +20,32 @@ const SignUp = (props)=>{
       .then(data => setInfo(info= data))
    }, [])
 
-   var [info, setInfo] = useState([])
-   var [newUser, setNewUser] = useState({name: '', lastName: '', mail: '', password: '', image: '', country: '' })
-   var [errors, setErrors] = useState([])
-
    const saveInfo = (e)=>{
       const element = e.target.name
       const value = e.target.value
       setNewUser({
          ...newUser,
-         [element]: value //sin los [] no funciona.. ¿pero porque?
+         [element]: value //Los [] van porque va a ser una propiedad dinamica
       })
-      // console.log(newUser)
    }
 
-   const sendData = async (e)=>{
-      e.preventDefault()
-      const response = await props.registerUser(newUser)
-      
+   const sendData = async (e = null, googleUser = null)=>{
+      e && e.preventDefault()
+      let user = e ? newUser : googleUser // Si hay e, es porque completó los campos, entonces tomo esos datos, sino tomo el user de google
+      console.log(user)
+
+      const response = await props.registerUser(user)
       if(response){
-         console.log(response)
          setErrors(errors = response.details)
+         console.log(response)
       }
       console.log(response)
-      // console.log(response.details)
-      // aca podria hacer un setErrors y meterle a esa variable todos los errores que vengan en response para mostrarlos (asi lo hizo fer xd)
-         // if(response){
-         //    console.log('vino algo en la respuesta con errores')
-         //    console.log(response)
-         // }
       console.log(newUser)
+   }
+
+   const responseGoogle = (response)=> {
+      const { givenName, familyName, email, googleId, imageUrl, country = 'Not Given'} = response.profileObj
+      sendData(null, {name: givenName, lastName: familyName, mail: email, password: "a"+googleId, image: imageUrl, country: country} )
    }
 
    return (
@@ -57,6 +58,13 @@ const SignUp = (props)=>{
             </div>
             {/* {} */}
             <form className="signUp-form">
+            <GoogleLogin
+               clientId="65661377486-3ridgqe1v6hdfj5s067rtfi3jg21nnvh.apps.googleusercontent.com"
+               buttonText="Sign Up with Google"
+               onSuccess={responseGoogle}
+               onFailure={responseGoogle}
+               cookiePolicy={'single_host_origin'}
+            />
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.name} name="name" placeholder="Name"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.lastName} name="lastName" placeholder="Last Name"></input>
                <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.mail} name="mail" placeholder="Mail"></input>

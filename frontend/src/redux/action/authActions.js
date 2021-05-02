@@ -25,7 +25,9 @@ const authActions = {
          if(response.data.success){
             alert('Bienvenido ' + response.data.response.name + '!')
          } else {
-            alert('Mail or Password incorrect, please try again')
+            // probando lo que va abajo 
+            // alert('Mail or Password incorrect, please try again')
+            alert(response.data.error)
          }
          dispatch({type: 'LOG_USER', payload: response.data.success ? response.data.response : null})
          // le pongo LOG_USER porque el trabajo del front es el mismo tanto en register como en log. Mandar Info y luego recibir La Info o el error.

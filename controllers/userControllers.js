@@ -21,7 +21,7 @@ const userControllers = {
             // response = userToSave
             const token = jwt.sign({...userToSave}, process.env.SECRET_OR_KEY)            
             response = token 
-            console.log(userToSave)
+            console.log('user to save es: ' +  userToSave)
          } catch (err){ //no pinta mostrar el error posta porque el usuario no lo va a entender 
             console.log(err)
             error = "Hmm looks like something went wrong trying to save your account, please try again"
@@ -41,7 +41,7 @@ const userControllers = {
 
    logUser: async(req, res)=>{
       const {mail, password} = req.body   
-      var respuesta;
+      var response;
       var error; 
 
       const accountRegistered = await User.findOne({mail})
@@ -50,6 +50,7 @@ const userControllers = {
          const passwordMatches = bcryptjs.compareSync(password, accountRegistered.password)
          console.log('existe la cuenta')
          if(passwordMatches){
+            console.log('contraseña correcta')
             const token = jwt.sign({...accountRegistered}, process.env.SECRET_OR_KEY)
             response = token
             // console.log('la contraseña esta bien')
@@ -66,7 +67,7 @@ const userControllers = {
       }
       res.json({
          success: !error ? true : false,
-         response: {token: response, image: accountRegistered.image, name: accountRegistered.name},
+         response: !error && {token: response, image: accountRegistered.image, name: accountRegistered.name},
          error: error
       })
       // res.json("El controllador de Log User esta andando flama")
