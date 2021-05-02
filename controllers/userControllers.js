@@ -70,7 +70,12 @@ const userControllers = {
          error: error
       })
       // res.json("El controllador de Log User esta andando flama")
-   } 
+   },
+
+   forcedLogin: (req, res)=>{
+      res.json({success: true, response: {image: req.user.image, name: req.user.name}})
+   }
+
 }
 
 module.exports = userControllers

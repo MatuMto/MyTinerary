@@ -4,6 +4,7 @@ const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesController = require('../controllers/itinerariesController')
 const userControllers = require('../controllers/userControllers')
 const validator = require('../config/validator')
+const passport = require('passport')
 // hago que primero se ejecute el validador - si pasa la prueba, llamo a mi controller
 
 router.route('/cities')
@@ -33,6 +34,9 @@ router.route('/user/signUp')
 
 router.route('/user/signIn')
 .post(userControllers.logUser)
+
+router.route('/user/loginLS')
+.get(passport.authenticate('jwt', {session: false}), userControllers.forcedLogin)
 
 module.exports = router
 

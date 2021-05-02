@@ -39,8 +39,22 @@ const authActions = {
    },
    
    forcedLoginByLS: (usuarioLS)=>{
-      return(dispatch, getState)=>{
-         dispatch({type: 'LOG_USER', payload: usuarioLS})
+      return async(dispatch, getState)=>{
+         try {
+            const response = await axios.get('http://localhost:4000/api/user/loginLS', {
+               headers:{
+                  'Authorization': 'Bearer '+usuarioLS.token
+               }
+            })
+            dispatch({type: 'LOG_USER', payload: {
+               ...response.data.response,
+               token: usuarioLS.token
+            }})
+         } catch(err){
+            if(err.response.status === 401){
+               alert('Invalid token -.-')
+            }
+         }
       }
    }
 }

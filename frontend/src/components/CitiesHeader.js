@@ -10,7 +10,6 @@ const CitiesHeader = (props)=>{
    const abrirCerrarDropdown = ()=>{
       setDropdown(!dropdown)
    }
-   console.log(props)
 
    const userImage = props.userLogged ? props.userLogged.image : '/img/black-user-icon.png'
    // const userImage = ''

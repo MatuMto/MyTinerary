@@ -12,6 +12,7 @@ function App(props) {
   
   if(!props.userLogged && localStorage.getItem('token')){
     const datosUsuario = JSON.parse(localStorage.getItem('userLogged'))
+    // console.log(datosUsuario)
     const usuarioLS = {
       token: localStorage.getItem('token'),
       ...datosUsuario
