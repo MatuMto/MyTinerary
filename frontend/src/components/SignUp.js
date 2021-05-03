@@ -51,39 +51,79 @@ const SignUp = (props)=>{
    return (
       <>
          <CitiesHeader/>
-         <div className="signUp-mainContainer">
-            <h1>Soy el componente de Sign Up</h1>
-            <div className="signUpWithGoogle-button">
-               <p>Sign up with Google</p>
+
+         <div className="signIn-main-container">
+            <div className="form-box">
+               <div className="errorMessages-container">
+                  {errors.map(error => {
+                     return <p> {error.message} </p>
+                  } )} 
+               </div>
+               <div className="form-container">
+               <h1 className="register-tittle">USER SIGN UP</h1>
+               <h1 className="register-tittle2">SIGN UP</h1>
+                  <form action="" className="form">
+                     <input type="text" onChange={saveInfo} value={newUser.name} name="name" className="register-input" placeholder="Name"/>
+                     <input type="text" onChange={saveInfo} value={newUser.lastName} name="lastName" className="register-input" placeholder="Last Name"/>
+                     <input type="text" onChange={saveInfo} value={newUser.mail} name="mail" className="register-input" placeholder="Mail"/>
+                     <input type="password" onChange={saveInfo} value={newUser.password} name="password" className="register-input" placeholder="Password"/>
+                     <input type="text" onChange={saveInfo} value={newUser.image} name="image" className="register-input" placeholder="Image (url)"/>
+                     <select className="signUp-select" value={newUser.country} name="country" onChange={saveInfo} >
+                        <option >Country</option>  
+                        {info.map(element => <option className="country-option">{element.name}</option>)}
+                     </select>
+                  </form>
+                  <div className="register-buttonsContainer">
+                  <GoogleLogin
+                     clientId="65661377486-3ridgqe1v6hdfj5s067rtfi3jg21nnvh.apps.googleusercontent.com"
+                     buttonText="Sign Up with Google"
+                     onSuccess={responseGoogle}
+                     onFailure={responseGoogle}
+                     cookiePolicy={'single_host_origin'}
+                  />
+                     <button onClick={sendData} className="register-button">REGISTER</button>
+                  </div>
+                  <NavLink to="/user/signin" className="register-callToAction">Have an account? Sign In Here!</NavLink>
+               </div>
             </div>
-            {/* {} */}
-            <form className="signUp-form">
-            <GoogleLogin
+         </div>
+         <div className="citiesPage-footerContainer1">
+            <footer className="citiesPage-footer1">
+               <div className="footerText-left" >MyTinerary</div>
+               <div className="footerText-right" >@_mateo.lorenzo_dev</div>
+            </footer>
+         </div>
+
+         {/* <div className="signUp-mainContainer"> */}
+            {/* <div className="errorMessages-container">
+               {errors.map(error => {
+                  return <p> {error.message} </p>
+               } )} 
+            </div> */}
+
+            {/* <h1>Sign Up</h1> */}
+            {/* <form className="signUp-form"> */}
+            {/* <GoogleLogin
                clientId="65661377486-3ridgqe1v6hdfj5s067rtfi3jg21nnvh.apps.googleusercontent.com"
                buttonText="Sign Up with Google"
                onSuccess={responseGoogle}
                onFailure={responseGoogle}
                cookiePolicy={'single_host_origin'}
-            />
-               <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.name} name="name" placeholder="Name"></input>
-               <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.lastName} name="lastName" placeholder="Last Name"></input>
-               <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.mail} name="mail" placeholder="Mail"></input>
-               <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.password} name="password" placeholder="Password"></input>
-               <input type="text" onChange={saveInfo} className="signUp-input" value={newUser.image} name="image" placeholder="Image (url)"></input>
-               <select value={newUser.country} name="country" onChange={saveInfo}>
+            /> */}
+               {/* <input type="text" onChange={saveInfo} value={newUser.name} name="name" placeholder="Name"></input>
+               <input type="text" onChange={saveInfo} value={newUser.lastName} name="lastName" placeholder="Last Name"></input>
+               <input type="text" onChange={saveInfo} value={newUser.mail} name="mail" placeholder="Mail"></input>
+               <input type="password" onChange={saveInfo} value={newUser.password} name="password" placeholder="Password"></input>
+               <input type="text" onChange={saveInfo} value={newUser.image} name="image" placeholder="Image (url)"></input> */}
+               {/* <select value={newUser.country} name="country" onChange={saveInfo}>
                   <option >Country</option>  
                   {info.map(element => <option>{element.name}</option>)}
-               </select>   
-            </form>
-            <button className="register-button" onClick={sendData}>Register</button>
-            <NavLink to="/user/signin">Have an account? Sign In Here!</NavLink>
-         </div>
-         <div>
-            {errors.map(error => {
-               return <h1> {error.message} </h1>
-            } )} 
-         </div>
-         <CitiesFooter/>  
+               </select>    */}
+            {/* </form> */}
+            {/* <button className="register-button" onClick={sendData}>Register</button> */}
+            {/* <NavLink to="/user/signin">Have an account? Sign In Here!</NavLink> */}
+          {/* </div> */}
+
       </>
       ) 
 }

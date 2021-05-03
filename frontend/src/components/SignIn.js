@@ -37,30 +37,37 @@ const SignIn = (props)=>{
    return(
       <>
          <CitiesHeader/>
-         
-         <div className="signUp-mainContainer">
-            <h1>Soy el componente de Sign In</h1>
-            <div className="signUpWithGoogle-button">
-               <p>Sign in with Google</p>
+
+         <div className="signIn-main-container">
+            <div className="form-box">
+               <div className="form-container">
+                  <h1 className="signIn-tittle">USER SIGN IN</h1>
+                  <form action="" className="form">
+                    <input type="text" name="mail" value={incomingUser.mail} onChange={saveInfo} className="login-input" placeholder="Mail"/>
+                    <input type="password" name="password" value={incomingUser.password} onChange={saveInfo} className="login-input" placeholder="Password"/>
+                  </form>
+                  <div className="signIn-buttonsContainer">
+                    <GoogleLogin
+                        clientId="65661377486-3ridgqe1v6hdfj5s067rtfi3jg21nnvh.apps.googleusercontent.com"
+                        buttonText="Sign In with Google"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                     />
+                    <button onClick={sendData} className="login-button">SIGN IN</button>
+                  </div>
+                  <NavLink style={{color: "white"}} to="/user/signup">Don't registered yet? Sign up Here!</NavLink>
+               </div>
             </div>
-
-            <form className="signUp-form">
-               <GoogleLogin
-                  clientId="65661377486-3ridgqe1v6hdfj5s067rtfi3jg21nnvh.apps.googleusercontent.com"
-                  buttonText="Sign In with Google"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                  cookiePolicy={'single_host_origin'}
-               />
-               <input type="text" className="signUp-input" name="mail" value={incomingUser.mail} onChange={saveInfo} placeholder="Mail"></input>
-               <input type="text" className="signUp-input" name="password" value={incomingUser.password} onChange={saveInfo} placeholder="Password"></input>
-            </form>
-            <button className="register-button" onClick={sendData}>Sign In</button>
-
-            <NavLink to="/user/signup">Don't Registered yet? Sign up Here!</NavLink>
          </div>
 
-         <CitiesFooter/>
+         {/* Footer */}
+         <div className="citiesPage-footerContainer1">
+            <footer className="citiesPage-footer1">
+               <div className="footerText-left" >MyTinerary</div>
+               <div className="footerText-right" >@_mateo.lorenzo_dev</div>
+            </footer>
+         </div>
       </>
 
    ) 

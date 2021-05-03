@@ -20,6 +20,7 @@ body{
   src: url("../public/fonts/OpenSans-Light.ttf");
 } */
 
+
 .home-main {
   width: 100%;
   height: 100vh;
@@ -98,9 +99,9 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
-.login-section > *:hover {
+/* .login-section > *:hover {
   color: white;
-}
+} */
 
 .unlogged-icon:hover{
   cursor: pointer;
@@ -553,6 +554,19 @@ body{
   /* bottom: 0; */
 }
 
+.citiesPage-footer1{
+  width: 100%;
+  height: 10vh;
+  /* margin-top: 10vh; */
+  background: black;
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute;  */
+  /* bottom: 0; */
+}
+
 .no-match-text1{
   font-size: 50px;
   text-align: center;
@@ -646,6 +660,11 @@ body{
 .signOut-button {
   color: black;
   margin-bottom: 0px;
+}
+
+.userName {
+  color: black;
+  margin-bottom: 0;
 }
 
 .signOut-button:hover {
@@ -800,11 +819,22 @@ body{
 
 /* SignUp Section */
 
+.errorMessages-container{
+  /* background: white; */
+  /* width: 40vw; */
+  margin: 2vh auto;
+  text-align: center;
+  color: red;
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+
 .signUp-mainContainer {
   background: white;
   width: 30vw;
-  height: 60vh;
-  margin: 20vh auto;
+  min-height: 65vh;
+  margin: 0vh auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -858,11 +888,138 @@ body{
 }
 
 
+/* sign up 2 */
+
+.register-tittle {
+  color: rgb(145,146,147);
+  font-family: 'Raleway';
+  margin-top: 20px;
+}
+
+.register-tittle2{
+  color: rgb(145,146,147);
+  font-family: 'Raleway';
+  margin-top: 20px;
+  display: none;
+}
+
+.register-input{
+  /* width: 30vw; */
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 20px;
+  margin-top: 30px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
+.signUp-select {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+} 
+
+.country-option{
+  width: 100%;
+}
+
+.register-buttonsContainer{
+  display: flex;
+  margin: 20px;
+}
+
+.register-button {
+  padding: 10px 50px;
+  background: rgb(0,207,113);
+  border: none;
+  border-radius: 2px;
+  color: rgb(42,64,87);
+}
+
+.register-callToAction {
+  color: white;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+
 
 
 /* SIGN IN SECTION */
 
+.signIn-tittle{
+  color: rgb(145,146,147);
+  font-family: 'Raleway'
+}
 
+.signIn-main-container {
+  background: rgb(23,37,48);
+  width: 100%;
+  min-height: 75vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  width: 40vw;
+  min-width: 700px;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background: rgb(42,64,87);
+  margin: 10vh 0px;
+}
+
+.form-container {
+  /* background: green; */
+  /* border: 1px solid black; */
+  width: 80%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+
+}
+
+.login-input {
+  width: 30vw;
+  padding: 15px 30px;
+  font-size: 20px;
+  margin-top: 30px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
+.login-button {
+  padding: 10px 50px;
+  background: rgb(0,207,113);
+  border: none;
+  border-radius: 2px;
+  color: rgb(42,64,87);
+}
+
+.signIn-buttonsContainer {
+  /* background: red; */
+  display: flex;
+  margin-top: 30px;
+}
 
 
 
@@ -978,6 +1135,16 @@ body{
     width: 40vw;
   }
 
+  .register-buttonsContainer{
+    /* display: flex; */
+    /* margin: 20px; */
+    flex-direction: column;
+    /* background: red; */
+  }
+
+  .register-button {
+    margin-top: 10px;
+  }
 }
 
 
@@ -1094,6 +1261,27 @@ body{
     font-size: 20px;
   }
 
+
+  .register-tittle{
+    /* color: rgb(145,146,147);
+    font-family: 'Raleway';
+    margin-top: 20px; */
+    display: none;
+  }
+
+  .register-tittle2{
+    /* color: rgb(145,146,147);
+    font-family: 'Raleway';
+    margin-top: 20px; */
+    display: block;
+  }
+
+  .form-box {
+    width: 80vw;
+    min-width: 0px;
+  }
+
+
 }
 
 
@@ -1185,6 +1373,10 @@ body{
     width: 50vw;
   }
   
+  .form-box {
+    width: 90vw;
+    /* min-width: 0px; */
+  }
 }
 
 

@@ -31,11 +31,13 @@ const CitiesHeader = (props)=>{
                {!props.userLogged &&
                   <>
                      <NavLink to="/user/signup"  className="link" style={{color: 'black'}}>Sign Up</NavLink>
-                     <p style={{color: 'black'}}>|</p>
+                     <p style={{color: 'black', marginBottom: '0px'}}>|</p>
                      <NavLink to="/user/signin" className="link" style={{color: 'black'}}>Sign In</NavLink>
                   </>
                }
-               {props.userLogged && <NavLink to="/"><p className="signOut-button" onClick={props.logOutUser} >Sign Out {props.userLogged.name} </p></NavLink>}   
+               {props.userLogged && <NavLink to="/"><p className="signOut-button" onClick={props.logOutUser} >Sign Out</p></NavLink>}   
+               {props.userLogged && <p className="userName">|</p>}
+               {props.userLogged && <p className="userName"> {props.userLogged.name}</p>}
 
                <div style={{ marginLeft: '20px', width:'100px', height: '100px', borderRadius: '50%', backgroundImage: `url(${userImage})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
 
