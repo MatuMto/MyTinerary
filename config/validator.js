@@ -4,7 +4,7 @@ const joi = require('joi')
 const validator = (req, res, next)=>{
       // El Schema
    const schema = joi.object({
-      name: joi.string().min(2).max(10).required().pattern(new RegExp('[a-zA-Z]$')),
+      name: joi.string().min(2).max(20).required().pattern(new RegExp('[a-zA-Z]$')),
       lastName: joi.string().trim().required(),
       mail: joi.string().trim().required().email(),
       password: joi.string().min(4).trim().required().pattern(new RegExp('[a-zA-Z0-9]$')),

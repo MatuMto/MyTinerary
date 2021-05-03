@@ -27,14 +27,13 @@ const userControllers = {
             error = "Hmm looks like something went wrong trying to save your account, please try again"
          }
       } else {
-         error = 'Bro, el mail que pusiste ya está en uso :v'
+         error = 'Looks like your mail is already registered.. Sign In!'
       }
 
       // Si está todo bien, error es null, si algo falló entonces response es null xD 
       res.json({
          success: !error ? true : false, 
-         response: {token: response, image: userToSave.image, name: userToSave.name},
-         // response: response,
+         response: !existingMail && {token: response, image: userToSave.image, name: userToSave.name},
          error: error
       })   
    },
@@ -53,24 +52,18 @@ const userControllers = {
             console.log('contraseña correcta')
             const token = jwt.sign({...accountRegistered}, process.env.SECRET_OR_KEY)
             response = token
-            // console.log('la contraseña esta bien')
-            // const token = jwt.sign({...accountRegistered}, process.env.SECRET_OR_KEY)
-            // res.json({success: true, response: {token: token, image: accountRegistered.image, name: accountRegistered.name}})
          } else {
-            error = 'Mail or Password incorrect, please try again'
-            // res.json({success: false, response: 'Mail or Password Incorrect, please try again' })
+            error = 'Mail or Password incorrect. Try again!'
          }
 
       } else {
-         error = 'Mail or Password incorrect, please try again '
-         // res.json({success: false, error: 'Mail or Password incorrect, please try again'})
+         error = 'Mail or Password incorrect. Try again!'
       }
       res.json({
          success: !error ? true : false,
          response: !error && {token: response, image: accountRegistered.image, name: accountRegistered.name},
          error: error
       })
-      // res.json("El controllador de Log User esta andando flama")
    },
 
    forcedLogin: (req, res)=>{

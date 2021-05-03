@@ -1,15 +1,18 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 const authActions = {
 
    registerUser: (userToSave)=>{
       return async(dispatch, getState) => {
          const response = await axios.post('http://localhost:4000/api/user/signUp', userToSave)
          console.log(response)
-         if(response.data.success){
-            alert('Successfully registered')
-         } else{
-            // alert('Looks like that mail is actually taken :v')
-            // response.data.error.map(error =>console.log(error))
+         if(!response.data.success){
+            console.log(response)
+            response.data.error && Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: response.data.error,
+             })
             return response.data.errors //asi retorno directamente al componente que está llamando a esta action 
             // return false // esto haria que se corte acá y la accion no continue hacia el reducer
          }
@@ -22,12 +25,12 @@ const authActions = {
       return async(dispatch, getState)=>{
          const response = await axios.post('http://localhost:4000/api/user/signIn', incomingUser)
          console.log(response.data)
-         if(response.data.success){
-            alert('Bienvenido ' + response.data.response.name + '!')
-         } else {
-            // probando lo que va abajo 
-            // alert('Mail or Password incorrect, please try again')
-            alert(response.data.error)
+         if(!response.data.success){
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: response.data.error,
+             })
          }
          dispatch({type: 'LOG_USER', payload: response.data.success ? response.data.response : null})
          // le pongo LOG_USER porque el trabajo del front es el mismo tanto en register como en log. Mandar Info y luego recibir La Info o el error.

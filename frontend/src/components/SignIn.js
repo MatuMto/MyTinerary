@@ -6,6 +6,7 @@ import CitiesFooter from './CitiesFooter'
 import CitiesHeader from './CitiesHeader'
 import authActions from '../redux/action/authActions'
 import { GoogleLogin } from 'react-google-login';
+import Swal from 'sweetalert2'
 
 const SignIn = (props)=>{
    var [info, setInfo] = useState([])
@@ -56,7 +57,7 @@ const SignIn = (props)=>{
                      />
                     <button onClick={sendData} className="login-button">SIGN IN</button>
                   </div>
-                  <NavLink style={{color: "white"}} to="/user/signup">Don't registered yet? Sign up Here!</NavLink>
+                  <NavLink className="signIn-callToAction" to="/user/signup">Don't registered yet? Sign up Here!</NavLink>
                </div>
             </div>
          </div>
@@ -71,7 +72,6 @@ const SignIn = (props)=>{
       </>
 
    ) 
-   
 }
 
 const mapStateToProps = (state)=>{

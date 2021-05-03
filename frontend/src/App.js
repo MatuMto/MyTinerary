@@ -9,10 +9,9 @@ import { connect } from 'react-redux'
 import authActions from './redux/action/authActions'
 
 function App(props) {
-  
+  // Para no perder los datos cuando recargo / Login Forzado
   if(!props.userLogged && localStorage.getItem('token')){
     const datosUsuario = JSON.parse(localStorage.getItem('userLogged'))
-    // console.log(datosUsuario)
     const usuarioLS = {
       token: localStorage.getItem('token'),
       ...datosUsuario
