@@ -44,7 +44,7 @@ const userControllers = {
       var error; 
 
       const accountRegistered = await User.findOne({mail})
-      
+
       if(accountRegistered){
          const passwordMatches = bcryptjs.compareSync(password, accountRegistered.password)
          console.log('existe la cuenta')
@@ -61,13 +61,14 @@ const userControllers = {
       }
       res.json({
          success: !error ? true : false,
-         response: !error && {token: response, image: accountRegistered.image, name: accountRegistered.name},
+         response: !error && {token: response, image: accountRegistered.image, name: accountRegistered.name, userId: accountRegistered._id},
          error: error
       })
    },
 
    forcedLogin: (req, res)=>{
-      res.json({success: true, response: {image: req.user.image, name: req.user.name}})
+      console.log(req.user._id)
+      res.json({success: true, response: {image: req.user.image, name: req.user.name, userId: req.user._id}})
    }
 
 }

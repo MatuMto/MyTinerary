@@ -16,7 +16,7 @@ class Cities extends React.Component{
 
    render(){
       return( 
-         <div style={{background: 'hsla(30, 71%, 84%, 0.842)', display: 'flex', flexDirection: 'column',}}>               
+         <div style={{display: 'flex', flexDirection: 'column',}}>               
             <CitiesHeader/>
             
             {/* input */}

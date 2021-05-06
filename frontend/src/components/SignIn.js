@@ -1,20 +1,17 @@
-import axios from 'axios'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
-import CitiesFooter from './CitiesFooter'
 import CitiesHeader from './CitiesHeader'
 import authActions from '../redux/action/authActions'
 import { GoogleLogin } from 'react-google-login';
-import Swal from 'sweetalert2'
 
 const SignIn = (props)=>{
-   var [info, setInfo] = useState([])
+   // var [userId, setUserId] = useState(props.userLogged)
    const [incomingUser, setIncomingUser] = useState({mail: '', password: ''})
 
    const saveInfo = (e)=>{
-      const element = e.target.name
-      const value = e.target.value
+      const element = e.target.name //agarro el campo que está llenando el usuario
+      const value = e.target.value //agarro el valor/lo q está escribiendo el usuario
       setIncomingUser({
          ...incomingUser,
          [element]: value
@@ -24,9 +21,10 @@ const SignIn = (props)=>{
    const sendData = async(e = null, userGoogle = null)=>{
       e && e.preventDefault()
       let user = e ? incomingUser : userGoogle // Si hay e, es porque completó los campos, entonces tomo esos datos, sino tomo el user de google
-      props.logUser(user)
+      props.logUser(user) //action que hace el fetcheo de tipo post 
+      // setUserId(userId = props.userLogged)
    }
-
+   
    const responseGoogle = (response)=> {
       if(response.profileObj.email){
          sendData(null, {mail: response.profileObj.email, password: "a"+response.profileObj.googleId} )
@@ -34,7 +32,8 @@ const SignIn = (props)=>{
          alert('Looks like something went wrong... please come back later.')
       }
    }
-
+   
+   // console.log(userId)
    return(
       <>
          <CitiesHeader/>

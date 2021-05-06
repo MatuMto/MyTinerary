@@ -3,8 +3,10 @@ const router = express.Router()
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesController = require('../controllers/itinerariesController')
 const userControllers = require('../controllers/userControllers')
+const activitiesControllers = require('../controllers/activitiesController')
 const validator = require('../config/validator')
 const passport = require('passport')
+const { get } = require('mongoose')
 // hago que primero se ejecute el validador - si pasa la prueba, llamo a mi controller
 
 router.route('/cities')
@@ -29,6 +31,10 @@ router.route('/itinerary/:id')
 .delete(itinerariesController.deleteItinerary) // borrar un itinerario especifico
 .put(itinerariesController.editItinerary) //modificar un itinerario especifico
 
+router.route('/likeItinerary')
+.post(itinerariesController.likeItinerary)
+
+
 router.route('/user/signUp')
 .post(validator, userControllers.registerNewUser)
 
@@ -37,6 +43,20 @@ router.route('/user/signIn')
 
 router.route('/user/loginLS')
 .get(passport.authenticate('jwt', {session: false}), userControllers.forcedLogin)
+// Primero ejecuto el validador de passport, y despues llamo a mi userControllers. 
+// Passport sirve para verificar que tengo un token verdadero
+
+
+router.route('/activities')
+.get(activitiesControllers.getAllActivities)
+.post(activitiesControllers.addNewActivity)
+
+router.route('/activities/:id')
+.get(activitiesControllers.getSingleItineraryActivities)
+
+router.route('/activity/:id')
+.delete(activitiesControllers.deleteActivity)
+.put(activitiesControllers.editActivity)
 
 module.exports = router
 

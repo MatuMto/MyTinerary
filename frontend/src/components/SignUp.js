@@ -1,15 +1,13 @@
 import {NavLink} from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import CitiesHeader from './CitiesHeader'
-import CitiesFooter from './CitiesFooter'
-import axios from 'axios'
-// import {connect} from 'react-redux'
 import authActions from '../redux/action/authActions'
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 
 
 const SignUp = (props)=>{   
+   // en info guardo los paises fetcheados
    var [info, setInfo] = useState([])
    var [newUser, setNewUser] = useState({name: '', lastName: '', mail: '', password: '', image: '', country: '' })
    var [errors, setErrors] = useState([])
@@ -17,12 +15,12 @@ const SignUp = (props)=>{
    useEffect(()=>{
       fetch('https://restcountries.eu/rest/v2/all')
       .then(res => res.json())
-      .then(data => setInfo(info= data))
+      .then(data => setInfo(data))
    }, [])
 
    const saveInfo = (e)=>{
-      const element = e.target.name
-      const value = e.target.value
+      const element = e.target.name //agarro el campo que está llenando el usuario
+      const value = e.target.value  //agarro el valor/lo q está escribiendo el usuario
       setNewUser({
          ...newUser,
          [element]: value //Los [] van porque va a ser una propiedad dinamica
@@ -68,7 +66,7 @@ const SignUp = (props)=>{
                      <input type="text" onChange={saveInfo} value={newUser.image} name="image" className="register-input" placeholder="Image (url)"/>
                      <select className="signUp-select" value={newUser.country} name="country" onChange={saveInfo} >
                         <option >Country</option>  
-                        {info.map(element => <option className="country-option">{element.name}</option>)}
+                        {info.map((element, index) => <option key={index} className="country-option">{element.name}</option>)}
                      </select>
                   </form>
                   <div className="register-buttonsContainer">

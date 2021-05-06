@@ -1,9 +1,7 @@
 import Slide from './Slide'
 import Carousel from 'react-elastic-carousel';
+
 const Carrousel = ({carrouselData})=>{
-
-
-
    return (
       <>
          <div className="slide-tittle-container">
@@ -13,7 +11,7 @@ const Carrousel = ({carrouselData})=>{
          <div className="complete-carrousel">
             <section className="slider">
                <Carousel enableAutoPlay autoPlaySpeed={5000}>
-                  {carrouselData.map(array => <Slide singleSlide={array} />)}
+                  {carrouselData.map((array, index) => <Slide singleSlide={array} key={index} />)}
                </Carousel>
             </section>
          </div>

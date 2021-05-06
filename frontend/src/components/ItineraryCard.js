@@ -1,15 +1,32 @@
 import { Collapse, Button, Card } from 'reactstrap';
 import {useState } from 'react'
+import { connect } from 'react-redux';
+import axios from 'axios'
 
-const ItineraryCard = ({itineraryData})=>{
+const ItineraryCard = ({itineraryData, userLogged})=>{
+   var [itineraryLikes, setItineraryLikes] = useState(itineraryData.likes.length)
+   const [itineraryActivities, setItineraryActivities] = useState([])
    const [isOpen, setIsOpen] = useState(false);
-   const toggle = () => setIsOpen(!isOpen);
-
+   
+   const viewMoreFunction = async()=>{
+      setIsOpen(!isOpen);
+      const response = await axios.get('http://localhost:4000/api/activities/' + itineraryData._id)
+      await setItineraryActivities(response.data.response)
+   }
+   
+   const likeItinerary = async()=>{  
+      const sendLike = await axios.post('http://localhost:4000/api/likeItinerary', {userId: userLogged.userId, itineraryId: itineraryData._id})
+      setItineraryLikes(sendLike.data.itineraryLikes)
+      console.log(sendLike.data) 
+   }
+   
+   
+   console.log(itineraryData)
    return(
       <div className="itineraryCard-container">
          <div className="data-container">
             <h1 className="itinerary-tittle">{itineraryData.tittle}</h1>
-            <div className="author-img" style={{background: `url(${itineraryData.authorImg})`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
+            <div className="author-img" style={{backgroundImage: `url(${itineraryData.authorImg})`, backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
             <p className="author-name">{itineraryData.authorName}</p>
             
             <div className="itinerary-data-container">
@@ -24,10 +41,11 @@ const ItineraryCard = ({itineraryData})=>{
                </div>
 
                <div className="likes-container">
-                  <div>
-                     <img className="heart-icon" alt="heart" src="/icons/heart.png" width="35px" />
+                  <div className="heart-icon-container" onClick={likeItinerary} >
+                     <img className="heart-icon" alt="heart" src="/icons/heart.png" width="35px" /> 
+                     {/* <i class="far fa-heart"></i> */}
                   </div>
-                  <p style={{margin:"0px 10px 0px 10px", fontSize: "30px"}}>0</p>
+                  <p style={{margin:"0px 10px 0px 10px", fontSize: "30px"}}>{itineraryLikes}</p>
                </div>
             </div>
 
@@ -35,13 +53,24 @@ const ItineraryCard = ({itineraryData})=>{
                {itineraryData.hashtags.map(element => <p key={element._id} className="hashtag">#{element}</p> )}
             </div>
 
-               <Button onClick={toggle} style={{ marginBottom: '100px', background: 'rgb(255,223,228)', color:"black", borderRadius: '5px' , border: '4px solid black' }}>View More</Button>
+               <button onClick={viewMoreFunction} className={ isOpen ? "displayNone" : "viewMore-button"} >View More</button>
                <Collapse isOpen={isOpen}>
                   <Card className="collapse-section">
-                     <img className="underConstruction-img" alt="under construction" src="/img/underConstruction.jpg" />
+
+                     <div className="activities-container">
+                        {itineraryActivities.map( activity => {
+                           return <div className="activity" style={{backgroundImage: `url(${activity.img})`}} ></div>
+                        } )}
+                     </div>
+
+                     <div className="comments-container">
+                        <input type="text" className="comments-input" placeholder="Leave your comment" />
+                        {/* <img/> */}
+                        <i class="fab fa-accessible-icon"></i>
+                     </div>
                   </Card>
-                  <div style={{ display: 'flex', justifyContent: 'center'}}>
-                     <Button onClick={toggle} style={{ marginBottom: '20px', background: 'rgb(255,223,228)', color:"black", borderRadius: '5px' , border: '4px solid black' }}>View Less</Button>                  
+                  <div className="viewLess-button-container">
+                     <button onClick={viewMoreFunction} className="viewLess-button">View Less</button>                  
                   </div>
                </Collapse>
          </div>
@@ -50,4 +79,12 @@ const ItineraryCard = ({itineraryData})=>{
    )
 }
 
-export default ItineraryCard
+const mapStateToProps = (state)=>{
+   return {
+      userLogged: state.auth.userLogged,
+      cities: state.itineraries
+   }
+}
+
+export default connect(mapStateToProps)(ItineraryCard)
+// export default ItineraryCard
