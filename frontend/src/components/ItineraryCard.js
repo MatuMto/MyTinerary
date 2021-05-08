@@ -1,10 +1,8 @@
 import { Collapse, Button, Card } from 'reactstrap';
 import {useEffect, useState } from 'react'
 import { connect } from 'react-redux';
-import axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPaperPlane} from '@fortawesome/free-solid-svg-icons'
-import {faHeart} from '@fortawesome/free-solid-svg-icons'
 import { FiHeart } from "react-icons/fi"
 import {FaHeart} from "react-icons/fa"
 import {FaTrashAlt} from "react-icons/fa"

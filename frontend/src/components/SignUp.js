@@ -66,7 +66,7 @@ const SignUp = (props)=>{
                      <input type="text" onChange={saveInfo} value={newUser.image} name="image" className="register-input" placeholder="Image (url)"/>
                      <select className="signUp-select" value={newUser.country} name="country" onChange={saveInfo} >
                         <option >Country</option>  
-                        {info.map((element, index) => <option key={index} className="country-option">{element.name}</option>)}
+                        {info.map((element, index) => <option  className="country-option">{element.name}</option>)}
                      </select>
                   </form>
                   <div className="register-buttonsContainer">

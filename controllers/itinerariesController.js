@@ -104,7 +104,7 @@ const itinerariesController = {
 
    editComment: async(req, res)=>{
       try {
-         const itineraryId = req.params.id
+         const itineraryId = req.params.itineraryId
          const commentId = req.body.commentId
          const newComment = req.body.newComment
 
@@ -121,7 +121,35 @@ const itinerariesController = {
    },
 
    deleteComment: async(req, res)=>{
+      try {
+         const itineraryId = req.params.itineraryId
+         const commentId = req.body.commentId
 
+         var itineraryModified = await Itinerary.findOneAndUpdate(
+            {_id: itineraryId},
+            {$pull: {comments: {_id: commentId}}}, 
+            {new: true}
+         ) 
+
+
+
+         // var itineraryCommented = await Itinerary.findOneAndUpdate(
+         //    {_id: itineraryId},
+         //    {$push: {comments: {userId, userName: userInfo.name, userImg: userInfo.image, comment}}}, 
+         //    {new: true}
+         // ) 
+         
+         // var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
+
+
+         // var commentToModify = itineraryToModify.comments.find( comment => comment._id = commentId)
+         // commentToModify.comment = newComment
+
+         // console.log(commentToModify.comment)
+      }catch(err){
+         console.log('Caí en el catch y el error es: '+err)
+      }
+      res.json({response: itineraryModified})
    }
 
 
