@@ -513,11 +513,10 @@ body{
 .cityCard-container{
   width: 40vw;
   height: 32vh;
-  /* margin: 15px 15px; */
+  /* margin: 15px 0px; */
+  border-radius: 15px 15px 0px 0px;
   background-position: center;
   background-size: cover;
-  /* border: 1px solid black; */
-  /* cursor: 'pointer' */
 
 }
 
@@ -531,6 +530,7 @@ body{
   display: flex;
   align-items: center;
   justify-content:center;
+  border-radius: 15px 15px 0px 0px;
   /* margin-top: 10%; */
   
 }
@@ -669,6 +669,10 @@ body{
   margin-bottom: 0;
 }
 
+.home {
+  color: white;
+}
+
 .signOut-button:hover {
   cursor:pointer;
   color: black;
@@ -776,13 +780,27 @@ body{
   width: 30px;
   height: 30px;
   /* background: green; */
+  margin-left: 20px;
+}
+
+.heart-icon-disliked {
+  font-size: 30px;
+  color: black;
+  transition: all .3s ease;
+}
+
+.heart-icon-disliked:hover{
+  cursor: pointer;
+  font-size: 33px;
+}
+
+.heart-icon {
+  font-size: 30px;
+  color: red;
 }
 
 .heart-icon:hover{
   cursor: pointer;
-  /* color: red; */
-  background: green;
-  /* width: 20%; */
 }
 
 .hashtags-container{
@@ -820,9 +838,10 @@ body{
 }
 
 .collapse-section {
-  /* height: 50vh; */
-  margin-bottom: 3vh;
+  /* margin-bottom: 4vh; */
   width: 60vw;
+  border-radius: 20px !important;
+  background: green;
   /* background: red; */
 }
 
@@ -843,24 +862,136 @@ body{
   background-size: cover;
 }
 
-.comments-container {
+.comments-general-container {
+  margin-top: 4vh;
   width: 100%;
-  height: 30vh;
+  height: 40vh;
   border: 1px solid black;
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   /* background: red; */
+}
+
+.all-comments-container{
+  /* display: flex;
+  flex-direction: column; */
+  margin: 20px;
+  width: 95%;
+  flex-grow: 1;
+  height: 40%;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 18px;
+  overflow-x: auto; 
+}
+
+.comment {
+  /* display: inline-block; */
+  width: fit-content;
+  /* max-width: 70%; */
+  min-height: 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 0px 0px 20px 0px ;
+}
+
+.x-alineator{
+  display: flex;
+}
+
+.authorComment-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  /* border: 1px solid black; */
+  background-position: center;
+  background-size: cover;
+}
+
+.authorComment-img:hover {
+  cursor: pointer;
+}
+
+.commentContent-container{
+  /* display: inline-block; */
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 10px;
+  align-self: center;
+}
+
+.comment-author {
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+.comment-author:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.comment-content {
+  padding: 0px 10px 10px 40px;
+  margin-bottom: 0px;
+  line-height: 20px;
+}
+
+.modifyCommentIcons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 19px;
+  height: 50px;
+  align-self: center;
+}
+
+.edit-icon:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.input-container {
+  width: 90%;
+  display: flex;
+  height: 42px;
+  margin: 0 auto 20px auto;
+  /* background: green; */
+  align-self: flex-end;
+  border: 3px solid rgb(49, 49, 49);
+  border-radius: 10px;
 }
 
 .comments-input {
   width: 100%;
   align-self: flex-end;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px;
   outline: none;
   text-align: center;
   padding: 5px 0px;
+  /* border: 1px solid black; */
+  border: none;
 }
 
+.paperPlane-icon {
+  display: flex;
+  align-items: flex-end;
+  font-size: 30px;
+  margin-right: 10px;
+  align-self: center;
+  transition: all .2s ease;
+}
+
+.paperPlane-icon:hover {
+  color: rgb(105, 105, 105);
+  cursor: pointer;
+}
 
 .viewLess-button-container {
   display: flex;

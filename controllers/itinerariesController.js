@@ -1,4 +1,5 @@
 const Itinerary = require('../models/Itinerary')
+const User = require('../models/User')
 
 const itinerariesController = {
    getAllItineraries: async (req, res) =>{
@@ -84,7 +85,46 @@ const itinerariesController = {
          console.log('Cai en el catch y el error es: ' + err)      
       }
       res.json({itineraryLikes: itineraryLiked.likes.length, liked: liked})
-   } 
+   },
+
+   addNewComment: async(req, res)=>{
+      try {
+         var {userId, comment, itineraryId } = req.body
+         var userInfo = await User.findOne({_id: userId})
+         var itineraryCommented = await Itinerary.findOneAndUpdate(
+            {_id: itineraryId},
+            {$push: {comments: {userId, userName: userInfo.name, userImg: userInfo.image, comment}}}, 
+            {new: true}
+         ) 
+      }catch (err){
+         console.log('Caí en el catch y el error es: '+err)
+      }
+      res.json({response: itineraryCommented.comments})
+   },
+
+   editComment: async(req, res)=>{
+      try {
+         const itineraryId = req.params.id
+         const commentId = req.body.commentId
+         const newComment = req.body.newComment
+
+
+         var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
+         var commentToModify = itineraryToModify.comments.find( comment => comment._id = commentId)
+         commentToModify.comment = newComment
+
+         console.log(commentToModify.comment)
+      }catch(err){
+         console.log('Caí en el catch y el error es: '+err)
+      }
+      res.json({response: commentToModify})
+   },
+
+   deleteComment: async(req, res)=>{
+
+   }
+
+
 }
 
 module.exports = itinerariesController

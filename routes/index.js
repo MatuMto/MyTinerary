@@ -32,7 +32,14 @@ router.route('/itinerary/:id')
 .put(itinerariesController.editItinerary) //modificar un itinerario especifico
 
 router.route('/likeItinerary')
-.post(itinerariesController.likeItinerary)
+.post(itinerariesController.likeItinerary) //Ver si por ahi podria poner esta ruta como un post en el router de arriba
+
+router.route('/itinerary/comment')
+.post(itinerariesController.addNewComment)
+
+router.route('/itinerary/comment/:id')
+.put(itinerariesController.editComment)
+.delete(itinerariesController.deleteComment)
 
 
 router.route('/user/signUp')

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const itinerariesActions = {
    callSingleCityItinearies: (id)=>{
       return (dispatch, getState)=>{
@@ -9,6 +11,21 @@ const itinerariesActions = {
          })
          .catch(error => console.log(error))
          // console.log(data)
+      }
+   },
+
+   
+   likeItinerary: (IDs) => {
+      return async(dispatch, getState) => {
+         const response = await axios.post('http://localhost:4000/api/likeItinerary', IDs)
+         return response
+      }
+   },
+
+   sendComment: (commentInfo)=>{
+      return async(dispatch, getState)=>{
+         const response = await axios.post('http://localhost:4000/api/itinerary/comment', commentInfo)
+         return response
       }
    }
 }
