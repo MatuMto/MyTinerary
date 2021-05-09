@@ -11,6 +11,7 @@ class Cities extends React.Component{
    componentDidMount(){
       this.props.uploadCities()
       // this.setState({loading: false})
+      // console.log(this.props.)
    }
 
 

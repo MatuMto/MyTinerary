@@ -55,11 +55,12 @@ const itinerariesController = {
 
    deleteItinerary: async (req, res) =>{
       try {
+         console.log('estoy acá')
          const id = req.params.id
          await Itinerary.findOneAndDelete({_id: id})
          var allItineraries = await Itinerary.find()
       } catch (err){
-         console.log('Caí en el catch y el erro es: '+ err)
+         console.log('Caí en el catch del deleteItinerary y el error es: '+ err)
       }
       res.json({respuesta: allItineraries})
    },
@@ -87,8 +88,19 @@ const itinerariesController = {
       res.json({itineraryLikes: itineraryLiked.likes.length, liked: liked})
    },
 
+   getAllComments: async(req, res)=>{
+      try {
+         const itineraryId = req.params.id
+         var itinerarySelected = await Itinerary.findOne({_id:itineraryId})
+      }catch(err){
+         console.log('Caí en el catch y el error es: '+err)
+      }
+      res.json({response: itinerarySelected.comments})
+   },
+
    addNewComment: async(req, res)=>{
       try {
+         console.log(req.body)
          var {userId, comment, itineraryId } = req.body
          var userInfo = await User.findOne({_id: userId})
          var itineraryCommented = await Itinerary.findOneAndUpdate(
@@ -122,34 +134,22 @@ const itinerariesController = {
 
    deleteComment: async(req, res)=>{
       try {
-         const itineraryId = req.params.itineraryId
+         // console.log('entré al controllador deleteComment')
+         // console.log(req.body)
+         const itineraryId = req.body.itineraryId
          const commentId = req.body.commentId
-
+         // console.log(itineraryId)
+         // console.log(commentId)
          var itineraryModified = await Itinerary.findOneAndUpdate(
             {_id: itineraryId},
             {$pull: {comments: {_id: commentId}}}, 
             {new: true}
          ) 
 
-
-
-         // var itineraryCommented = await Itinerary.findOneAndUpdate(
-         //    {_id: itineraryId},
-         //    {$push: {comments: {userId, userName: userInfo.name, userImg: userInfo.image, comment}}}, 
-         //    {new: true}
-         // ) 
-         
-         // var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
-
-
-         // var commentToModify = itineraryToModify.comments.find( comment => comment._id = commentId)
-         // commentToModify.comment = newComment
-
-         // console.log(commentToModify.comment)
       }catch(err){
          console.log('Caí en el catch y el error es: '+err)
       }
-      res.json({response: itineraryModified})
+      res.json({response: itineraryModified.comments})
    }
 
 

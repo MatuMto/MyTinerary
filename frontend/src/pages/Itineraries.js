@@ -1,24 +1,35 @@
 import ItineraryTittle from '../components/ItineraryTittle'
 import React from 'react'
 import itinerariesActions from '../redux/action/itinerariesActions'
+import citiesActions from '../redux/action/citiesActions'
 import {connect} from 'react-redux'
 import ItineraryCard from '../components/ItineraryCard'
 import CitiesFooter from '../components/CitiesFooter'
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
+
 class Itineraries extends React.Component{
    state = {
       selectedCity: {}
    } 
 
-   componentDidMount(){
+   async componentDidMount (){
       const receivedId = this.props.match.params.id
-      this.setState({selectedCity: this.props.allCities.find(city => city._id === receivedId)})
+
+      if(this.props.allCities.length > 0){
+         this.setState({selectedCity: this.props.allCities.find(city => city._id === receivedId)})
+      } else {
+         const response = await this.props.callSingleCity(receivedId)
+         this.setState({selectedCity: response})
+      } 
+      
       this.props.callSingleCityItinearies(receivedId)
    }
    
    render(){
       return (
          <>             
+            {/* {console.log(this.state.selectedCity)} */}
             <ItineraryTittle selectedCity={this.state.selectedCity}/>
             
             {/* Si encontró itinerarios que los muestre */}
@@ -44,7 +55,8 @@ const mapStateToProps = (state)=>{
 }
 
 const mapDispatchToProps = {
-   callSingleCityItinearies: itinerariesActions.callSingleCityItinearies
+   callSingleCityItinearies: itinerariesActions.callSingleCityItinearies,
+   callSingleCity: citiesActions.callSingleCity
 }
 
 

@@ -16,10 +16,10 @@ const CitiesHeader = (props)=>{
    return (
       <>
          <header className="cities-header">
-            <div className="homeAndCities-container" style={{ display: 'flex', alignItems: 'flex-end'}}>
-               <NavLink to="/" style={{color: 'black'}}>Home</NavLink>
-               <div style={{color: 'black'}}>|</div>
-               <NavLink to="/cities" style={{color: 'black'}}>Cities</NavLink>
+            <div className="homeAndCities-container">
+               <NavLink to="/" style={{color: 'white'}}>Home</NavLink>
+               <div style={{color: 'white'}}>|</div>
+               <NavLink to="/cities" style={{color: 'white'}}>Cities</NavLink>
             </div>
 
             <div className="logo-container">

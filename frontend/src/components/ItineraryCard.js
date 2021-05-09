@@ -7,6 +7,7 @@ import { FiHeart } from "react-icons/fi"
 import {FaHeart} from "react-icons/fa"
 import {FaTrashAlt} from "react-icons/fa"
 import {FaRegEdit} from "react-icons/fa"
+import {IoSend} from 'react-icons/io5'
 import activitiesActions from '../redux/action/activitiesActions'
 import itinerariesActions from '../redux/action/itinerariesActions';
 
@@ -19,6 +20,7 @@ const ItineraryCard = (props)=>{
    const [marginBottom, setMarginBottom] = useState(false)
    const [allComments, setAllComments] = useState([])
    const [commentContent, setCommentContent] = useState('')
+   const [isEditingComment, setIsEditingComment] = useState(false)
 
    useEffect(()=>{   
       const itineraryLiked = itineraryData.likes.indexOf(userLogged.userId)
@@ -28,7 +30,7 @@ const ItineraryCard = (props)=>{
    const viewMoreFunction = async()=>{
       setIsOpen(!isOpen)
       const response = await props.getItineraryActivities(itineraryData._id)
-      console.log(response)
+      // console.log(response)
       await setItineraryActivities(response)
       setAllComments(itineraryData.comments)
    }
@@ -51,8 +53,21 @@ const ItineraryCard = (props)=>{
          await setAllComments(response.data.response)
       }
    }
-      
+    
    
+   const deleteSingleComment = async(IDs)=>{
+      // console.log('llego aca')
+      const response = await props.deleteComment(IDs)
+      setAllComments(response)
+      // console.log(response)
+   }
+   
+
+   const editComment = ()=>{
+      setIsEditingComment(!isEditingComment)
+   }
+
+
    return(
       <div className="itineraryCard-container">
          <div className="data-container">
@@ -94,7 +109,14 @@ const ItineraryCard = (props)=>{
                      {/* Activities */}
                      <div className="activities-container">
                         {itineraryActivities.map( activity => {
-                           return <div className="activity" style={{backgroundImage: `url(${activity.img})`}} ></div>
+                           console.log(activity)
+                           return (
+                              <div className="activity" style={{backgroundImage: `url(${activity.img})`}} >
+                                 <div className="activityTittleContainer">
+                                    <h3>{activity.tittle}</h3>   
+                                 </div>
+                              </div>
+                           )
                         } )}
                      </div>
 
@@ -111,13 +133,15 @@ const ItineraryCard = (props)=>{
                                        </div>
                                        <div className="commentContent-container">
                                           <p className="comment-author" ><strong> {comment.userName} </strong></p>
-                                          <p className="comment-content" >{comment.comment}</p>
+                                          <p className={!isEditingComment ? "comment-content" : "displayNone"} >{comment.comment}</p>
+                                          <input type="text" className={isEditingComment ? "editingInput": "displayNone"} />
+                                          <IoSend className={isEditingComment ? "": "displayNone"}/>
                                        </div>
 
                                        {comment.userId === userLogged.userId && (
                                           <div className="modifyCommentIcons-container">
-                                             <FaRegEdit className="edit-icon" />
-                                             <FaTrashAlt className="delete-icon"/>
+                                             <FaRegEdit  onClick={editComment} className="edit-icon" />
+                                             <FaTrashAlt onClick={()=> deleteSingleComment({itineraryId: itineraryData._id, commentId: comment._id})} className="delete-icon"/>
                                           </div>
                                        )}
                                     </div>
@@ -155,8 +179,9 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = {
    getItineraryActivities: activitiesActions.getItineraryActivities,
    likeItinerary: itinerariesActions.likeItinerary,
-   sendComment: itinerariesActions.sendComment
+   sendComment: itinerariesActions.sendComment,
+   deleteComment: itinerariesActions.deleteComment,
+   editComment: itinerariesActions.editComment
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItineraryCard)
-// export default ItineraryCard

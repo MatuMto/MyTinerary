@@ -28,18 +28,21 @@ router.route('/itineraries/:id')
 
 router.route('/itinerary/:id')
 .get(itinerariesController.getSingleItinerary) // obtener un itinerario especifico
-.delete(itinerariesController.deleteItinerary) // borrar un itinerario especifico
+// .delete(itinerariesController.deleteItinerary) // borrar un itinerario especifico
 .put(itinerariesController.editItinerary) //modificar un itinerario especifico
 
 router.route('/likeItinerary')
 .post(itinerariesController.likeItinerary) //Ver si por ahi podria poner esta ruta como un post en el router de arriba
 
-router.route('/itinerary/comment')
+router.route('/itinerary/comments')
 .post(itinerariesController.addNewComment)
-
-router.route('/itinerary/comment/:id')
-.put(itinerariesController.editComment)
 .delete(itinerariesController.deleteComment)
+
+router.route('/itinerary/comments/:id')
+.get(itinerariesController.getAllComments)
+
+router.route('/itinerary/comments/:id')
+.put(itinerariesController.editComment)
 
 
 router.route('/user/signUp')

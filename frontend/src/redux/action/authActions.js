@@ -56,9 +56,10 @@ const authActions = {
                token: usuarioLS.token
             }})
          } catch(err){
-            if(err.response.status === 401){
-               alert('Invalid token -.-')
-            }
+            // console.log('caí en el catch')
+            // if(err.response.status === 401){
+            //    alert('Invalid token -.-')
+            // }
          }
       }
    }

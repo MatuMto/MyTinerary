@@ -6,7 +6,7 @@ const itinerariesActions = {
          fetch('http://localhost:4000/api/itineraries/' + id)
          .then(response => response.json())
          .then(data => {
-            console.log(data)
+            // console.log(data)
             dispatch({type: 'CALL_SELECTED_CITY_ITINERARIES', payload: data.respuesta})
          })
          .catch(error => console.log(error))
@@ -14,7 +14,6 @@ const itinerariesActions = {
       }
    },
 
-   
    likeItinerary: (IDs) => {
       return async(dispatch, getState) => {
          const response = await axios.post('http://localhost:4000/api/likeItinerary', IDs)
@@ -24,10 +23,30 @@ const itinerariesActions = {
 
    sendComment: (commentInfo)=>{
       return async(dispatch, getState)=>{
-         const response = await axios.post('http://localhost:4000/api/itinerary/comment', commentInfo)
+         console.log(commentInfo)
+         console.log('llego al action de send comment')
+         const response = await axios.post('http://localhost:4000/api/itinerary/comments', commentInfo)
          return response
       }
+   },
+
+   deleteComment: (IDs)=> {
+      return async(dispatch, getState)=>{
+         // console.log(itineraryId)
+         // console.log(commentId)
+         // console.log(IDs)
+         const response = await axios.delete('http://localhost:4000/api/itinerary/comments', {data: IDs}) 
+         console.log(response.data.response)
+         return response.data.response
+      }
+   },
+
+   editComment: ()=> {
+      return (dispatch, getState)=>{
+
+      }
    }
+
 }
 
 export default itinerariesActions 
