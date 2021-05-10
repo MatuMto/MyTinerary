@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import ItineraryCard from '../components/ItineraryCard'
 import CitiesFooter from '../components/CitiesFooter'
 import {NavLink} from 'react-router-dom'
-import axios from 'axios'
 
 class Itineraries extends React.Component{
    state = {

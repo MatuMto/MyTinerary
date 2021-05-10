@@ -1,5 +1,4 @@
-import { Collapse, Button, Card} from 'reactstrap';
-import {NavLink} from 'react-router-dom'
+import { Collapse,  Card} from 'reactstrap';
 import {useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -37,7 +36,7 @@ const ItineraryCard = (props)=>{
          const itineraryLiked = itineraryData.likes.indexOf(userLogged.userId)
          setLiked(itineraryLiked !== -1 && true)
       }
-   }, [])
+   }, [])   
 
    const viewMoreFunction = async()=>{
       setIsOpen(!isOpen)

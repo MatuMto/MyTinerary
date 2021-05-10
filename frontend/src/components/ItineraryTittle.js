@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom"
 import CitiesHeader from "../components/CitiesHeader"
 import {FaArrowAltCircleDown} from 'react-icons/fa'
 
