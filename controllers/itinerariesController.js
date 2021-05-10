@@ -122,17 +122,18 @@ const itinerariesController = {
          const newComment = req.body.newComment
 
          var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
-         var commentToModify = itineraryToModify.comments.find(comment => comment._id = commentId)         
-
-         var itineraryModified = await Itinerary.findOneAndUpdate(
-            {_id: itineraryId, comments: commentToModify},
-            {$set: {"comments.$":  {...commentToModify, comment: newComment}}},
+         var commentToModify = itineraryToModify.comments.find(comment => comment._id = commentId)       
+         
+         var itineraryModified = await Itinerary.findOneAndUpdate( 
+            {_id: itineraryId, "comments._id": commentId},  
+            {$set: {"comments.$.comment": newComment}},            
             {new: true}
          )      
+
       }catch(err){
          console.log('Caí en el catch y el error es: ' + err)
       }
-      res.json({response: itineraryModified})
+      res.json({response: itineraryModified.comments})
    },
 
    deleteComment: async(req, res)=>{

@@ -69,9 +69,6 @@ const ItineraryCard = (props)=>{
       const response = await props.deleteComment(IDs)
       setAllComments(response)
    }
-   // setAllComments(props.deleteComment(IDs))
-   //  var response = props.deleteComment(IDs)
-   //  setAllComments(response)
    
    const deleteSingleComment = async(IDs)=>{
       Swal.fire({
@@ -85,19 +82,14 @@ const ItineraryCard = (props)=>{
        }).then((result) => {
           console.log(result)
           if (result.isConfirmed) {
-            //  var response = props.deleteComment(IDs)
             deleteSingleComment_(IDs)
-            // console.log(allComments)
-            // setAllComments(props.deleteComment(IDs))
             Swal.fire(
                 'Deleted!',
                 'Your comment has been deleted',
                 'success'
                 )
-               // setAllComments(response)
             }
       })
-      console.log(allComments)
    }
       
 
@@ -157,21 +149,29 @@ const ItineraryCard = (props)=>{
                   <Card className="collapse-section" style={{marginBottom: `${marginBottom ? '8vh' : '4vh'}`}}>
                   
                      {/* Activities */}
-                     <div className="activities-container">
-                        {itineraryActivities.map( activity => {
-                           return (
-                              <div className="activity" style={{backgroundImage: `url(${activity.img})`}} >
-                                 <div className="activityTittleContainer">
-                                    <h3>{activity.tittle}</h3>   
+                     <div className="activities-section-container">
+                        <div className="actitiesTittle-container">
+                           <h1 className="activitiesTittle">Activities</h1>
+                        </div>
+                        <div className="activities-container">
+                           {itineraryActivities.map( activity => {
+                              return (
+                                 <div className="activity" style={{backgroundImage: `url(${activity.img})`}} >
+                                    <div className="activityTittleContainer">
+                                       <h3 className="activityTittle"> {activity.tittle}</h3>   
+                                    </div>
                                  </div>
-                              </div>
-                           )
-                        } )}
+                              )
+                           } )}
+                        </div>
                      </div>
 
                      {/* Comments */}
 
                      <div className="comments-general-container">
+                        <div className="commentsTittle-container">
+                           <h1 className="commentsTittle">Comments</h1>
+                        </div>
                         <div className="all-comments-container">
                            {console.log(allComments)}
                            {allComments.map((comment)=>{

@@ -11,6 +11,8 @@ body{
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap'); */
 
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:wght@300&display=swap'); */
@@ -848,21 +850,71 @@ body{
   /* background: red; */
 }
 
-.activities-container {
+.activities-section-container {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
   width: 100%;
   height: 30vh;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 20px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
 }
 
+.actitiesTittle-container {
+  width: 100%;
+  background: rgb(160, 218, 113);
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.activitiesTittle {
+  font-size: 30px;
+}
+
+.activities-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+  border-radius: 0px 0px 20px 20px;
+  background: rgb(0, 132, 255);
+  flex-grow: 1;
+  display: flex;
+}
+
 .activity {
+  border-radius: 5px;
   width: 18vw;
   height: 18vh;
   background-position: center;
   background-size: cover;
+  text-align: center;
+}
+
+.activityTittleContainer {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px 5px 0px 0px;
+}
+
+.activityTittle {
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.commentsTittle-container{
+  background: lightblue;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.commentsTittle {
+  font-size: 30px;
+  /* border-radius: 20px 20px 0px 0px; */
 }
 
 .comments-general-container {
@@ -874,6 +926,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: rgb(224, 231, 255);
   /* background: red; */
 }
 
