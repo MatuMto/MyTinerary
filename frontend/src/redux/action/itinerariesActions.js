@@ -23,6 +23,8 @@ const itinerariesActions = {
 
    sendComment: (commentInfo)=>{
       return async(dispatch, getState)=>{
+         console.log(commentInfo)
+         // console.log('Se mandó el comentario con la info: ' + commentInfo)
          const response = await axios.post('http://localhost:4000/api/itinerary/comments', commentInfo)
          console.log('response from back is: ' + response)
          return response

@@ -44,6 +44,8 @@ router.route('/itinerary/comments/:id')
 
 // router.route('/itinerary/comments/:id')
 
+router.route('/users')
+.get(userControllers.getAllUsers)
 
 router.route('/user/signUp')
 .post(validator, userControllers.registerNewUser)

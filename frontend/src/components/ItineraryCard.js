@@ -20,7 +20,7 @@ toast.configure() // para la tostada de notificaciones
 
 const ItineraryCard = (props)=>{
    const {itineraryData, userLogged} = props
-   
+
    const [totalLikes, setTotalLikes] = useState(itineraryData.likes.length)
    const [liked, setLiked] = useState(false)
    const [itineraryActivities, setItineraryActivities] = useState([])
@@ -54,8 +54,6 @@ const ItineraryCard = (props)=>{
       const response = await props.likeItinerary({userId: userLogged.userId, itineraryId: itineraryData._id})
       console.log(response.data)
    }
-
-
 
    const sendComment = async()=>{
       if(commentContent !== ''){
@@ -189,7 +187,7 @@ const ItineraryCard = (props)=>{
                                              ? !isEditingComment ? "comment-author" : "displayNone"
                                              : "comment-author" 
                                           : "comment-author"}>
-                                             <strong> {comment.userName} </strong>
+                                             <strong> {comment.userName}</strong>
                                           </p>
                                           
                                           <p className={ userLogged ? comment.userId === userLogged.userId

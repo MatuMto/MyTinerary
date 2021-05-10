@@ -3,6 +3,12 @@ const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const userControllers = {
+
+   getAllUsers: async(req, res)=>{
+      const allUsers = await User.find({})
+      res.json({response: allUsers}) 
+   },
+
    registerNewUser: async (req, res)=>{
       const {name, lastName, mail, password, image, country} = req.body
       const existingMail = await User.findOne({mail}) //verifico que no esté registrado el mail que el usuario puso 
@@ -33,7 +39,7 @@ const userControllers = {
       // Si está todo bien, error es null, si algo falló entonces response es null xD 
       res.json({
          success: !error ? true : false, 
-         response: !existingMail && {token: response, image: userToSave.image, name: userToSave.name},
+         response: !existingMail && {token: response, image: userToSave.image, name: userToSave.name, userId: userToSave._id},
          error: error
       })   
    },

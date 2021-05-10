@@ -29,8 +29,7 @@ class Itineraries extends React.Component{
    render(){
       return (
          <>             
-            {/* {console.log(this.state.selectedCity)} */}
-            <ItineraryTittle selectedCity={this.state.selectedCity}/>
+            <ItineraryTittle  selectedCity={this.state.selectedCity}/>
             
             {/* Si encontró itinerarios que los muestre */}
             {this.props.selectedCityItineraries.length > 0

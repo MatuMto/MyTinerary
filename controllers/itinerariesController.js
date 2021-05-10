@@ -101,6 +101,7 @@ const itinerariesController = {
 
    addNewComment: async(req, res)=>{
       try {
+         console.log('llegué al controlador de addComment')
          console.log(req.body)
          var {userId, comment, itineraryId } = req.body
          var userInfo = await User.findOne({_id: userId})
