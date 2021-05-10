@@ -41,9 +41,12 @@ const itinerariesActions = {
       }
    },
 
-   editComment: ()=> {
-      return (dispatch, getState)=>{
-
+   editComment: (itineraryId, commentInfo)=> {
+      return async(dispatch, getState)=>{
+         // console.log(itineraryId)
+         // console.log(commentInfo)
+         const response = await axios.put('http://localhost:4000/api/itinerary/comments/' + itineraryId, commentInfo )
+         console.log(response.data.response)
       }
    }
 

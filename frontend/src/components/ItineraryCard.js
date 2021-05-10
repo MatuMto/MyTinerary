@@ -1,4 +1,5 @@
-import { Collapse, Button, Card } from 'reactstrap';
+import { Collapse, Button, Card} from 'reactstrap';
+import {NavLink} from 'react-router-dom'
 import {useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -10,6 +11,12 @@ import {FaRegEdit} from "react-icons/fa"
 import {IoSend} from 'react-icons/io5'
 import activitiesActions from '../redux/action/activitiesActions'
 import itinerariesActions from '../redux/action/itinerariesActions';
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Swal from 'sweetalert2'
+
+
+toast.configure() //si no anda pasarlo a app
 
 const ItineraryCard = (props)=>{
    const {itineraryData, userLogged} = props
@@ -21,10 +28,14 @@ const ItineraryCard = (props)=>{
    const [allComments, setAllComments] = useState([])
    const [commentContent, setCommentContent] = useState('')
    const [isEditingComment, setIsEditingComment] = useState(false)
+   const [editedComment, setEditedComment] = useState('')
 
    useEffect(()=>{   
-      const itineraryLiked = itineraryData.likes.indexOf(userLogged.userId)
-      setLiked(itineraryLiked !== -1 && true)
+      // Verifico si el usuario ya likió 
+      if(userLogged){
+         const itineraryLiked = itineraryData.likes.indexOf(userLogged.userId)
+         setLiked(itineraryLiked !== -1 && true)
+      }
    }, [])
 
    const viewMoreFunction = async()=>{
@@ -54,19 +65,56 @@ const ItineraryCard = (props)=>{
       }
    }
     
-   
-   const deleteSingleComment = async(IDs)=>{
-      // console.log('llego aca')
+   const deleteSingleComment_ = async(IDs)=>{
       const response = await props.deleteComment(IDs)
       setAllComments(response)
-      // console.log(response)
    }
+   // setAllComments(props.deleteComment(IDs))
+   //  var response = props.deleteComment(IDs)
+   //  setAllComments(response)
    
+   const deleteSingleComment = async(IDs)=>{
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You are going to delete your comment!",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+       }).then((result) => {
+          console.log(result)
+          if (result.isConfirmed) {
+            //  var response = props.deleteComment(IDs)
+            deleteSingleComment_(IDs)
+            // console.log(allComments)
+            // setAllComments(props.deleteComment(IDs))
+            Swal.fire(
+                'Deleted!',
+                'Your comment has been deleted',
+                'success'
+                )
+               // setAllComments(response)
+            }
+      })
+      console.log(allComments)
+   }
+      
 
-   const editComment = ()=>{
+   const startEditingComment = (value)=>{
       setIsEditingComment(!isEditingComment)
+      setEditedComment(value)
    }
 
+   const sendEditedComment = (itineraryId, commentInfo)=>{
+      setIsEditingComment(!isEditingComment)
+      const response = props.editComment(itineraryId, commentInfo)
+      console.log(response)
+   }
+
+   const notify = (error)=>{
+      toast.error(`Must be logged to ${error}!`)
+   }
 
    return(
       <div className="itineraryCard-container">
@@ -86,12 +134,14 @@ const ItineraryCard = (props)=>{
                   {new Array(itineraryData.duration).fill(0).map(element => <div key={element._id}> <img src="/icons/clock.png" alt="clock" width="35px" /> </div>)}
                </div>
 
-               <div className="likes-container">
-                  <div className="heart-icon-container" onClick={likeItinerary} >                  
-                     <FiHeart className={ liked ? "displayNone" : "heart-icon-disliked"} />
-                     <FaHeart className={ liked ? "heart-icon" : "displayNone"} />
+               <div className="likes-container" style={{display: 'flex', flexDirection: 'column'}}>
+                  <div style={{display: 'flex', alignItems: 'center'}}>
+                     <div className="heart-icon-container" onClick={userLogged ? likeItinerary : () =>notify('Like')} >                  
+                        <FiHeart className={ liked ? "displayNone" : "heart-icon-disliked"} />
+                        <FaHeart className={ liked ? "heart-icon" : "displayNone"} />
+                     </div>
+                     <p style={{margin:"0px 10px 0px 10px", fontSize: "30px"}}>{totalLikes}</p>
                   </div>
-                  <p style={{margin:"0px 10px 0px 10px", fontSize: "30px"}}>{totalLikes}</p>
                </div>
             </div>
 
@@ -109,7 +159,6 @@ const ItineraryCard = (props)=>{
                      {/* Activities */}
                      <div className="activities-container">
                         {itineraryActivities.map( activity => {
-                           console.log(activity)
                            return (
                               <div className="activity" style={{backgroundImage: `url(${activity.img})`}} >
                                  <div className="activityTittleContainer">
@@ -124,6 +173,7 @@ const ItineraryCard = (props)=>{
 
                      <div className="comments-general-container">
                         <div className="all-comments-container">
+                           {console.log(allComments)}
                            {allComments.map((comment)=>{
                               return (
                                  <div className="comment" >
@@ -132,16 +182,34 @@ const ItineraryCard = (props)=>{
                                           <div className="authorComment-img" style={{backgroundImage: `url(${comment.userImg})`}} ></div>
                                        </div>
                                        <div className="commentContent-container">
-                                          <p className="comment-author" ><strong> {comment.userName} </strong></p>
-                                          <p className={!isEditingComment ? "comment-content" : "displayNone"} >{comment.comment}</p>
-                                          <input type="text" className={isEditingComment ? "editingInput": "displayNone"} />
-                                          <IoSend className={isEditingComment ? "": "displayNone"}/>
+                                          
+                                          <p className={userLogged ? comment.userId === userLogged.userId 
+                                             ? !isEditingComment ? "comment-author" : "displayNone"
+                                             : "comment-author" 
+                                          : "comment-author"}>
+                                             <strong> {comment.userName} </strong>
+                                          </p>
+                                          
+                                          <p className={ userLogged ? comment.userId === userLogged.userId
+                                                ? !isEditingComment ? "comment-content" : "displayNone"
+                                                : "comment-content"
+                                          : "comment-content"
+                                          } >{comment.comment}</p>
+                                          
+                                          {userLogged && comment.userId === userLogged.userId && (
+                                             <>
+                                                <input type="text" value={editedComment} onChange={(e)=> setEditedComment(e.target.value)}   className={isEditingComment ? "editingInput": "displayNone"} />
+                                                <IoSend className={isEditingComment ? "": "displayNone"} 
+                                                onClick={()=>
+                                                 sendEditedComment(itineraryData._id, {commentId: comment._id, newComment: editedComment})} />
+                                             </>
+                                          )}
                                        </div>
 
-                                       {comment.userId === userLogged.userId && (
+                                       {userLogged && comment.userId === userLogged.userId && (
                                           <div className="modifyCommentIcons-container">
-                                             <FaRegEdit  onClick={editComment} className="edit-icon" />
-                                             <FaTrashAlt onClick={()=> deleteSingleComment({itineraryId: itineraryData._id, commentId: comment._id})} className="delete-icon"/>
+                                             <FaRegEdit  onClick={()=>startEditingComment(comment.comment)} className={!isEditingComment ? "edit-icon" : "displayNone"} />
+                                             <FaTrashAlt onClick={()=> deleteSingleComment({itineraryId: itineraryData._id, commentId: comment._id})} className={!isEditingComment ? "delete-icon" : "displayNone"}/>
                                           </div>
                                        )}
                                     </div>
@@ -152,7 +220,7 @@ const ItineraryCard = (props)=>{
                         <div className="input-container">
                            <input type="text" value={commentContent} onChange={(e)=> setCommentContent(e.target.value)} className="comments-input" placeholder="Leave your comment!" />
                           
-                           <div className="paperPlane-icon" onClick={sendComment}>
+                           <div className="paperPlane-icon" onClick={userLogged ? sendComment : ()=>notify('Comment')}>
                               <FontAwesomeIcon icon={faPaperPlane} />
                            </div>
                         </div>

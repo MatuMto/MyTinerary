@@ -40,9 +40,9 @@ router.route('/itinerary/comments')
 
 router.route('/itinerary/comments/:id')
 .get(itinerariesController.getAllComments)
-
-router.route('/itinerary/comments/:id')
 .put(itinerariesController.editComment)
+
+// router.route('/itinerary/comments/:id')
 
 
 router.route('/user/signUp')

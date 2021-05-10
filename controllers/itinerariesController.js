@@ -45,6 +45,7 @@ const itinerariesController = {
 
    editItinerary: async (req, res) =>{
       try {
+         console.log('estoy laburando con editItinerary')
          const id = req.params.id
          var modifiedItinerary = await Itinerary.findOneAndUpdate({_id:id},{...req.body}, {new: true}) // el new true va xq sino no me devuelve el objeto modif.
       } catch (err){
@@ -116,20 +117,22 @@ const itinerariesController = {
 
    editComment: async(req, res)=>{
       try {
-         const itineraryId = req.params.itineraryId
+         const itineraryId = req.params.id
          const commentId = req.body.commentId
          const newComment = req.body.newComment
 
-
          var itineraryToModify = await Itinerary.findOne({_id: itineraryId})
-         var commentToModify = itineraryToModify.comments.find( comment => comment._id = commentId)
-         commentToModify.comment = newComment
+         var commentToModify = itineraryToModify.comments.find(comment => comment._id = commentId)         
 
-         console.log(commentToModify.comment)
+         var itineraryModified = await Itinerary.findOneAndUpdate(
+            {_id: itineraryId, comments: commentToModify},
+            {$set: {"comments.$":  {...commentToModify, comment: newComment}}},
+            {new: true}
+         )      
       }catch(err){
-         console.log('Caí en el catch y el error es: '+err)
+         console.log('Caí en el catch y el error es: ' + err)
       }
-      res.json({response: commentToModify})
+      res.json({response: itineraryModified})
    },
 
    deleteComment: async(req, res)=>{
