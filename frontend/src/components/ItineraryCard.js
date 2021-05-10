@@ -41,7 +41,6 @@ const ItineraryCard = (props)=>{
    const viewMoreFunction = async()=>{
       setIsOpen(!isOpen)
       const response = await props.getItineraryActivities(itineraryData._id)
-      // console.log(response)
       await setItineraryActivities(response)
       setAllComments(itineraryData.comments)
    }
@@ -49,15 +48,13 @@ const ItineraryCard = (props)=>{
    const likeItinerary = async()=>{  
       setLiked(!liked)      
       setTotalLikes(!liked ? totalLikes + 1 : totalLikes - 1)
-
       const response = await props.likeItinerary({userId: userLogged.userId, itineraryId: itineraryData._id})
-      console.log(response.data)
    }
 
    const sendComment = async()=>{
       if(commentContent !== ''){
          setCommentContent('') // para resetear el input
-         commentContent && console.log('Se mandó el comentario que dice: ' + commentContent)
+         // commentContent && console.log('Se mandó el comentario que dice: ' + commentContent)
          const response = await props.sendComment({ userId: userLogged.userId, comment: commentContent, itineraryId: itineraryData._id }) 
          await setAllComments(response.data.response)
       }
@@ -77,7 +74,7 @@ const ItineraryCard = (props)=>{
          confirmButtonColor: '#3085d6',
          cancelButtonColor: '#d33',
          confirmButtonText: 'Yes, delete it!'
-       }).then((result) => {
+      }).then((result) => {
           console.log(result)
           if (result.isConfirmed) {
             deleteSingleComment_(IDs)
@@ -127,7 +124,7 @@ const ItineraryCard = (props)=>{
 
                <div className="likes-container" style={{display: 'flex', flexDirection: 'column'}}>
                   <div style={{display: 'flex', alignItems: 'center'}}>
-                     <div className="heart-icon-container" onClick={userLogged ? likeItinerary : () =>notify('Like')} >                  
+                     <div className="heart-icon-container" onClick={userLogged ? likeItinerary : () =>notify('Like')}>                  
                         <FiHeart className={ liked ? "displayNone" : "heart-icon-disliked"} />
                         <FaHeart className={ liked ? "heart-icon" : "displayNone"} />
                      </div>
