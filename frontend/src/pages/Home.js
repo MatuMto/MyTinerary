@@ -6,6 +6,7 @@ import ResponsiveCarrousel from '../components/ResponsiveCarrousel'
 import CarrouselData from '../components/CarrouselData'
 import axios from 'axios'
 import LoadingAnimation from '../components/LoadingAnimation'
+import CitiesFooter from '../components/CitiesFooter'
 
 class Home extends React.Component {
 
@@ -28,7 +29,8 @@ class Home extends React.Component {
             <HomeMain/>
             <Carrousel carrouselData={CarrouselData}/>
             <ResponsiveCarrousel carrouselData={CarrouselData} />
-            <Footer/>
+            <CitiesFooter/>
+            {/* <Footer/> */}
          </div>
       )
    }

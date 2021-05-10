@@ -98,9 +98,10 @@ const ItineraryCard = (props)=>{
       setEditedComment(value)
    }
 
-   const sendEditedComment = (itineraryId, commentInfo)=>{
+   const sendEditedComment = async(itineraryId, commentInfo)=>{
       setIsEditingComment(!isEditingComment)
-      const response = props.editComment(itineraryId, commentInfo)
+      const response = await props.editComment(itineraryId, commentInfo)
+      setAllComments(response)
       console.log(response)
    }
 
@@ -143,8 +144,9 @@ const ItineraryCard = (props)=>{
 
               
               
-              
-               <button onClick={viewMoreFunction} className={ isOpen ? "displayNone" : "viewMore-button"} >View More</button>
+              <div className="viewMoreButton-container">
+                  <button onClick={viewMoreFunction} className={ isOpen ? "displayNone" : "viewMore-button"} >View More</button>
+              </div>
                <Collapse isOpen={isOpen}>
                   <Card className="collapse-section" style={{marginBottom: `${marginBottom ? '8vh' : '4vh'}`}}>
                   
@@ -173,7 +175,6 @@ const ItineraryCard = (props)=>{
                            <h1 className="commentsTittle">Comments</h1>
                         </div>
                         <div className="all-comments-container">
-                           {console.log(allComments)}
                            {allComments.map((comment)=>{
                               return (
                                  <div className="comment" >
@@ -199,7 +200,7 @@ const ItineraryCard = (props)=>{
                                           {userLogged && comment.userId === userLogged.userId && (
                                              <>
                                                 <input type="text" value={editedComment} onChange={(e)=> setEditedComment(e.target.value)}   className={isEditingComment ? "editingInput": "displayNone"} />
-                                                <IoSend className={isEditingComment ? "": "displayNone"} 
+                                                <IoSend className={isEditingComment ? "sendEditedIcon": "displayNone"} 
                                                 onClick={()=>
                                                  sendEditedComment(itineraryData._id, {commentId: comment._id, newComment: editedComment})} />
                                              </>

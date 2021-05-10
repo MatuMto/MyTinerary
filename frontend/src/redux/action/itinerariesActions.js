@@ -47,6 +47,7 @@ const itinerariesActions = {
          // console.log(commentInfo)
          const response = await axios.put('http://localhost:4000/api/itinerary/comments/' + itineraryId, commentInfo )
          console.log(response.data.response)
+         return response.data.response
       }
    }
 
