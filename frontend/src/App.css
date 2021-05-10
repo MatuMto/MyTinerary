@@ -738,6 +738,7 @@ body{
 
 .itinerary-tittle{
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .author-img {
@@ -1130,9 +1131,17 @@ body{
   margin-top: 20px;
 }
 
+
 .down-arrow {
   font-size: 70px;
   margin-bottom: 20px;
+  transition: all .2s ease;
+}
+
+.down-arrow:hover {
+  cursor: pointer;
+  font-size: 75px;
+  margin-bottom: 15px;
 }
 
 .takeALook {
@@ -1140,8 +1149,12 @@ body{
   color: white;
   padding: 20px;
   border-radius: 20px;
+  text-align: center;
 }
 
+.takeALook:hover {
+  cursor: pointer;
+}
 
 
 .viewLess-button-container {
@@ -1514,7 +1527,7 @@ body{
   }
 
   .collapse-section{
-    height: 20vh;
+    /* height: 20vh; */
   }
   .underConstruction-img{
     width: 40vw;
@@ -1655,12 +1668,26 @@ body{
     min-width: 0px;
   }
 
-
 }
 
 
-
-
+@media (max-width: 800px) { 
+  .activities-container {
+    flex-direction: column;
+    width: 70vw;
+  }
+  
+  .activities-section-container {
+    height: 100vh;
+  }
+  
+  .activity {
+    width: 90%;
+    height: 29vh;
+  }
+}
+  
+  
 
 
 
@@ -1759,6 +1786,12 @@ body{
   .register-button {
     margin-top: 10px;
   }
+  
+
+  
+
+
+
 }
 
 

@@ -16,10 +16,11 @@ import 'react-toastify/dist/ReactToastify.css'
 import Swal from 'sweetalert2'
 
 
-toast.configure() //si no anda pasarlo a app
+toast.configure() // para la tostada de notificaciones
 
 const ItineraryCard = (props)=>{
    const {itineraryData, userLogged} = props
+   
    const [totalLikes, setTotalLikes] = useState(itineraryData.likes.length)
    const [liked, setLiked] = useState(false)
    const [itineraryActivities, setItineraryActivities] = useState([])
@@ -177,7 +178,7 @@ const ItineraryCard = (props)=>{
                         <div className="all-comments-container">
                            {allComments.map((comment)=>{
                               return (
-                                 <div className="comment" >
+                                 <div className="comment" key={comment._id}>
                                     <div className="x-alineator">
                                        <div>
                                           <div className="authorComment-img" style={{backgroundImage: `url(${comment.userImg})`}} ></div>

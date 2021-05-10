@@ -23,18 +23,14 @@ const itinerariesActions = {
 
    sendComment: (commentInfo)=>{
       return async(dispatch, getState)=>{
-         console.log(commentInfo)
-         console.log('llego al action de send comment')
          const response = await axios.post('http://localhost:4000/api/itinerary/comments', commentInfo)
+         console.log('response from back is: ' + response)
          return response
       }
    },
 
    deleteComment: (IDs)=> {
       return async(dispatch, getState)=>{
-         // console.log(itineraryId)
-         // console.log(commentId)
-         // console.log(IDs)
          const response = await axios.delete('http://localhost:4000/api/itinerary/comments', {data: IDs}) 
          console.log(response.data.response)
          return response.data.response
@@ -43,8 +39,6 @@ const itinerariesActions = {
 
    editComment: (itineraryId, commentInfo)=> {
       return async(dispatch, getState)=>{
-         // console.log(itineraryId)
-         // console.log(commentInfo)
          const response = await axios.put('http://localhost:4000/api/itinerary/comments/' + itineraryId, commentInfo )
          console.log(response.data.response)
          return response.data.response
