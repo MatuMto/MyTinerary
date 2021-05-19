@@ -6,6 +6,7 @@ require('./config/database') // no es necesario guardarlo en una variable porq s
 require('dotenv').config()
 const router = require('./routes/index')
 require('./config/passport')
+const path = require('path')
 
 // Middlewers - funciones que se ejecutan antes de llegar a la ruta
 app.use(cors())
@@ -14,6 +15,13 @@ app.use(express.json())
 
 //cuando hagan un pedido de x tipo a /api, ejecuta el router - que es la constante definida en routes/index.js
 app.use('/api', router)
+
+if(process.env.PRODUCTION === 'production'){
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) =>{
+        res.sendFile(path.join(__dirname+'/client/build/index.html'))
+    })
+}
 
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT 
