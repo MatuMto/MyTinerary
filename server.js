@@ -15,5 +15,7 @@ app.use(express.json())
 //cuando hagan un pedido de x tipo a /api, ejecuta el router - que es la constante definida en routes/index.js
 app.use('/api', router)
 
+const host = process.env.HOST || '0.0.0.0'
+const port = process.env.PORT 
 
-app.listen(4040, () => console.log("estoy escuchando en el puerto 4040"))
+app.listen(port, host, () => console.log("estoy escuchando en el puerto " + port + " on " + host))
