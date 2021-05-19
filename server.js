@@ -16,4 +16,4 @@ app.use(express.json())
 app.use('/api', router)
 
 
-app.listen(4000, () => console.log("estoy escuchando en el puerto 4000"))
+app.listen(4040, () => console.log("estoy escuchando en el puerto 4040"))

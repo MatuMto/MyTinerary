@@ -1766,9 +1766,6 @@ body{
     flex-wrap: wrap;
   }
   
-  /* .collapse-section{
-    height: 20vh;
-  } */
   .underConstruction-img{
     /* height: 30vh; */
     width: 50vw;
@@ -1786,12 +1783,6 @@ body{
   .register-button {
     margin-top: 10px;
   }
-  
-
-  
-
-
-
 }
 
 

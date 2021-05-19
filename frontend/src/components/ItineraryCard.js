@@ -65,6 +65,7 @@ const ItineraryCard = (props)=>{
       setAllComments(response)
    }
    
+
    const deleteSingleComment = async(IDs)=>{
       Swal.fire({
          title: 'Are you sure?',
@@ -179,6 +180,8 @@ const ItineraryCard = (props)=>{
                                        </div>
                                        <div className="commentContent-container">
                                           
+                                       
+                                       
                                           <p className={userLogged ? comment.userId === userLogged.userId 
                                              ? !isEditingComment ? "comment-author" : "displayNone"
                                              : "comment-author" 

@@ -4,7 +4,7 @@ import axios from 'axios'
 const citiesActions = {
    uploadCities: ()=>{
       return (dispatch, getState)=>{
-         fetch('http://localhost:4000/api/cities')
+         fetch('http://localhost:4040/api/cities')
          .then(response => response.json())
          .then(data => dispatch({type: 'CARGAR_CITIES', payload: data.respuesta}))
          .catch(error => console.log(error))
@@ -22,7 +22,7 @@ const citiesActions = {
 
    callSingleCity: (id)=>{
       return async(dispatch, getState)=>{
-         const response = await axios.get('http://localhost:4000/api/city/'+ id)
+         const response = await axios.get('http://localhost:4040/api/city/'+ id)
          // console.log(response.data.respuesta)
          return response.data.respuesta
          // dispatch({type: 'GET_SINGLE_CITY', payload: response })
