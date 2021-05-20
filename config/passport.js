@@ -1,8 +1,8 @@
 const passport = require('passport')
+require('dotenv').config()
 const jwtStrategy = require('passport-jwt').Strategy //El poli Ccn que estrategia va a leer el token
 const extractJwt = require('passport-jwt').ExtractJwt //El poli de donde va a sacar el token
 const User = require('../models/User')
-require('dotenv').config()
 
 module.exports = passport.use(new jwtStrategy({
     jwtFromRequest: extractJwt.fromAuthHeaderAsBearerToken(),
