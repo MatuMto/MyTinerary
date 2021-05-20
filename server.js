@@ -16,7 +16,7 @@ app.use(express.json())
 //cuando hagan un pedido de x tipo a /api, ejecuta el router - que es la constante definida en routes/index.js
 app.use('/api', router)
 
-if(process.env.PRODUCTION === 'production'){
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'))
     app.get('*', (req, res) =>{
         res.sendFile(path.join(__dirname+'/client/build/index.html'))
