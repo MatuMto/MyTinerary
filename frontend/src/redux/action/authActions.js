@@ -4,7 +4,7 @@ const authActions = {
 
    registerUser: (userToSave)=>{
       return async(dispatch, getState) => {
-         const response = await axios.post('http://localhost:4000/api/user/signUp', userToSave)
+         const response = await axios.post('https://mytinerarylorenzo.herokuapp.com/api/user/signUp', userToSave)
          console.log(response)
          if(!response.data.success){
             console.log(response)
@@ -23,7 +23,7 @@ const authActions = {
    
    logUser: (incomingUser)=>{
       return async(dispatch, getState)=>{
-         const response = await axios.post('http://localhost:4000/api/user/signIn', incomingUser)
+         const response = await axios.post('https://mytinerarylorenzo.herokuapp.com/api/user/signIn', incomingUser)
          console.log(response.data)
          if(!response.data.success){
             Swal.fire({
@@ -46,7 +46,7 @@ const authActions = {
    forcedLoginByLS: (usuarioLS)=>{
       return async(dispatch, getState)=>{
          try {
-            const response = await axios.get('http://localhost:4000/api/user/loginLS', {
+            const response = await axios.get('https://mytinerarylorenzo.herokuapp.com/api/user/loginLS', {
                headers:{
                   'Authorization': 'Bearer '+usuarioLS.token
                }

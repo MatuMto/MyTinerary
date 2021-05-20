@@ -3,7 +3,7 @@ import axios from 'axios'
 const itinerariesActions = {
    callSingleCityItinearies: (id)=>{
       return (dispatch, getState)=>{
-         fetch('http://localhost:4000/api/itineraries/' + id)
+         fetch('https://mytinerarylorenzo.herokuapp.com/api/itineraries/' + id)
          .then(response => response.json())
          .then(data => {
             // console.log(data)
@@ -16,7 +16,7 @@ const itinerariesActions = {
 
    likeItinerary: (IDs) => {
       return async(dispatch, getState) => {
-         const response = await axios.post('http://localhost:4000/api/likeItinerary', IDs)
+         const response = await axios.post('https://mytinerarylorenzo.herokuapp.com/api/likeItinerary', IDs)
          return response
       }
    },
@@ -25,7 +25,7 @@ const itinerariesActions = {
       return async(dispatch, getState)=>{
          console.log(commentInfo)
          // console.log('Se mandó el comentario con la info: ' + commentInfo)
-         const response = await axios.post('http://localhost:4000/api/itinerary/comments', commentInfo)
+         const response = await axios.post('https://mytinerarylorenzo.herokuapp.com/api/itinerary/comments', commentInfo)
          console.log('response from back is: ' + response)
          return response
       }
@@ -33,7 +33,7 @@ const itinerariesActions = {
 
    deleteComment: (IDs)=> {
       return async(dispatch, getState)=>{
-         const response = await axios.delete('http://localhost:4000/api/itinerary/comments', {data: IDs}) 
+         const response = await axios.delete('https://mytinerarylorenzo.herokuapp.com/api/itinerary/comments', {data: IDs}) 
          console.log(response.data.response)
          return response.data.response
       }
@@ -41,7 +41,7 @@ const itinerariesActions = {
 
    editComment: (itineraryId, commentInfo)=> {
       return async(dispatch, getState)=>{
-         const response = await axios.put('http://localhost:4000/api/itinerary/comments/' + itineraryId, commentInfo )
+         const response = await axios.put('https://mytinerarylorenzo.herokuapp.com/api/itinerary/comments/' + itineraryId, commentInfo )
          console.log(response.data.response)
          return response.data.response
       }
