@@ -12,7 +12,6 @@ const userControllers = {
    registerNewUser: async (req, res)=>{
       const {name, lastName, mail, password, image, country} = req.body
       const existingMail = await User.findOne({mail}) //verifico que no esté registrado el mail que el usuario puso 
-      console.log('el valor de existingMail es' + existingMail) //Si es null es porque no encontró uno que coincida, eso significa que va bien
 
       var response;
       var error;
@@ -27,7 +26,6 @@ const userControllers = {
             // response = userToSave
             const token = jwt.sign({...userToSave}, process.env.SECRET_OR_KEY)            
             response = token 
-            console.log('user to save es: ' +  userToSave)
          } catch (err){ //no pinta mostrar el error posta porque el usuario no lo va a entender 
             console.log(err)
             error = "Hmm looks like something went wrong trying to save your account, please try again"
@@ -53,9 +51,7 @@ const userControllers = {
 
       if(accountRegistered){
          const passwordMatches = bcryptjs.compareSync(password, accountRegistered.password)
-         console.log('existe la cuenta')
          if(passwordMatches){
-            console.log('contraseña correcta')
             const token = jwt.sign({...accountRegistered}, process.env.SECRET_OR_KEY)
             response = token
          } else {
@@ -73,7 +69,6 @@ const userControllers = {
    },
 
    forcedLogin: (req, res)=>{
-      console.log(req.user._id)
       res.json({success: true, response: {image: req.user.image, name: req.user.name, userId: req.user._id}})
    }
 

@@ -30,14 +30,10 @@ const SignUp = (props)=>{
    const sendData = async (e = null, googleUser = null)=>{
       e && e.preventDefault()
       let user = e ? newUser : googleUser // Si hay e, es porque completó los campos, entonces tomo esos datos, sino tomo el user de google
-      console.log(user)
       const response = await props.registerUser(user)
       if(response){
          setErrors(errors = response.details)
-         console.log(response)
       }
-      console.log(response)
-      console.log(newUser)
    }
 
    const responseGoogle = (response)=> {

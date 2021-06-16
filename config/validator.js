@@ -14,7 +14,6 @@ const validator = (req, res, next)=>{
 
    //  La verificación 
    const validation = schema.validate(req.body, {abortEarly: false})  
-   console.log(validation)
    // Si hay algun error, el validator me guarda dentro de validator.error un array con los errores que ocurrieron
    if (validation.error){
       return res.json({success: false, errors: validation.error})

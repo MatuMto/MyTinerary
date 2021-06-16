@@ -9,7 +9,6 @@ mongoose.connect(process.env.MONGO, {
    useFindAndModify: false,
 })
 .then(()=>console.log("conecté con la base de datooos"))
-
 .catch(error => console.log(error))
 
 

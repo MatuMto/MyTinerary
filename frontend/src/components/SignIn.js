@@ -33,7 +33,6 @@ const SignIn = (props)=>{
       }
    }
    
-   // console.log(userId)
    return(
       <>
          <CitiesHeader/>

@@ -54,7 +54,6 @@ const ItineraryCard = (props)=>{
    const sendComment = async()=>{
       if(commentContent !== ''){
          setCommentContent('') // para resetear el input
-         // commentContent && console.log('Se mandó el comentario que dice: ' + commentContent)
          const response = await props.sendComment({ userId: userLogged.userId, comment: commentContent, itineraryId: itineraryData._id }) 
          await setAllComments(response.data.response)
       }
@@ -76,7 +75,6 @@ const ItineraryCard = (props)=>{
          cancelButtonColor: '#d33',
          confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
-          console.log(result)
           if (result.isConfirmed) {
             deleteSingleComment_(IDs)
             Swal.fire(
@@ -98,7 +96,6 @@ const ItineraryCard = (props)=>{
       setIsEditingComment(!isEditingComment)
       const response = await props.editComment(itineraryId, commentInfo)
       setAllComments(response)
-      console.log(response)
    }
 
    const notify = (error)=>{

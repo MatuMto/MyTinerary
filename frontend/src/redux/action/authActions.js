@@ -5,9 +5,7 @@ const authActions = {
    registerUser: (userToSave)=>{
       return async(dispatch, getState) => {
          const response = await axios.post('https://mytinerarylorenzo.herokuapp.com/api/user/signUp', userToSave)
-         console.log(response)
          if(!response.data.success){
-            console.log(response)
             response.data.error && Swal.fire({
                icon: 'error',
                title: 'Oops...',
@@ -24,7 +22,6 @@ const authActions = {
    logUser: (incomingUser)=>{
       return async(dispatch, getState)=>{
          const response = await axios.post('https://mytinerarylorenzo.herokuapp.com/api/user/signIn', incomingUser)
-         console.log(response.data)
          if(!response.data.success){
             Swal.fire({
                icon: 'error',
@@ -56,10 +53,9 @@ const authActions = {
                token: usuarioLS.token
             }})
          } catch(err){
-            // console.log('caí en el catch')
-            // if(err.response.status === 401){
-            //    alert('Invalid token -.-')
-            // }
+            if(err.response.status === 401){
+               alert('Invalid token -.-')
+            }
          }
       }
    }
