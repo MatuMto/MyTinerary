@@ -30,7 +30,7 @@ function Header (props){
                {!props.userLogged &&
                   <>
                      <NavLink to="/user/signup"  className="link" style={{color: 'black'}}>Sign Up</NavLink>
-                     <p style={{color: 'black'}}>|</p>
+                     <p className="signUp-divisorLine">|</p>
                      <NavLink to="/user/signin" className="link" style={{color: 'black'}}>Sign In</NavLink>
                   </>
                }
