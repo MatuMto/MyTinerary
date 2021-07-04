@@ -4,7 +4,7 @@ import axios from 'axios'
 const citiesActions = {
    uploadCities: ()=>{
       return (dispatch, getState)=>{
-         fetch('https://mytinerarylorenzo.herokuapp.com/api/cities')
+         fetch('https://mytinerary-lorenzo.herokuapp.com/api/cities')
          .then(response => response.json())
          .then(data => dispatch({type: 'CARGAR_CITIES', payload: data.respuesta}))
          .catch(error => console.log(error))
@@ -22,7 +22,7 @@ const citiesActions = {
 
    callSingleCity: (id)=>{
       return async(dispatch, getState)=>{
-         const response = await axios.get('https://mytinerarylorenzo.herokuapp.com/api/city/'+ id)
+         const response = await axios.get('https://mytinerary-lorenzo.herokuapp.com/api/city/'+ id)
          // console.log(response.data.respuesta)
          return response.data.respuesta
          // dispatch({type: 'GET_SINGLE_CITY', payload: response })

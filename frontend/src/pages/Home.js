@@ -15,7 +15,7 @@ class Home extends React.Component {
    }
 
    componentDidMount(){
-      axios.get('https://mytinerarylorenzo.herokuapp.com/api/allCities')
+      axios.get('https://mytinerary-lorenzo.herokuapp.com/api/allCities')
       .then(response => this.setState({infoOfCities: response.data.respuesta, loading: false}))
    }
 
