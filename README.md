@@ -16,4 +16,4 @@ Pagina web completa desarrollada como parte del programa de capacitación web Fu
 * [Mongoose](https://mongoosejs.com/) - Framework para modelado de base de datos
 
 # Pagina Web 
-https://mytinerarylorenzo.herokuapp.com/
+http://mytinerary-lorenzo.herokuapp.com/
