@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import authActions from '../redux/action/authActions'
 
 function Header (props){
-   const userImage = props.userLogged ? props.userLogged.image : '/img/black-user-icon.png'
+   const userImage = props.userLogged ? props.userLogged.image : 'https://i.imgur.com/LPFZ4Rj.png'
 
    const [dropdown, setDropdown] = useState(false) 
    const abrirCerrarDropdown = ()=>{
@@ -38,7 +38,7 @@ function Header (props){
                {props.userLogged && <p className="userName home ">|</p>}
                {props.userLogged && <p className="userName home"> {props.userLogged.name}</p>}   
 
-               <div style={{ marginLeft: '20px', width:'100px', height: '100px', borderRadius: '50%', backgroundImage: `url(${userImage})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+               <div style={{ marginLeft: '20px', width:'50px', height: '50px', backgroundImage: `url(${userImage})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
 
                </div>
             </div>
@@ -76,7 +76,8 @@ function Header (props){
 
             {/* <div className="login-section"> */}
                <div style={{ marginLeft: '20px'}}>
-                  <img src="/img/user-icon.png" alt="user unloged icon" style={{width: '50px'}}></img>
+                  {/* <img src="/img/user-icon.png" alt="user unloged icon" style={{width: '50px'}}></img> */}
+                  <div className="userUnlogged-icon" style={{backgroundImage: `url('https://i.imgur.com/LPFZ4Rj.png')`, width:'50px', height: '50px'}}></div>
                </div>
             {/* </div> */}
          </header>
